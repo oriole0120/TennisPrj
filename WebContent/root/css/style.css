@@ -1,0 +1,203 @@
+﻿body 
+{
+
+    font-family: 돋움, Arial, sans-serif;
+    font-size : 13px;    
+    color : #979797;
+}
+
+a
+{
+    color: #979797;
+    text-decoration: none;
+}
+
+ol
+{
+    list-style: none;
+}
+
+.hidden
+{
+    display: none;
+}
+
+
+
+
+
+/*-------------------------------------------<< header style >>----------*/
+
+.logo a
+{
+    float: left;
+}
+.logo p
+{
+    margin-top: 20px;
+    margin-left: 60px;
+    font-weight: bold;
+}
+
+/*----------<< member-menu style >>----------------------------------------*/
+#member-menu
+{
+    display: inline-block;
+}
+
+.member-menu-item
+{
+    float: left;
+    padding-left : 25px;
+    background: url("../../images/bg-member-menu-vsp.png") no-repeat 10px center;    
+}
+
+    .member-menu-item:first-child
+    {
+        padding-left: 0px;
+        background: none;
+    }
+
+.member-menu-text
+{
+    font-family: 맑은 고딕, 고딕, Arial, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+     color: #000000;
+}
+
+.member-menu-text:hover
+{
+   text-decoration: underline;
+}
+
+
+/*----------<< search-form style >>----------------------------------------*/
+#search-form
+{
+    position: relative;
+    width: 180px;
+    height: 25px;
+    border: 2px solid #ff006e;
+    display: inline-block;
+}
+
+#search-input
+{   text-indent: 5px;
+    width: 100%;
+    height: 25px;
+    border: 0px;
+    float: left;
+}
+
+#search-button
+{   
+    position: absolute;
+    width: 31px;
+    height: 25px;
+    text-indent: -999px;
+    overflow: hidden;
+    right: 0px;
+    top: 0px;
+    border: 0px;
+    
+    background: url("../../images/search.png") no-repeat center;
+    border-left: 1px solid #ff006e;
+    float:left;
+    cursor: pointer;
+}
+
+
+
+
+/*----------<< side-menu style >>----------------------------------------*/
+#side-menu
+{
+    display: inline-block;
+}
+
+.side-menu-item
+{
+    /*float: left;*/
+    padding-left: 20px;
+    background: url("../../images/bg-side-menu-vsp.png") no-repeat 20px center;
+}
+
+    .side-menu-item:first-child 
+    {
+        padding-top: 20px;
+        /*background: none;*/
+    }
+
+.side-menu-text
+{
+    font-family: 맑은 고딕, 고딕, Arial, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    /*text-align: right;*/
+    color: #000000;
+}
+
+.side-menu-text:hover
+{
+   text-decoration: underline;
+}
+
+.side-menu-detail
+{
+    padding-left: 35px;
+}
+
+/*/*----------<< main-menu style >>----------------------------------------*/
+
+#main-title-bar
+{
+    display: block;
+    height: 40px;
+    background: #ffd800;
+
+    font-size: 25px;
+    line-height: 25px;
+    font-weight: bold;
+}
+    #main-title-bar > p
+    {
+        position: absolute;
+        top: 10px;
+        left: 185px;
+        color: #000000;
+    }    
+
+
+
+/*----------<< footer style >>-------------------------------------------*/
+
+#footer
+{
+    font-weight: bold;
+}
+
+.company-info-item
+{
+    float: left;
+    font-size: 13px;
+}
+
+.item-title
+{
+    padding-left: 15px;
+    /*background: url("../images/info-sp.png") no-repeat 5px center;*/
+}
+
+.item-data
+{
+    padding-left: 7px;
+    /*background: url("../images/title-colon.png") no-repeat left center;*/
+}
+
+.item-newline
+{
+    clear : left;
+    padding-left: 0px;
+    background: none;
+}

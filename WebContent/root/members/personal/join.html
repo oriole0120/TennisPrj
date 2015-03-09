@@ -1,0 +1,269 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href="css/bind.css" rel="stylesheet" type="text/css" />
+    <link href="css/component.css" rel="stylesheet" type="text/css" />
+    <link href="css/default.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="../../js/modernizr.js"></script>
+    
+    <script src="../../js/modernizr.custom.js"></script>
+
+
+
+</head>
+
+<body>
+    <header id="header">
+        <!--  header part  -->
+        <div class="content-wrapper">
+            <h1 class="hidden">Header</h1>
+            <div class="logo">
+                <a href=""><img src="../../images/logo_s.png" alt="동아리로고"></a>
+                <p>Hansung Tennis Membership</p>
+            </div>
+
+            <section class="header-item-container">
+                <h2 class="hidden">머릿말</h2>
+                <nav id="member-menu">
+                    <h3 class="hidden">회원메뉴</h3>
+                    <ul class="clearfix">
+                        <li class="member-menu-item"><a class="member-menu-text" href="">홈</a></li>
+                        <li class="member-menu-item"><a class="member-menu-text" href="">로그인</a></li>
+                        <li class="member-menu-item"><a class="member-menu-text" href="">가입</a></li>
+                    </ul>
+                </nav>
+
+                <nav id="search-form">
+                    <h3 class="hidden">게시글검색폼</h3>
+                    <form>
+                        <fieldset>
+                            <input id="search-input" type="text" />
+                            <input id="search-button" type="submit" value="검색" />
+                        </fieldset>
+                    </form>
+                </nav>
+            </section>
+
+            <div class="header-slide-img">
+                <!--  image slide part  -->
+                <img id="slide-img" src="../../images/slide-img01.png" />
+            </div>
+
+        </div>
+    </header>
+
+
+    <div id="body">
+        <div class="content-wrapper clearfix">
+
+            <aside id="side">
+                <!--  aside menu part  -->
+                <!--<h2 class="hidden">Menu</h2>-->
+                <nav id="side-menu">
+                    <ul class="clearfix">
+                        <li class="side-menu-item"><a class="side-menu-text" href="">Notice</a></li>
+                        <li class="side-menu-item"><a class="side-menu-text" href="">Tennis</a></li>
+
+                        <li class="side-menu-item">
+                            <a class="side-menu-text" href="">Community</a>
+                            <ul>
+                                <li class="side-menu-detail"><a class="side-menu-text" href="">Free</a>
+                                <li class="side-menu-detail"><a class="side-menu-text" href="">Info</a>
+                            </ul>
+                        </li>
+
+                        <li class="side-menu-item">
+                            <a class="side-menu-text" href="">Gallery</a>
+                            <ul>
+                                <li class="side-menu-detail"><a class="side-menu-text" href="">Photo</a>
+                                <li class="side-menu-detail"><a class="side-menu-text" href="">Video</a>
+                            </ul>
+                        </li>
+
+                        <li class="side-menu-item"><a class="side-menu-text" href="">Schedule</a></li>
+                        <li class="side-menu-item"><a class="side-menu-text" href="">Link</a></li>
+                    </ul>
+                </nav>
+
+            </aside>
+            <div class="container">
+                <div class="main clearfix">
+                    <div class="column">
+
+                        <button class="md-trigger" data-modal="modal-12">회원가입</button>
+
+                    </div>
+
+                </div><!-- /container -->
+             </div>  
+            
+            <div class="md-modal md-effect-12 " id="modal-12">
+                <div class="md-content">
+                    <h3>회원가입</h3>
+                    <div id="aa">
+                        <!--<p>This is a modal window. You can do the following things with it:</p>-->
+                        <div id="aa1">
+                            <table border="1">
+                                <tr>
+                                    <td align="center" width=100>아이디</td>
+                                    <td colspan=3>
+                                        <input type="text" name="id" id="name" value="" />
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td align="center">암호</td>
+                                    <td colspan=3>
+                                        <input type="password" name="pw" id="name" value="" />
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td align="center">암호확인</td>
+                                    <td colspan=3>
+                                        <input type="password" name="pwr" id="name" value="" />
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td align="center">이름</td>
+                                    <td colspan=3>
+                                        <input type="text" name="name" id="name" value="" />
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td align="center">성별</td>
+                                    <td colspan='3'>
+                                        <fieldset data-role="controlgroup">
+                                            <input type="radio" name="gender" id="radio-choice-1" value="choice-1" checked="checked" />
+                                            <label for="radio-choice-1">남자</label>
+
+                                            <input type="radio" name="gender" id="radio-choice-2" value="choice-2" />
+                                            <label for="radio-choice-2">여자</label>
+                                        </fieldset>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td align="center"> 생년월일</td>
+                                    <td>
+                                        <select name="year">
+                                            <option value="2000" selected>2000</option>
+                                            <option value="2001" selected>2001</option>
+                                            <option value="2002" selected>2002</option>
+                                            <option value="2003" selected>2003</option>
+                                            <option value="2004" selected>2004</option>
+                                        </select>
+                                    </td>
+                                    <td>
+
+                                        <select name="month">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
+                                            <option value="11">11</option>
+                                            <option value="12">12</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <select name="day">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
+                                            <option value="11">11</option>
+                                            <option value="12">12</option>
+                                            <option value="13">13</option>
+                                            <option value="14">14</option>
+                                            <option value="15">15</option>
+                                            <option value="16">16</option>
+                                            <option value="17">17</option>
+                                            <option value="18">18</option>
+                                            <option value="19">19</option>
+                                            <option value="20">20</option>
+                                            <option value="21">21</option>
+                                            <option value="22">22</option>
+                                            <option value="23">23</option>
+                                            <option value="24">24</option>
+                                            <option value="25">25</option>
+                                            <option value="26">26</option>
+                                            <option value="27">27</option>
+                                            <option value="28">28</option>
+                                            <option value="29">29</option>
+                                            <option value="30">30</option>
+                                            <option value="31">31</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </table>
+                            <button class="md-close">완료</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="md-overlay"></div>
+            </div>
+        </div>
+    
+            <footer id="footer">
+                <!--  footer part  -->
+                <div class="content-wrapper clearfix">
+
+                    <div id="logo-footer-container">
+                        <h2><img src="../../images/logo_m.png" alt="동아리정보" /></h2>
+                    </div>
+
+                    <div id="company-info-container">
+                        <div id="company-info">
+                            <h3 class="hidden">동아리정보</h3>
+                            <dl class="clearfix">
+                                <dt class="company-info-item item-title item-newline"> 주소</dt>
+                                <dd class="company-info-item item-data">서울특별시 성북구 삼선교로 16길 116</dd>
+                                <dt class="company-info-item item-title">연락처</dt>
+                                <dd class="company-info-item item-data">02-760-5528</dd>
+
+                                <dt class="company-info-item item-title item-newline">관리자메일</dt>
+                                <dd class="company-info-item item-data">oriole0120@naver.com</dd>
+                                <dt class="company-info-item item-title">회장</dt>
+                                <dd class="company-info-item item-data">###</dd>
+                                <dt class="company-info-item item-title">HTM</dt>
+                                <dd class="company-info-item item-data">[Hansung Tennis Membership]</dd>
+                            </dl>
+                        </div>
+
+                        <div id="copyright">
+                            <h3 class="hidden">저작권정보</h3>
+                            <p>Copyright@chanCompany 2015</p>
+                        </div>
+                    </div>
+                </div>
+
+            </footer>
+
+            <!--자바스크립트 팝업-->
+            <script src="../../js/classie.js"></script>
+            <script src="../../js/modalEffects.js"></script>
+            <script>
+                // this is important for IEs
+                var polyfilter_scriptpath = '/js/';
+            </script>
+            <script src="../../js/cssParser.js"></script>
+            <script src="../../js/css-filters-polyfill.js"></script>-->
+</body>
+</html>

@@ -1,0 +1,88 @@
+﻿#thm{
+    text-align: center;
+}
+
+#day{
+    margin-left:190px;
+    margin-top:10px;
+
+
+}
+
+input{
+
+    color:#ff0000;
+}
+
+
+table{
+   
+    text-align: center;
+    margin-left:100px;
+    margin-top:50px;
+    border:1px solid gray;
+    border-collapse: collapse;
+}
+th{
+    background-color: #d0d0d0;
+    font-weight:bold;
+}
+th,td{
+    border:1px solid gray;
+    padding:5px;
+}
+
+/*///////*/
+
+
+.page-before-item
+{    margin-bottom:0px;
+    float:left;
+    padding-top:30px;
+    padding-left:250px;
+}
+
+.page-number
+{   margin-bottom:0px;
+    float:left;
+    padding-top:30px;
+    padding-left:30px;
+}
+
+.page-after-item
+{    margin-bottom:0px;
+    float:left;
+    padding-top:30px;
+    padding-left:30px;
+}
+
+.page-number-text
+{    margin-bottom:0px;
+    font-family:맑은 고딕, 고딕, sans-serif;
+    font-size:12px;
+    font-weight : bold;
+    color:#000000;
+}
+
+.page-before-text
+{   margin-bottom:0px; 
+    font-family:맑은 고딕, 고딕, sans-serif;
+    font-size:12px;
+    font-weight : bold;
+    color:#000000;
+}
+
+.page-after-text
+{   margin-bottom:0px;
+    font-family:맑은 고딕, 고딕, sans-serif;
+    font-size:12px;
+    font-weight : bold;
+    color:#000000;
+}
+.write-btn-item{
+    
+    padding-left:650px;
+    padding-top:-50px;
+
+
+}

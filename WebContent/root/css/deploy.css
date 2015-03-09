@@ -1,0 +1,72 @@
+﻿
+/*----------<< header deploy >>----------------------------------------*/
+
+.logo {
+    position: absolute;
+    left: 20px;
+    top: 30px;
+    z-index: 1;
+}
+   
+#side-menu {
+    /*position: absolute;
+    left: 400px;
+    top: 25px;*/
+}
+
+#member-menu {
+    position: absolute;
+    right: 30px;
+    top: 30px;
+}
+
+#search-form {
+    position: absolute;
+    right: 30px;
+    top: 50px;
+}
+
+/*#slide-img
+{
+    position: absolute;
+    top: 0px;
+    
+}
+
+
+/*----------<< body deploy >>----------------------------------------*/
+
+
+#table
+{
+    
+}
+
+/*----------<< footer deploy >>----------------------------------------*/
+
+#logo-footer-container
+{
+    float: left;
+    margin-top: 13px;
+    margin-left: 60px;
+}
+
+#company-info-container
+{
+    float: left;
+    margin-top: 35px;
+    padding-left: 30px;
+}
+
+#copyright
+{
+    margin-top: 7px;
+}
+
+
+
+
+
+
+
+

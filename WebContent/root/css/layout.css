@@ -1,0 +1,100 @@
+.content-wrapper
+{
+    /*width:1200px;*/
+    height:inherit;
+    min-height:inherit;
+    margin: auto;
+}
+
+.clearfix:after {
+    content: "qwerty";
+    display: block;
+    clear: left;
+    visibility: hidden;
+    height: 0px;
+    line-height: 0px;
+}
+
+/*----------<< header layout >>----------------------------------------*/
+#header
+{
+    height: 500px;
+}
+
+.header-item-container
+{
+    /*border: 1px solid #4800ff;*/
+    width: inherit;
+    height: 100px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
+.header-slide-img
+{
+    width: inherit;
+    height: 400px;
+    position: absolute;
+    left: 0px;
+    top: 100px;
+   
+}
+
+#header .content-wrapper
+{
+    border-bottom: 1px dotted #ff0000;
+    width:1000px;
+    margin-left:auto;
+    margin-right:auto;
+    position: relative;
+}
+
+
+
+/*----------<< body layout >>----------------------------------------*/
+#body
+{
+    min-height: 800px;
+    /*margin-top: 1px;*/
+}
+
+#body .content-wrapper
+{
+    background: #413407;
+    
+    width: 1000px;
+    position: relative;
+}
+
+
+#side
+{   
+    min-height: inherit;
+    width: 170px;
+    float: left;
+}
+
+
+#main
+{
+    background: #ffffff;
+    min-height: inherit;
+    width: 830px;
+    float: left;
+}
+
+
+
+
+#footer
+{
+    height: 150px;
+}
+
+#footer .content-wrapper
+{
+    border-top: 1px dotted #4800ff;
+    width: 1000px;
+    position: relative;
+}
