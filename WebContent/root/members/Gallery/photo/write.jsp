@@ -70,7 +70,7 @@
 							                    		}
 							                    	},
 							                    	fOnAppLoad : function(){
-							                    		//예제 코드
+							                    		//기존글 수정시 사용
 							                    		//oEditors.getById["content"].exec("PASTE_HTML", ["로딩이 완료된 후에 본문에 삽입되는 text입니다."]);
 							                    	},
 							                        fCreator: "createSEditor2"
@@ -95,15 +95,15 @@
 							                    	oEditors.getByID("contents").setDefaultFont(sDefaultFont, nFontSize);
 							                    }
 							                    
-							                    /* window.onload = function() {
-							                    	var btnReg = document.querySelector("#brn-reg")
-							                    	btnReg.addEventListener("click", submitContents);
-							                    	alert("0123");
-							                    	try {
-							                    		elClickedObj.form.submit();
-							                    	} catch(e) {}
-							                    } */
-							                    
+							                  <!-- onclick="write()" -->
+							                  $("#btn-reg").click(function(){
+
+							                        oEditors.getById["contents"].exec("UPDATE_CONTENTS_FIELD", []);
+							                        $("#text-area").submit();
+							                        
+							                  });
+
+							             
 						                	</script>
 				                	
 		                        </dd>
@@ -111,7 +111,7 @@
                     	</fieldset>
                     
 	                    <p id="button-container" class="space-top text-center">
-	                    	<input type = "submit" value="등록" />
+	                    	<input id="btn-reg" type = "submit" value="등록"  />
 	                    	<a href="list.jsp">취소</a>
 	                    </p>
           
