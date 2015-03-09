@@ -33,7 +33,7 @@
 	Free fr = new Free();
 	
 	fr.setTitle(title);
-	fr.setWriter("deian");
+	fr.setWriter("admin");
 	fr.setContents(content);
 	
 	/* if(filename)
@@ -50,7 +50,11 @@
 
 		FreeFile freeFile = new FreeFile();
 		
+		/* freeFile.setFilename(filename);
+		freeFile.setFreecode(freeCode); */
+		
 		freeFile.setFilename(filename);
+		freeFile.setFilesrc("");
 		freeFile.setFreecode(freeCode);
 
 		FreeFileDao fileDao = new JdbcFreeFileDao();

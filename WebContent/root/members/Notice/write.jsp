@@ -47,7 +47,7 @@
 		                        
 		                        <dt class="hidden">내용</dt>
 		                        <dd class="content newrow">
-		                        	<textarea name="content" id="content" rows="10" cols="100" style="width: 690px; height: 400px; display: none;">
+		                        	<textarea name="content" id="content" rows="10" cols="100" style="width: 690px; height: 400px; display:none;">
 		                        		본문입력됨?
 		                        	</textarea>
 		                        	
@@ -56,7 +56,7 @@
 							                    nhn.husky.EZCreator.createInIFrame({
 							                        oAppRef: oEditors,
 							                        elPlaceHolder: "content",
-							                        sSkinURI: "../../editor/SmartEditor2Skin.html",
+							                        sSkinURI: "../editor/SmartEditor2Skin.html",
 							                        htParams : {
 							                    		bUseToolbar : true,				// 툴바 사용 여부 (true:사용/ false:사용하지 않음)
 							                    		bUseVerticalResizer : true,		// 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
