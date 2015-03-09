@@ -4,50 +4,37 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
 
-    <link href="css/bind.css" rel="stylesheet" type="text/css" />
+    <link href="../css/bind.css" rel="stylesheet" type="text/css" />
     <!--<script type="text/javascript" src="../js/modernizr.js"></script>-->
-    <script type="text/javascript" src="editor/js/HuskyEZCreator.js" charset="utf8"></script>
+    <script type="text/javascript" src="../../../editor/js/HuskyEZCreator.js" charset="utf8"></script>
 
 </head>
 
 <body>
-   
-   
-   
-   <!-- header -->
-    <jsp:include page="../../inc/header.jsp"></jsp:include>
+    <!-- header -->
+    <jsp:include page="../../../inc/header.jsp"></jsp:include>
 
     <div id="body">
         <div class="content-wrapper clearfix">
         
         	<!-- aside -->
-            <jsp:include page="../../inc/aside.jsp"></jsp:include>
-   
-   
-   
+            <jsp:include page="../../../inc/aside.jsp"></jsp:include>
 
 
             <main id="main">
-                <!--  main content part  -->
-                <section id="board-detail" class="space-top-l">
-                    <h1 class="hidden">본문 작성</h1>
-                    
-                    <div id="main-title-bar">
-    	                <p> >>Photo </p>
-	                </div>
-        
-                    
-                    <form id="text-area" action="regProc.jsp" method="post" enctype="multipart/form-data">
+                <h2 id="main-title-write">   글 작성 </h2>
+
+                <form id="text-area" action="regProc.jsp" method="post" enctype="multipart/form-data">
                     	<fieldset>
 	                    	<legend class="hidden">본문입력필드</legend>
 	                    	
 	                    	<dl>
-		                        <dt class="detail-cell title newrow">제목</dt>
-		                        <dd class="detail-cell text-highlight"><input type="text" name="title" /></dd>
+		                        <dt class="detail-cell-commu title-free newrow">제목</dt>
+		                        <dd class="detail-cell-commu text-highlight"><input type="text" name="title" /></dd>
 		                        
 		                        <dt class="hidden">내용</dt>
 		                        <dd class="content newrow">
-		                        	<textarea name="content" id="content" rows="10" cols="100" style="width: 690px; height: 400px; display:none;">
+		                        	<textarea name="content" id="content" rows="10" cols="100" style="width: 690px; height: 400px; display: none;">
 		                        		본문입력됨?
 		                        	</textarea>
 		                        	
@@ -56,7 +43,7 @@
 							                    nhn.husky.EZCreator.createInIFrame({
 							                        oAppRef: oEditors,
 							                        elPlaceHolder: "content",
-							                        sSkinURI: "../editor/SmartEditor2Skin.html",
+							                        sSkinURI: "../../../editor/SmartEditor2Skin.html",
 							                        htParams : {
 							                    		bUseToolbar : true,				// 툴바 사용 여부 (true:사용/ false:사용하지 않음)
 							                    		bUseVerticalResizer : true,		// 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
@@ -66,6 +53,7 @@
 							                    		}
 							                    	},
 							                    	fOnAppLoad : function(){
+							                    		
 							                    		//예제 코드
 							                    		//oEditors.getById["content"].exec("PASTE_HTML", ["로딩이 완료된 후에 본문에 삽입되는 text입니다."]);
 							                    	},
@@ -77,7 +65,7 @@
 
 							                    	
 
-							                    function pasteHTML() {
+							                    /* function pasteHTML() {
 							                    	var sHTML = "<span style='color:#FF0000;'>이미지도 같은 방식으로 삽입합니다.<\/span>";
 							                    	oEditors.getById["content"].exec("PASTE_HTML", [sHTML]);
 							                    }
@@ -85,7 +73,7 @@
 							                    function showHTML() {
 							                    	var sHTML = oEditors.getById["content"].getIR();
 							                    	alert(sHTML);
-							                    }
+							                    } */
 							                    	
 							                    function submitContents(elClickedObj) {
 							                    	oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);	// 에디터의 내용이 textarea에 적용됩니다.
@@ -115,7 +103,8 @@
 	                    </p>
           
                 	</form>
-            	</section>
+                </div>
+
             </main>
 
         </div>
@@ -124,7 +113,7 @@
 
 
     <!-- footer -->
-		<jsp:include page="../../inc/footer.jsp"></jsp:include>
+		<jsp:include page="../../../inc/footer.jsp"></jsp:include>
 
 </body>
 </html>

@@ -127,7 +127,7 @@ public class JdbcFreeDao implements FreeDao {
 	@Override
 	public int insert(Free free) {
 		String sql1 = "SELECT ISNULL(MAX(CAST(CODE AS INT)), 0)+1 CODE FROM FREEBOARDS";
-		String sql = "INSERT INTO FREEBOARDS(CODE, TITLE, WRITER, CONTENT, REGDATE, HIT) VALUES(?,?,?,?,Getdate(), 0)";
+		String sql = "INSERT INTO FREEBOARDS(CODE, WRITER, REGDATE, TITLE, CONTENTS, HIT, THUMB, AUTHORITY) VALUES(?, ?, Getdate(), ?, ?, 0, 0, 'B')";
 		String url = "jdbc:sqlserver://win.newlecture.com:1433;databaseName=tennisdb";
 		
 		try {
@@ -146,8 +146,8 @@ public class JdbcFreeDao implements FreeDao {
 			PreparedStatement st = con.prepareStatement(sql);
 
 			st.setString(1, code);
-			st.setString(2, free.getTitle());
-			st.setString(3, free.getWriter());
+			st.setString(2, free.getWriter());
+			st.setString(3, free.getTitle());
 			st.setString(4, free.getContents());
 
 			int result = st.executeUpdate(); // 실행했을때 영향받는 row 수
@@ -170,7 +170,7 @@ public class JdbcFreeDao implements FreeDao {
 
 	@Override
 	public int update(Free free) {
-		String sql = "UPDATE FREEBOARDS SET TITLE=?, CONTENT=? WHERE CODE=?";
+		String sql = "UPDATE FREEBOARDS SET TITLE=?, CONTENTS=? WHERE CODE=?";
 		String url = "jdbc:sqlserver://win.newlecture.com:1433;databaseName=tennisdb";
 		
 		try {
