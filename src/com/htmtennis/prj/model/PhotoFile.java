@@ -2,6 +2,8 @@ package com.htmtennis.prj.model;
 
 import java.util.Date;
 
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+
 public class PhotoFile {
 	
 	private String photoName;
@@ -9,6 +11,14 @@ public class PhotoFile {
 	private Date regdate;
 	private String fileSize;
 	private String fileSrc;
+	private CommonsMultipartFile file;
+	
+	public CommonsMultipartFile getFile() {
+		return file;
+	}
+	public void setFile(CommonsMultipartFile file) {
+		this.file = file;
+	}
 	public String getPhotoName() {
 		return photoName;
 	}

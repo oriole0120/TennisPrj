@@ -13,7 +13,9 @@
 	PhotoDao photoDao = sqlSession.getMapper(PhotoDao.class); */
 	
 	String _code = request.getParameter("c");
-	Photo ph = new JdbcPhotoDao().getPhoto(_code);
+	PhotoDao photoDao = new JdbcPhotoDao();
+	
+	Photo ph = photoDao.getPhoto(_code);
 	pageContext.setAttribute("ph", ph);
 %>
 

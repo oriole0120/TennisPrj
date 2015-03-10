@@ -37,7 +37,7 @@ public class JdbcPhotoDao implements PhotoDao {
 			ph.setContents(rs.getString("CONTENTS"));
 			ph.setHit(rs.getInt("HIT"));
 			ph.setThumb(rs.getInt("THUMB"));
-			ph.setAuthority(rs.getString("AUTORITY"));
+			ph.setAuthority(rs.getString("AUTHORITY"));
 			
 			rs.close();
 			st.close();
@@ -320,7 +320,7 @@ public class JdbcPhotoDao implements PhotoDao {
 	
 	@Override
 	public int getSize(String query, String field) {
-		String sql = "SELECT COUNT(*) CNT FROM PHOTOBOARDS WHERE" + field +"LIKE ?";	
+		String sql = "SELECT COUNT(*) CNT FROM PHOTOBOARDS WHERE " + field +" LIKE ?";	
 		String url = "jdbc:sqlserver://win.newlecture.com:1433;databaseName=tennisdb";
 		
 		try {
