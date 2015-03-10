@@ -11,27 +11,25 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%
-	int npage=1;
+	int npage = 1;
 	String field = "TITLE";
 	String query = "";
-	
+
 	String _page = request.getParameter("p");
 	String _field = request.getParameter("f");
 	String _query = request.getParameter("q");
-	
-	if(_page != null && !_page.equals(""))
-		npage=Integer.parseInt(_page);
-	
-	if(_field != null && !_field.equals(""))
-		field =_field;
-		
-	if(_query != null && !_query.equals(""))
-		query =_query;
-					
-			
+
+	if (_page != null && !_page.equals(""))
+		npage = Integer.parseInt(_page);
+	if (_field != null && !_field.equals(""))
+		field = _field;
+
+	if (_query != null && !_query.equals(""))
+		query = _query;
+
 	NoticeDao noticeDao = new JdbcNoticeDao();
 	List<Notice> list = noticeDao.getNotices(npage, query, field);
-	
+
 	pageContext.setAttribute("list", list);
 	pageContext.setAttribute("total", noticeDao.getSize(""));
 %>
