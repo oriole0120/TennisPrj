@@ -62,7 +62,7 @@ public class JdbcFreeDao implements FreeDao {
 	@Override
 	public List<Free> getFrees(int page, String query, String field) {
 		int start	=  1+(page-1)*20;	//(page-1)*20+1;
-		int end 	= 20+(page-1)*20;	//page*20;
+		int end 	= 15+(page-1)*15;	//page*20;
 		
 		String sql = "SELECT N.* FROM ( "
 				+" SELECT ( ROW_NUMBER() OVER (ORDER BY REGDATE DESC) ) NUM, FREEBOARDS.* "

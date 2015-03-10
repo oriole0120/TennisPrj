@@ -1,10 +1,10 @@
 SELECT * FROM FREEBOARDS;
 
 INSERT INTO FREEFILES
-	VALUES('tennis', '23', GETDATE(), 'aaaaaa');
+	VALUES('tennis', '25', GETDATE(), 'aaaaaa');
 	
-INSERT INTO PHOTOBOARDS 
-	VALUES('2', 'deian', GETDATE(), '샘플데이터', '사진도 없닼ㅋㅋㅋ', 0, 0, 'B');
+INSERT INTO FREEBOARDS 
+	VALUES('55', 'deian', GETDATE(), '흐31112', '사진도닼ㅋㅋㅋ', 0, 0, 'B');
 	
 INSERT INTO PHOTOBOARDS 
 	VALUES('3', 'deian', GETDATE(), '샘플데이터2', '사진어케올림?!', 5, 1, 'B');	
@@ -16,8 +16,8 @@ INSERT INTO PHOTOBOARDS
 	VALUES('5', 'deian', GETDATE(), '샘플데이터4', '망한건갘ㅋㅋㅋ', 2, 3, 'B');		
 	
 SELECT N.* FROM (
-	SELECT ( ROW_NUMBER() OVER (ORDER BY REGDATE DESC) ) NUM, PHOTOBOARDS.*
-	FROM PHOTOBOARDS
+	SELECT ( ROW_NUMBER() OVER (ORDER BY REGDATE DESC) ) NUM, FREEBOARDS.*
+	FROM FREEBOARDS
 	 ) N
 WHERE N.NUM BETWEEN 1 AND 20;	
 

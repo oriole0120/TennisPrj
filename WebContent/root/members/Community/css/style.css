@@ -53,7 +53,7 @@
 #main-search-form
 {
     padding-left: 250px;
-    padding-top: 10px;
+    padding-top: 30px;
 }
 
 
@@ -318,3 +318,5 @@ a.page:first-child
     font-weight:bold;
     color:#ff6a00;
 }
+
+
