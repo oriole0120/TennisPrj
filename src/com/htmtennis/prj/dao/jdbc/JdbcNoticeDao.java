@@ -299,7 +299,7 @@ public class JdbcNoticeDao implements NoticeDao {
 	@Override
 	public int insert(Notice notice) {
 		String sql1 = "SELECT ISNULL(MAX(CAST(CODE AS INT)), 0)+1 CODE FROM NOTICEBOARDS";
-		String sql = "INSERT INTO NOTICEBOARDS(CODE, WRITER, REGDATE, TITLE, CONTENTS, HIT, THUMB, AUTHORITY) VALUES(?, ?, Getdate(), ?, ?, 0, 0, 'B')";
+		String sql = "INSERT INTO NOTICEBOARDS(CODE, WRITER, REGDATE, TITLE, CONTENTS, HIT, AUTHORITY) VALUES(?, ?, Getdate(), ?, ?, 0, 'A')";
 		String url = "jdbc:sqlserver://win.newlecture.com:1433;databaseName=tennisdb";
 		
 		
@@ -319,8 +319,9 @@ public class JdbcNoticeDao implements NoticeDao {
 			PreparedStatement st = con.prepareStatement(sql);
 
 			st.setString(1, code);
-			st.setString(2, notice.getTitle());
-			st.setString(3, notice.getWriter());
+			st.setString(2, notice.getWriter());
+			st.setString(3, notice.getTitle());
+			
 			st.setString(4, notice.getContents());
 
 			int result = st.executeUpdate(); // 실행했을때 영향받는 row 수
