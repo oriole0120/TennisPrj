@@ -34,7 +34,7 @@
 	
 	fr.setTitle(title);
 
-	fr.setWriter("SS");
+	/* fr.setWriter("SS"); */
 
 	fr.setWriter("admin");
 
