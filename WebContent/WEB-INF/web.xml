@@ -20,11 +20,11 @@
       <url-pattern>/*</url-pattern>
   </filter-mapping> -->
   
-  <servlet>
+<!--   <servlet>
   		<servlet-name>MyBatisInitializer</servlet-name>
   		<servlet-class>com.htmtennis.prj.dao.mybatis.MyBatisMain</servlet-class>
   		<load-on-startup>1</load-on-startup>
-  </servlet>
+  </servlet> -->
   
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>

@@ -76,7 +76,7 @@
                     </nav>
 
                     <div id="write">
-                        <p><a href="edit.html">글쓰기</a></p>
+                        <p><a href="write.jsp">글쓰기</a></p>
                     </div>
 
                     <div>
