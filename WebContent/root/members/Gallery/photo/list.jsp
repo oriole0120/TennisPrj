@@ -72,7 +72,9 @@
                 <div id="table-margin-left">
                     
                 </div>
-
+                
+                
+   
                 <div id="table">
                     <table>
                         <tbody>
@@ -80,6 +82,7 @@
                             
                             	<!-- 글개수만큼 리스트를 갱신 -->
 	                            <c:forEach var="ph"  items="${list}">
+	                           <%--  <c:forEach begin=0> --%>
 	                            	<td class="table-cell">
 	                                    <table>
 	                                        <tbody>

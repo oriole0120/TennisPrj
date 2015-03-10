@@ -51,7 +51,7 @@
 		                        
 		                        <dt class="hidden">내용</dt>
 		                        <dd class="content newrow">
-		                        	<textarea name="contents" id="contents" rows="10" cols="100" style="width: 690px; height: 400px; display: none;">
+		                        	<textarea name="ir1" id="ir1" rows="10" cols="100" style="width: 690px; height: 400px; display: none;">
 		                        		
 		                        	</textarea>
 		                        	
@@ -59,19 +59,20 @@
 							                    var oEditors = [];
 							                    nhn.husky.EZCreator.createInIFrame({
 							                        oAppRef: oEditors,
-							                        elPlaceHolder: "contents",
+							                        elPlaceHolder: "ir1",
 							                        sSkinURI: "../../../editor/SmartEditor2Skin.html",
 							                        htParams : {
 							                    		bUseToolbar : true,				
 							                    		bUseVerticalResizer : false,		
 							                    		bUseModeChanger : false,		
 							                    		fOnBeforeUnload : function(){
-							                    			alert("작성 완료!");
+							                    			//alert("작성 완료!");
 							                    		}
 							                    	},
 							                    	fOnAppLoad : function(){
+							                    		getById["ir1"].value
 							                    		//기존글 수정시 사용
-							                    		//oEditors.getById["content"].exec("PASTE_HTML", ["로딩이 완료된 후에 본문에 삽입되는 text입니다."]);
+							                    		//oEditors.getById["ir1"].exec("PASTE_HTML", ["로딩이 완료된 후에 본문에 삽입되는 text입니다."]);
 							                    	},
 							                        fCreator: "createSEditor2"
 							                    });
@@ -82,7 +83,7 @@
 							                    
 							                     function submitContents(elClickedObj) {
 							                    	
-							                    	 oEditors.getByID("contents").exec("UPDATE_CONTENTS_FIELD", []);	
+							                    	 oEditors.getByID("ir1").exec("UPDATE_CONTENTS_FIELD", []);	
 							                       		
 							                    	try {
 							                    		elClickedObj.form.submit();
@@ -92,14 +93,18 @@
 							                    function setDefaultFont() {
 							                    	var sDefaultFont = '맑은고딕';
 							                    	var nFontSize = 20;
-							                    	oEditors.getByID("contents").setDefaultFont(sDefaultFont, nFontSize);
+							                    	oEditors.getByID("ir1").setDefaultFont(sDefaultFont, nFontSize);
 							                    }
 							                    
 							                  <!-- onclick="write()" -->
 							                  $("#btn-reg").click(function(){
-
-							                        oEditors.getById["contents"].exec("UPDATE_CONTENTS_FIELD", []);
-							                        $("#text-area").submit();
+							                		var contentArea = oEditors.getById["ir1"];
+							                		if(!contentArea)
+								                		alert("내용을 작성해주세요");
+							                		else {
+							                			contentArea.exec("UPDATE_CONTENTS_FIELD", []);
+							                			$("#text-area").submit();
+							                		}
 							                        
 							                  });
 
