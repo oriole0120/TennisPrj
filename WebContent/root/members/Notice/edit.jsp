@@ -6,7 +6,7 @@
 
     <link href="css/bind.css" rel="stylesheet" type="text/css" />
     <!--<script type="text/javascript" src="../js/modernizr.js"></script>-->
-    <script type="text/javascript" src="editor/js/HuskyEZCreator.js" charset="utf8"></script>
+    <script type="text/javascript" src="../../editor/js/HuskyEZCreator.js" charset="utf8"></script>
 
 </head>
 
