@@ -2,23 +2,22 @@ package com.htmtennis.prj.model;
 
 import java.util.Date;
 
-public class FreeFile{
+public class InformationFile{
 	private String filename;
-	private String freecode;
+	private String informationcode;
 	private Date regdate;
 	private String filesrc;
-	
 	public String getFilename() {
 		return filename;
 	}
 	public void setFilename(String filename) {
 		this.filename = filename;
 	}
-	public String getFreecode() {
-		return freecode;
+	public String getInformationcode() {
+		return informationcode;
 	}
-	public void setFreecode(String freecode) {
-		this.freecode = freecode;
+	public void setInformationcode(String informationcode) {
+		this.informationcode = informationcode;
 	}
 	public Date getRegdate() {
 		return regdate;

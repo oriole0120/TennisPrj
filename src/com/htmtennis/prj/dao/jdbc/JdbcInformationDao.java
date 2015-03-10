@@ -131,9 +131,9 @@ public class JdbcInformationDao implements InformationDao {
 	}
 
 	@Override
-	public int insert(Information Information) {
+	public int insert(Information information) {
 		String sql1 = "SELECT ISNULL(MAX(CAST(CODE AS INT)), 0)+1 CODE FROM INFORMATIONBOARDS";
-		String sql = "INSERT INTO INFORMATIONBOARDS(CODE, TITLE, WRITER, CONTENT, REGDATE, HIT) VALUES(?,?,?,?,Getdate(), 0)";
+		String sql = "INSERT INTO INFORMATIONBOARDS(CODE, WRITER, REGDATE, TITLE, CONTENTS, HIT, THUMB, AUTHORITY) VALUES(?, ?, Getdate(), ?, ?, 0, 0, 'B')";
 		String url = "jdbc:sqlserver://win.newlecture.com:1433;databaseName=tennisdb";
 
 		try {
@@ -152,9 +152,9 @@ public class JdbcInformationDao implements InformationDao {
 			PreparedStatement st = con.prepareStatement(sql);
 
 			st.setString(1, code);
-			st.setString(2, Information.getTitle());
-			st.setString(3, Information.getWriter());
-			st.setString(4, Information.getContents());
+			st.setString(2, information.getWriter());
+			st.setString(3, information.getTitle());
+			st.setString(4, information.getContents());
 
 			int result = st.executeUpdate(); // 실행했을때 영향받는 row 수
 
