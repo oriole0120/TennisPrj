@@ -6,15 +6,12 @@
 
     <link href="css/bind.css" rel="stylesheet" type="text/css" />
     <!--<script type="text/javascript" src="../js/modernizr.js"></script>-->
-    <script type="text/javascript" src="editor/js/HuskyEZCreator.js" charset="utf8"></script>
+    <script type="text/javascript" src="../../editor/js/HuskyEZCreator.js" charset="utf8"></script>
 
 </head>
 
 <body>
-   
-   
-   
-   <!-- header -->
+    <!-- header -->
     <jsp:include page="../../inc/header.jsp"></jsp:include>
 
     <div id="body">
@@ -22,28 +19,18 @@
         
         	<!-- aside -->
             <jsp:include page="../../inc/aside.jsp"></jsp:include>
-   
-   
-   
 
 
             <main id="main">
-                <!--  main content part  -->
-                <section id="board-detail" class="space-top-l">
-                    <h1 class="hidden">본문 작성</h1>
-                    
-                    <div id="main-title-bar">
-    	                <p> >>Photo </p>
-	                </div>
-        
-                    
-                    <form id="text-area" action="regProc.jsp" method="post" enctype="multipart/form-data">
+                <h2 id="main-title-write">   글 작성 </h2>
+
+                <form id="text-area" action="regProc.jsp" method="post" enctype="multipart/form-data">
                     	<fieldset>
 	                    	<legend class="hidden">본문입력필드</legend>
 	                    	
 	                    	<dl>
-		                        <dt class="detail-cell title newrow">제목</dt>
-		                        <dd class="detail-cell text-highlight"><input type="text" name="title" /></dd>
+		                        <dt class="detail-cell-commu title-free newrow">제목</dt>
+		                        <dd class="detail-cell-commu text-highlight"><input type="text" name="title" /></dd>
 		                        
 		                        <dt class="hidden">내용</dt>
 		                        <dd class="content newrow">
@@ -115,7 +102,8 @@
 	                    </p>
           
                 	</form>
-            	</section>
+                </div>
+
             </main>
 
         </div>
