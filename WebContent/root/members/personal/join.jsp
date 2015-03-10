@@ -119,11 +119,11 @@
                                     <td align="center">성별</td>
                                     <td colspan='3'>
                                         <fieldset data-role="controlgroup">
-                                            <input type="radio" name="gender" id="radio-choice-1" value="choice-1" checked="checked" />
-                                            <label for="radio-choice-1">남자</label>
+                                            <input type="radio" name="gender" id="male" value="choice-1" checked="checked" />
+                                            <label for="male">남자</label>
 
-                                            <input type="radio" name="gender" id="radio-choice-2" value="choice-2" />
-                                            <label for="radio-choice-2">여자</label>
+                                            <input type="radio" name="gender" id="female" value="choice-2" />
+                                            <label for="female">여자</label>
                                         </fieldset>
                                     </td>
                                 </tr>
