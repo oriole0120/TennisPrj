@@ -4,7 +4,6 @@
 <%@page import="com.htmtennis.prj.model.PhotoFile"%>
 <%@page import="com.htmtennis.prj.dao.PhotoDao"%>
 <%@page import="com.htmtennis.prj.model.Photo"%>
-
 <%-- <%@page import="com.htmtennis.prj.dao.mybatis.MyBatisMain"%> --%>
 <%@page import="org.apache.ibatis.session.SqlSession"%>
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
@@ -18,8 +17,7 @@
 	String path = ctx.getRealPath("/root/members/Gallery/photo/upload");
 	out.print(path + "<br />");
 
-	MultipartRequest req = new MultipartRequest(request, path, 
-			1024 * 1024 * 10, "UTF-8", new DefaultFileRenamePolicy());
+	MultipartRequest req = new MultipartRequest(request, path, 1024 * 1024 * 10, "UTF-8", new DefaultFileRenamePolicy());
 
 	String title = req.getParameter("title");
 	String filename = req.getFilesystemName("file");
@@ -28,11 +26,14 @@
 	Photo photo = new Photo();
 	photo.setTitle(title);
 	photo.setWriter("admin");
-	photo.setContents(contents);
+	if(contents==null) {
+		response.sendRedirect("write.jsp");	
+	}else {
+		photo.setContents(contents);
+	}
 	
-/* 	if(filename)
-		photo.setFileName(); */
-
+	if(filename != null)
+		photo.setFileName(filename);
 	/* SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
 	PhotoDao photoDao = sqlSession.getMapper(PhotoDao.class); */
 	PhotoDao photoDao = new JdbcPhotoDao();

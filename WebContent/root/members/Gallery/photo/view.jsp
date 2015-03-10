@@ -1,21 +1,21 @@
-﻿<%@page import="com.htmtennis.prj.dao.PhotoDao"%>
-<%@page import="org.apache.ibatis.session.SqlSession"%>
-<%-- <%@page import="com.htmtennis.prj.dao.mybatis.MyBatisMain"%> --%>
-
+﻿<%-- <%@page import="org.apache.ibatis.session.SqlSession"%> --%>
 <%@page import="com.htmtennis.prj.dao.jdbc.JdbcPhotoDao"%>
-
+<%@page import="com.htmtennis.prj.dao.PhotoDao"%>
 <%@page import="com.htmtennis.prj.model.Photo"%>
 
 <%@page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	
 <%	
-/* 	String _code = request.getParameter("c");
-	SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
-	PhotoDao photoDao = sqlSession.getMapper(PhotoDao.class);
+ 	String _code = request.getParameter("c");
+
+//	SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
+//	PhotoDao photoDao = sqlSession.getMapper(PhotoDao.class);
+
+	PhotoDao photoDao = new JdbcPhotoDao();
 	Photo ph = photoDao.getPhoto(_code);
+	pageContext.setAttribute("ph", ph);
 	
-	pageContext.setAttribute("ph", ph); */
 %>
 
 <!DOCTYPE html>
@@ -29,15 +29,12 @@
     <script>
     	function init(){
     		var btnDel=document.getElementById("btn-del");
-    		btnDelPop.onclick=btnDelPopClick;
+    		btnDel.onclick=btnDelClick;
     	}
     	function btnDelClick(){
-    		if(confirm( '삭제 하시겠습니까?' )){
-    			
+    		if(!confirm( '삭제 하시겠습니까?' )){
+    			return false;
     		}
-    		else{
-    			
-    		}	
     	}
     	window.onload=init;
     </script>
