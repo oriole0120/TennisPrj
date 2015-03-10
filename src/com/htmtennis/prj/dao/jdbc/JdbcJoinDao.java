@@ -136,36 +136,38 @@ public class JdbcJoinDao implements JoinDao{
 
 	@Override
 	public int insert(Join join) {
-		//String sqlMid = "SELECT NVL(TO_NUMBER(MAX(Mid)), 0)+1 Mid FROM Members";	/*코드를생성하기위해*/
-        String sql = "INSERT INTO Members(mid, pwd, name, email, phone, studentnum, authority) VALUES(?,?,?,?,?,?,'Associate')";
+		String sqlMid = "SELECT NVL(TO_NUMBER(MAX(Mid)), 0)+1 Mid FROM Members";	/*코드를생성하기위해*/
+        String sql = "INSERT INTO Members(mid, pwd, name, email, phone, studentnum, authority) VALUES(?,?,?,?,?,0,?)";
 
         //String url = "jdbc:oracle:thin:@win.newlecture.com:1521:orcl";
         String url = "jdbc:sqlserver://win.newlecture.com:1433;datebaseName=newlecdb";
         try {
            //Class.forName("oracle.jdbc.driver.OracleDriver");
    	 		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-   	 		Connection con = DriverManager.getConnection(url, "tennis", "tennis89");
+           Connection con = DriverManager.getConnection(url, "tennis", "tennis89");
            
-           /*ResultSet rs=stCode.executeQuery(sqlMid);*/
+           Statement stCode=con.createStatement();
+           ResultSet rs=stCode.executeQuery(sqlMid);
+           rs.next();
+           String mid=rs.getString("mid");
            
-           //System.out.println(join.getMid());
+           rs.close();
+           stCode.close();
            
            PreparedStatement st = con.prepareStatement(sql);
-           st.setString(1, join.getMid());
+           st.setString(1, mid);
            st.setString(2, join.getPwd());
-           //st.setString(2, join.getPwd2());
            st.setString(3, join.getName());
            st.setString(4, join.getEmail());
            st.setString(5, join.getPhone());
            st.setInt(6, join.getStudentNum());
-           //st.setString(7, join.getAuthority());
+           st.setString(7, join.getAuthority());
            
 
            int result = st.executeUpdate();
-		    
-		    //rs.close();
-		    st.close();
-		    con.close();
+
+           st.close();
+           con.close();
 
            return result;
            

@@ -33,6 +33,7 @@
 	Free fr = new Free();
 	
 	fr.setTitle(title);
+
 	fr.setWriter("admin");
 	fr.setContents(content);
 	

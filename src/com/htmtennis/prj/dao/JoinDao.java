@@ -11,7 +11,7 @@ public interface JoinDao {
 	public List<Join> getJoins(int page);*/
 	public int insert(Join join);
 	public int update(Join join);
-	public int delete(String code);
+	public int delete(String mid);
 	/*public int getSize(String query, String field);*/
 	
 }

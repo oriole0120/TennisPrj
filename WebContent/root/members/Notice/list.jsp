@@ -91,14 +91,7 @@
                     </div>
 
 
-				<div id="write">
-					<p>
-						<a href="edit.html">글쓰기</a>
-					</p>
-				</div>
-
-
-
+				
 
 				<div>
                         <h3 class="hidden">영상목록부분</h3>
@@ -135,12 +128,7 @@
 
                     <div>
                         <!--<h3>현재페이지위치</h3>-->
-                        <p id="page-list">1/2 page</p>
-                    </div>
-
-                    <div>
-                        <!--<h3>페이지선택목록</h3>-->
-                        <p><a class="page" href="">이전</a></p>
+                       <p><a class="page" href="list.html">이전</a></p>
                         <ul>
                             <li class="page">1</li>
                             <li class="page">2</li>
@@ -148,14 +136,14 @@
                             <li class="page">4</li>
                             <li class="page">5</li>
                         </ul>
-                        <p>다음</p>
+                        <p><a href="list.html">다음</a></p>
                     </div>
 
                     <div id="main-search-form">
                         <!--<h3>영상게시물 검색폼</h3>-->
                         <form>
-                            <fieldset>
-                                <!--<legend>영상검색필드</legend>-->
+                            <!-- <fieldset>
+                                <legend>영상검색필드</legend>
                                 <select>
                                     <option>작성자</option>
                                     <option>제목</option>
@@ -165,6 +153,20 @@
                                 <input class="search" type="text" name="query" />
                                 <input class="search" type="submit" value="검색" />
 
+                            </fieldset> -->
+                            
+                            <fieldset>
+                                                            
+                                <legend class="hidden">링크 검색 필드</legend>
+							<label for="field" class="hidden">검색분류</label> 
+								<select
+									class="search-field" name="f">
+									<option ${param.f=='writer' ? 'selected' : ""} value="writer">작성자</option>
+									<option ${param.f=='title' ? 'selected' : ""} value="title">제목</option>
+									<option ${param.f=='contents' ? 'selected' : ""} value="contents">본문</option>
+								</select> 
+                                    <input class="search" type="text" name="q" value=${param.q }></input>
+                                	<input class="search" type="submit" value="검색" />
                             </fieldset>
                         </form>
                     </div>
@@ -177,8 +179,9 @@
 
 
 
-     <!-- footer -->
+    <!-- footer -->
 		<jsp:include page="../../inc/footer.jsp"></jsp:include>
 
 </body>
 </html>
+                      
