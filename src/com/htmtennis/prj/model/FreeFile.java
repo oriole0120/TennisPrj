@@ -7,6 +7,7 @@ public class FreeFile{
 	private String freecode;
 	private Date regdate;
 	private String filesrc;
+	
 	public String getFilename() {
 		return filename;
 	}
