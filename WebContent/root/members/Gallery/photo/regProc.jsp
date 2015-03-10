@@ -32,8 +32,8 @@
 		photo.setContents(contents);
 	}
 	
-	if(filename != null)
-		photo.setFileName(filename);
+	//if(filename != null)
+	//	photo.setFileName(filename);
 	/* SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
 	PhotoDao photoDao = sqlSession.getMapper(PhotoDao.class); */
 	PhotoDao photoDao = new JdbcPhotoDao();

@@ -33,11 +33,7 @@
 	Free fr = new Free();
 	
 	fr.setTitle(title);
-<<<<<<< HEAD
 	fr.setWriter("admin");
-=======
-	fr.setWriter("SS");
->>>>>>> refs/remotes/origin/master
 	fr.setContents(content);
 	
 	/* if(filename)
