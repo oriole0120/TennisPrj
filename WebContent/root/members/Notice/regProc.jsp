@@ -36,7 +36,7 @@
 	Notice n = new Notice();
 	
 	n.setTitle(title);
-	n.setWriter("deian");
+	n.setWriter("admin");
 	n.setContents(content);
 	
 	/* if(filename)
