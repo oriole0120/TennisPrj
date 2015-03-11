@@ -3,7 +3,6 @@ package com.htmtennis.prj.model;
 public class Join {
 private String mid;
 private String pwd;
-//private String pwd2;
 private String name;
 private String gender;
 private int studentNum;
@@ -24,12 +23,6 @@ public String getPwd() {
 public void setPwd(String pwd) {
 	this.pwd = pwd;
 }
-/*public String getPwd2() {
-	return pwd2;
-}
-public void setPwd2(String pwd2) {
-	this.pwd2 = pwd2;
-}*/
 public String getName() {
 	return name;
 }

@@ -35,7 +35,7 @@
 		                        <dt class="hidden">내용</dt>
 		                        <dd class="content newrow">
 		                        	<textarea name="content" id="content" rows="10" cols="100" style="width: 690px; height: 400px; display:none;">
-		                        		본문입력됨?
+		                        		☆입력☆
 		                        	</textarea>
 		                        	
 				                        	<script type="text/javascript">
@@ -43,7 +43,7 @@
 							                    nhn.husky.EZCreator.createInIFrame({
 							                        oAppRef: oEditors,
 							                        elPlaceHolder: "content",
-							                        sSkinURI: "../editor/SmartEditor2Skin.html",
+							                        sSkinURI: "../../editor/SmartEditor2Skin.html",
 							                        htParams : {
 							                    		bUseToolbar : true,				// 툴바 사용 여부 (true:사용/ false:사용하지 않음)
 							                    		bUseVerticalResizer : true,		// 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
@@ -64,7 +64,7 @@
 
 							                    	
 
-							                    function pasteHTML() {
+							                   /*  function pasteHTML() {
 							                    	var sHTML = "<span style='color:#FF0000;'>이미지도 같은 방식으로 삽입합니다.<\/span>";
 							                    	oEditors.getById["content"].exec("PASTE_HTML", [sHTML]);
 							                    }
@@ -73,7 +73,7 @@
 							                    	var sHTML = oEditors.getById["content"].getIR();
 							                    	alert(sHTML);
 							                    }
-							                    	
+							                    	 */
 							                    function submitContents(elClickedObj) {
 							                    	oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);	// 에디터의 내용이 textarea에 적용됩니다.
 							                    	
