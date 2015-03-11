@@ -34,7 +34,7 @@
 		                        
 		                        <dt class="hidden">내용</dt>
 		                        <dd class="content newrow">
-		                        	<textarea name="content" id="content" rows="10" cols="100" style="width: 690px; height: 400px; display: none;">
+		                        	<textarea name="ir1" id="ir1" rows="10" cols="100" style="width: 690px; height: 400px; display: none;">
 		                        		본문입력됨?
 		                        	</textarea>
 		                        	
@@ -42,7 +42,7 @@
 							                    var oEditors = [];
 							                    nhn.husky.EZCreator.createInIFrame({
 							                        oAppRef: oEditors,
-							                        elPlaceHolder: "content",
+							                        elPlaceHolder: "ir1",
 							                        sSkinURI: "../../../editor/SmartEditor2Skin.html",
 							                        htParams : {
 							                    		bUseToolbar : true,				// 툴바 사용 여부 (true:사용/ false:사용하지 않음)
@@ -76,7 +76,7 @@
 							                    } */
 							                    	
 							                     function submitContents(elClickedObj) {
-							                    	oEditors.getById["contents"].exec("UPDATE_CONTENTS_FIELD", []); 	// 에디터의 내용이 textarea에 적용됩니다.
+							                    	oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []); 	// 에디터의 내용이 textarea에 적용됩니다.
 							                    	
 							                    	// 에디터의 내용에 대한 값 검증은 이곳에서 document.getElementById("ir1").value를 이용해서 처리하면 됩니다.
 							                    	
@@ -85,17 +85,17 @@
 							                    	} catch(e) {}
 							                    } 
 							                    
-							                    /* $("#btn-reg").click(function(){
+ 							                    /* $("#btn-reg").click(function(){
 
-		                                             oEditors.getById["contents"].exec("UPDATE_CONTENTS_FIELD", []);
+		                                             oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []);
 		                                             $("#text-area").submit();
 		                                             
-		                                       }); */
+		                                       }); */ 
 
 							                    function setDefaultFont() {
 							                    	var sDefaultFont = '맑은고딕';
 							                    	var nFontSize = 20;
-							                    	oEditors.getById["content"].setDefaultFont(sDefaultFont, nFontSize);
+							                    	oEditors.getById["ir1"].setDefaultFont(sDefaultFont, nFontSize);
 							                    }
 							                    
 						                	</script>
