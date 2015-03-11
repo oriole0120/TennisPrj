@@ -4,10 +4,13 @@ public class Join {
 private String mid;
 private String pwd;
 private String name;
+private String gender;
+private int studentNum;
 private String email;
 private String phone;
-private int studentNum;
 private String authority;
+
+
 public String getMid() {
 	return mid;
 }
@@ -49,6 +52,12 @@ public String getAuthority() {
 }
 public void setAuthority(String authority) {
 	this.authority = authority;
+}
+public String getGender() {
+	return gender;
+}
+public void setGender(String gender) {
+	this.gender = gender;
 }
 
 
