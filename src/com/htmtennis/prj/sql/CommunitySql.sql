@@ -1,9 +1,11 @@
 SELECT * FROM FREEBOARDS;
 
+SELECT * FROM MEMBERS;
+
 INSERT INTO FREEFILES
 	VALUES('tennis', '23', GETDATE(), 'aaaaaa');
 	
-INSERT INTO PHOTOBOARDS 
+INSERT INTO FREEBOARDS 
 	VALUES('2', 'deian', GETDATE(), '샘플데이터', '사진도 없닼ㅋㅋㅋ', 0, 0, 'B');
 	
 INSERT INTO PHOTOBOARDS 
@@ -92,3 +94,5 @@ SELECT * FROM FREEBOARDS WHERE CODE = '11';
 >>>>>>> refs/remotes/origin/master
 >>>>>>> refs/remotes/origin/master
 >>>>>>> refs/remotes/choose_remote_name/master
+
+SELECT F.* FROM ( SELECT(ROW_NUMBER() OVER ( ORDER BY REGDATE DESC)) NUM, FREEBOARDS.* FROM FREEBOARDS WHERE TITLE LIKE '%%') F WHERE F.NUM BETWEEN 20 AND 23; 

@@ -34,11 +34,9 @@
 	
 	fr.setTitle(title);
 
-<<<<<<< HEAD
+
 	/* fr.setWriter("SS"); */
 
-=======
->>>>>>> refs/remotes/origin/master
 	fr.setWriter("admin");
 	fr.setContents(content);
 	

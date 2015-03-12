@@ -64,10 +64,17 @@ public class JdbcFreeDao implements FreeDao {
 		int start	=  1+(page-1)*20;	//(page-1)*20+1;
 		int end 	= 20+(page-1)*20;	//page*20;
 		
-		String sql = "SELECT N.* FROM ( "
-				+" SELECT ( ROW_NUMBER() OVER (ORDER BY REGDATE DESC) ) NUM, FREEBOARDS.* "
-				+" FROM FREEBOARDS WHERE "+ field +" LIKE ? ) N "
-				+" WHERE N.NUM BETWEEN ? AND ?";
+		/*String sql = "SELECT F.* FROM ( "
+				+ "SELECT(ROW_NUMBER() OVER ( "
+				+ "ORDER BY REGDATE DESC)) NUM, FREEBOARDS.* FROM FREEBOARDS)"
+				+ "WHERE " + field + " LIKE ?" + ") F "
+				+ "WHERE F.NUM BETWEEN ? AND ?"; */
+		
+		String sql = "SELECT F.* FROM ( "
+				+ "SELECT (ROW_NUMBER() OVER (ORDER BY REGDATE DESC)) NUM, FREEBOARDS.* "
+				+ "FROM FREEBOARDS WHERE '" + field + "' LIKE ?" + ") F "
+						+ "WHERE F.NUM BETWEEN ? AND ?";
+		
 		String url = "jdbc:sqlserver://win.newlecture.com:1433;databaseName=tennisdb";
 		
 		try {
@@ -350,6 +357,9 @@ public class JdbcFreeDao implements FreeDao {
 		String sql = "SELECT TOP 1 * FROM FREEBOARDS "
 				+ " WHERE REGDATE < (SELECT REGDATE FROM FREEBOARDS WHERE CODE = ?) "
 				+ " ORDER BY REGDATE DESC";
+		
+		
+		
 	String url = "jdbc:sqlserver://win.newlecture.com:1433;databaseName=tennisdb";
 	
 	try {

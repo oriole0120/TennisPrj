@@ -1,11 +1,18 @@
-﻿<%@page import="com.htmtennis.prj.dao.jdbc.JdbcInformationDao"%>
-<%@page import="com.htmtennis.prj.model.Information"%>
+﻿
+<%@page import="com.htmtennis.prj.dao.jdbc.JdbcFreeDao"%>
+<%@page import="com.htmtennis.prj.model.Free"%>
+<%@page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
 <%	
 	String _code = request.getParameter("c");
-	Information inf = new JdbcInformationDao().getInformation(_code);
-	pageContext.setAttribute("inf", inf);
+	Free fr = new JdbcFreeDao().getFree(_code);
+	pageContext.setAttribute("fr", fr);
 		
 %>
+
+
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -41,14 +48,14 @@
 
             <main id="main">
                 <div>
-                    <h2 id="main-title">정보게시판</h2>
+                    <h2 id="main-title">자유게시판</h2>
 
                     <nav id="full-path">
                         <!--<h3>현재경로</h3>-->
                         <ol>
                             <!--<li class="path">Home ></li>-->
                             <li class="path">Community ></li>
-                            <li class="path">정보게시판 </li>
+                            <li class="path">자유게시판</li>
                         </ol>
                     </nav>
 
@@ -57,49 +64,53 @@
                         <article class="detail space-top-l">
                             <dl>
                                 <dt class="detail-cell detail-cell-title detail-cell-break">제목</dt>
-                                <dd class="detail-cell text-highlight">${inf.title}</dd>
+                                <dd class="detail-cell text-highlight">${fr.title}</dd>
 
                                 <dt class="detail-cell detail-cell-title detail-cell-break">작성일</dt>
-                                <dd class="detail-cell">${inf.regdate}</dd>
+                                <dd class="detail-cell">${fr.regdate}</dd>
 
                                 <dt class="detail-cell detail-cell-title detail-cell-break">작성자</dt>
-                                <dd class="detail-cell detail-cell-half">${inf.writer}</dd>
+                                <dd class="detail-cell detail-cell-half">${fr.writer}</dd>
 
                                 <dt class="detail-cell detail-cell-title ">조회수</dt>
-                                <dd class="detail-cell detail-cell-half">${inf.hit}</dd>
+                                <dd class="detail-cell detail-cell-half">${fr.hit}</dd>
 
                                 <dt class="detail-cell detail-cell-title ">추천</dt>
-                                <dd class="detail-cell detail-cell-half">${inf.thumb}</dd>
+                                <dd class="detail-cell detail-cell-half">${fr.thumb}</dd>
 
                                 <dt class="detail-cell detail-cell-title ">첨부파일</dt>
                                 <dd class="detail-cell detail-cell-half"></dd>
 
                                 <dt class="hidden">내용</dt>
                                 <dd class="detail-cell-content detail-cell-break">
-                                    ${inf.contents}
+                                   ${fr.contents}
                                 </dd>
                             </dl>
                             <div id="space-top">
                                 <p class="space-top text-center">
-                                    <a class="btn btn-list" href="view.jsp">이전글</a>
+                                    <a class="btn btn-list" href="view.html">이전글</a>
                                 </p>
 
                                 <p class="space-top text-center">
-                                    <a class="btn btn-list" href="view.jsp">다음글</a>                                                  			    
+                                    <a class="btn btn-list" href="view.html">다음글</a>                                                  			    
                                 </p>	
                             </div>
                             
                             <div id="space-top-two">          
                             	<p class="space-top-two text-center">
-                                    <a class="btn btn-list" href="list.jsp">목록</a>
+                                    <a class="btn btn-list" href="list.html">목록</a>
                                 </p>
                                 
                                 <p class="space-top-two text-center">
-                                	<a href="noticeEdit.jsp?c=${inf.code}">수정</a>
+                                	<a href="noticeEdit.jsp?c=${n.code}">수정</a>
                                 </p>
+									
+                                <%-- <p class="space-top-two text-center">    
+                                	<a href="viewDelProc.jsp?c=${fr.code}">삭제</a>
+                                </p> --%>
                                 
                                 <p class="space-top-two text-center">    
-                                	<a id="btn-del-pop" href="viewDelProc.jsp?c=${inf.code}">삭제</a>
+                                	<a id="btn-del-pop" href="viewDelProc.jsp?c=${fr.code}">삭제</a>
                                 </p>
                                                  
                                 </div>
@@ -133,7 +144,7 @@
 
 
 
-   <!-- footer -->
+    <!-- footer -->
 		<jsp:include page="../../../inc/footer.jsp"></jsp:include>
 
 </body>
