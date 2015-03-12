@@ -24,7 +24,7 @@
             <main id="main">
                 <h2 id="main-title-write">   글 작성 </h2>
 
-                <form id="text-area" action="regProc.jsp" method="post" enctype="multipart/form-data">
+                 <form id="text-area" action="regProc.jsp" method="post" enctype="multipart/form-data">
                     	<fieldset>
 	                    	<legend class="hidden">본문입력필드</legend>
 	                    	
@@ -75,22 +75,15 @@
 							                    	alert(sHTML);
 							                    } */
 							                    	
-							                     function submitContents(elClickedObj) {
-							                    	oEditors.getById["contents"].exec("UPDATE_CONTENTS_FIELD", []); 	// 에디터의 내용이 textarea에 적용됩니다.
+							                    function submitContents(elClickedObj) {
+							                    	oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);	// 에디터의 내용이 textarea에 적용됩니다.
 							                    	
 							                    	// 에디터의 내용에 대한 값 검증은 이곳에서 document.getElementById("ir1").value를 이용해서 처리하면 됩니다.
 							                    	
-							                     	try {
+							                    	try {
 							                    		elClickedObj.form.submit();
 							                    	} catch(e) {}
-							                    } 
-							                    
-							                    /* $("#btn-reg").click(function(){
-
-		                                             oEditors.getById["contents"].exec("UPDATE_CONTENTS_FIELD", []);
-		                                             $("#text-area").submit();
-		                                             
-		                                       }); */
+							                    }
 
 							                    function setDefaultFont() {
 							                    	var sDefaultFont = '맑은고딕';
@@ -105,7 +98,7 @@
                     	</fieldset>
                     
 	                    <p id="button-container" class="space-top text-center">
-	                    	<input type = "submit" value="등록" />
+	                    	<input id="btnreg" type = "submit" value="등록" />
 	                    	<a href="list.jsp">취소</a>
 	                    </p>
           

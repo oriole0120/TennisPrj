@@ -8,14 +8,14 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 
-import com.htmtennis.prj.dao.JoinDao;
-import com.htmtennis.prj.model.Join;
+import com.htmtennis.prj.dao.MemberDao;
+import com.htmtennis.prj.model.Member;
 
 
-public class JdbcJoinDao implements JoinDao{
+public class JdbcMemberDao implements MemberDao{
 
 	/*@Override
-	public Join getJoin(String mid) {
+	public Member getMember(String mid) {
 		String url = "jdbc:sqlserver://win.newlecture.com:1433;datebaseName=tennisdb";
 		String sql = "SELECT * FROM LinkCourts WHERE CODE = '"+ mid+"'";
 		
@@ -31,7 +31,7 @@ public class JdbcJoinDao implements JoinDao{
 				rs.next();
 				
 				//모델 마련하기
-				Join j = new Join();
+				Member j = new Member();
 				
 				j.setMid(rs.getString("mid"));
 				j.setPwd(rs.getString("pwd"));
@@ -62,7 +62,7 @@ public class JdbcJoinDao implements JoinDao{
 	
 
 	@Override
-	public List<Join> getJoins(int page, String query, String field) {
+	public List<Member> getMembers(int page, String query, String field) {
 		int start=1+(page-1)*20;
 	    int end= 20+(page-1)*20;
 		
@@ -89,12 +89,12 @@ public class JdbcJoinDao implements JoinDao{
 			    
 			    ResultSet rs = st.executeQuery();     
 				
-			    List<Join> list = new ArrayList<Join>();
+			    List<Member> list = new ArrayList<Member>();
 				
 			    while(rs.next())
 			    {
 					//모델 마련하기
-					Join j = new Join();
+					Member j = new Member();
 					
 					j.setMid(rs.getString("mid"));
 					j.setPwd(rs.getString("pwd"));
@@ -123,31 +123,33 @@ public class JdbcJoinDao implements JoinDao{
 		return null;
 	}
 	@Override
-	public List<Join> getJoins(int page, String query) {
-		return getJoins(page, query, "name");
+	public List<Member> getMembers(int page, String query) {
+		return getMembers(page, query, "name");
 		
 	}
 
 	@Override
-	public List<Join> getJoins(int page) {
-		return getJoins(page, "");
+	public List<Member> getMembers(int page) {
+		return getMembers(page, "");
 		
 	}*/
 
 	@Override
-	public int insert(Join join) {
-		String sqlMid = "SELECT NVL(TO_NUMBER(MAX(Mid)), 0)+1 Mid FROM Members";	/*코드를생성하기위해*/
-        String sql = "INSERT INTO Members(mid, pwd, name, email, phone, studentnum, authority) VALUES(?,?,?,?,?,0,?)";
+	public int insert(Member member) {
 
-        //String url = "jdbc:oracle:thin:@win.newlecture.com:1521:orcl";
-        String url = "jdbc:sqlserver://win.newlecture.com:1433;datebaseName=newlecdb";
+		String sqlMid = "SELECT NVL(TO_NUMBER('MAX(Mid)'), 0)+1 Mid FROM Members";	/*코드를생성하기위해*/
+        String sql = "INSERT INTO Members(mid, pwd, name, gender, studentNum, email, phone, authority) "
+        		+ "		VALUES(?, ?, ?, ?, ?, ?, ?, 'Associate')";
+
+
+        String url = "jdbc:sqlserver://win.newlecture.com:1433;datebaseName=tennisdb";
         try {
-           //Class.forName("oracle.jdbc.driver.OracleDriver");
-   	 		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+           Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
            Connection con = DriverManager.getConnection(url, "tennis", "tennis89");
            
            Statement stCode=con.createStatement();
            ResultSet rs=stCode.executeQuery(sqlMid);
+           
            rs.next();
            String mid=rs.getString("mid");
            
@@ -156,12 +158,15 @@ public class JdbcJoinDao implements JoinDao{
            
            PreparedStatement st = con.prepareStatement(sql);
            st.setString(1, mid);
-           st.setString(2, join.getPwd());
-           st.setString(3, join.getName());
-           st.setString(4, join.getEmail());
-           st.setString(5, join.getPhone());
-           st.setInt(6, join.getStudentNum());
-           st.setString(7, join.getAuthority());
+           st.setString(2, member.getPwd());
+           st.setString(3, member.getName());
+
+           st.setString(4, member.getGender());
+           st.setInt(5, member.getStudentNum());
+           st.setString(6, member.getEmail());
+           st.setString(7, member.getPhone());
+           
+      
            
 
            int result = st.executeUpdate();
@@ -187,19 +192,17 @@ public class JdbcJoinDao implements JoinDao{
 	
 
 	@Override
-	public int update(Join join) {
+	public int update(Member member) {
 		String sql = "UPDATE Members SET phone=?, email=? WHERE pwd=?";
 
-        //String url = "jdbc:oracle:thin:@win.newlecture.com:1521:orcl";
-        String url = "jdbc:sqlserver://win.newlecture.com:1433;datebaseName=newlecdb";
+        String url = "jdbc:sqlserver://win.newlecture.com:1433;datebaseName=tennisdb";
         try {
-          // Class.forName("oracle.jdbc.driver.OracleDriver");
-       	 	Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+           Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
            Connection con = DriverManager.getConnection(url, "tennis", "tennis89");
            PreparedStatement st = con.prepareStatement(sql);
-           st.setString(1, join.getPhone());
-           st.setString(2, join.getEmail());
-           st.setString(3, join.getPwd());
+           st.setString(1, member.getPhone());
+           st.setString(2, member.getEmail());
+           st.setString(3, member.getPwd());
 
            int result = st.executeUpdate();
 
@@ -224,11 +227,9 @@ public class JdbcJoinDao implements JoinDao{
 	public int delete(String mid) {
 		String sql = "DELETE FROM Members WHERE mid=?";
 
-        //String url = "jdbc:oracle:thin:@win.newlecture.com:1521:orcl";
-        String url = "jdbc:sqlserver://win.newlecture.com:1433;datebaseName=newlecdb";
+         String url = "jdbc:sqlserver://win.newlecture.com:1433;datebaseName=newlecdb";
         try {
-           //Class.forName("oracle.jdbc.driver.OracleDriver");
-       	 Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+          Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
            Connection con = DriverManager.getConnection(url, "tennis", "tennis89");
            PreparedStatement st = con.prepareStatement(sql);
            
@@ -255,7 +256,7 @@ public class JdbcJoinDao implements JoinDao{
 
 
 	@Override
-	public Join getJoin(String code) {
+	public Member getMember(String code) {
 		return null;
 		
 	}

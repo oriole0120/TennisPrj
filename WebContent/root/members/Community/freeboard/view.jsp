@@ -88,17 +88,19 @@
                             </dl>
                             <div id="space-top">
                                 <p class="space-top text-center">
-                                    <a class="btn btn-list" href="view.html">이전글</a>
+
+                                    <a class="btn btn-list" href="view.jsp">이전글</a>
                                 </p>
 
                                 <p class="space-top text-center">
-                                    <a class="btn btn-list" href="view.html">다음글</a>                                                  			    
+                                    <a class="btn btn-list" href="view.jsp">다음글</a>                                                  			    
                                 </p>	
                             </div>
                             
                             <div id="space-top-two">          
                             	<p class="space-top-two text-center">
-                                    <a class="btn btn-list" href="list.html">목록</a>
+                                    <a class="btn btn-list" href="list.jsp">목록</a>
+
                                 </p>
                                 
                                 <p class="space-top-two text-center">

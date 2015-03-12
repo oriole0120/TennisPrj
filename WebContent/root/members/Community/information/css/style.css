@@ -53,7 +53,7 @@
 #main-search-form
 {
     padding-left: 250px;
-    padding-top: 10px;
+    padding-top: 30px;
 }
 
 
@@ -179,7 +179,7 @@ a.page:first-child
 
 #page-list
 {
-    padding-left: 660px;
+    padding-left: 630px;
 }
 
 .hidden

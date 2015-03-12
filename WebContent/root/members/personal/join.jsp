@@ -1,7 +1,7 @@
-﻿<%@page import="com.htmtennis.prj.model.Join"%>
+﻿<%@page import="com.htmtennis.prj.model.Member"%>
 <%@page import="java.util.List"%>
-<%@page import="com.htmtennis.prj.dao.jdbc.JdbcJoinDao"%>
-<%@page import="com.htmtennis.prj.dao.JoinDao"%>
+<%@page import="com.htmtennis.prj.dao.jdbc.JdbcMemberDao"%>
+<%@page import="com.htmtennis.prj.dao.MemberDao"%>
 
 <%@page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -9,7 +9,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%
-	JoinDao joinDao = new JdbcJoinDao();
+	MemberDao joinDao = new JdbcMemberDao();
 
 	/* int npage=1;
 	String Mid = request.getParameter("mid"); */
@@ -29,10 +29,10 @@
 		
 	if(_query != null && !_query.equals(""))
 		query =_query; */
-		/* JoinDao joinDao = new JdbcJoinDao();		
-		joinDao.insert(Join); */
-	/* JoinDao joinDao = new JdbcJoinDao();
-	List<Join> list = joinDao.getJoins(npage, query, field);
+		/* MemberDao joinDao = new JdbcMemberDao();		
+		joinDao.insert(Member); */
+	/* MemberDao joinDao = new JdbcMemberDao();
+	List<Member> list = joinDao.getMembers(npage, query, field);
 	
 	pageContext.setAttribute("list", list);
 	pageContext.setAttribute("total", joinDao.getSize(""));  */
@@ -82,6 +82,7 @@
                     <div id="aa">
                         <!--<p>This is a modal window. You can do the following things with it:</p>-->
                         <div id="aa1">
+                        <form action="joinProc.jsp" method="post">
                             <table border="1">
                             
                                 <tr>
@@ -89,7 +90,7 @@
                                     <td colspan=3>
                                    <%--  <c:forEach var="jn" items="${list}">
                                     </c:forEach> --%>
-                                        <input type="text" name="id" id="name" value="">${jn.mid }</input>
+                                        <input type="text" name="mid" id="name" value=""/>
                                     
                                     </td>
                                 </tr>
@@ -97,7 +98,7 @@
                                 <tr>
                                     <td align="center">비밀번호</td>
                                     <td colspan=3>
-                                        <input type="password" name="pw" id="name" value="" />
+                                        <input type="password" name="pwd" id="name" value="" />
                                     </td>
                                 </tr>
 
@@ -114,93 +115,43 @@
                                         <input type="text" name="name" id="name" value="" />
                                     </td>
                                 </tr>
-                                
-                                <tr>
-                                    <td align="center">학번</td>
-                                    <td colspan=3>
-                                        <input type="text" name="name" id="name" value="" />
-                                    </td>
-                                </tr>
-
                                 <tr>
                                     <td align="center">성별</td>
                                     <td colspan='3'>
                                         <fieldset data-role="controlgroup">
-                                            <input type="radio" name="gender" id="radio-choice-1" value="choice-1" checked="checked" />
-                                            <label for="radio-choice-1">남자</label>
+                                            <input type="radio" name="gender" id="male" value="choice-1" checked="checked" />
+                                            <label for="male">남자</label>
 
-                                            <input type="radio" name="gender" id="radio-choice-2" value="choice-2" />
-                                            <label for="radio-choice-2">여자</label>
+                                            <input type="radio" name="gender" id="female" value="choice-2" />
+                                            <label for="female">여자</label>
                                         </fieldset>
                                     </td>
                                 </tr>
-
+                                
                                 <tr>
-                                    <td align="center"> 생년월일</td>
-                                    <td>
-                                        <select name="year">
-                                            <option value="2000" selected>2000</option>
-                                            <option value="2001" selected>2001</option>
-                                            <option value="2002" selected>2002</option>
-                                            <option value="2003" selected>2003</option>
-                                            <option value="2004" selected>2004</option>
-                                        </select>
-                                    </td>
-                                    <td>
-
-                                        <select name="month">
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                            <option value="8">8</option>
-                                            <option value="9">9</option>
-                                            <option value="10">10</option>
-                                            <option value="11">11</option>
-                                            <option value="12">12</option>
-                                        </select>
-                                    </td>
-                                    <td>
-                                        <select name="day">
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                            <option value="8">8</option>
-                                            <option value="9">9</option>
-                                            <option value="10">10</option>
-                                            <option value="11">11</option>
-                                            <option value="12">12</option>
-                                            <option value="13">13</option>
-                                            <option value="14">14</option>
-                                            <option value="15">15</option>
-                                            <option value="16">16</option>
-                                            <option value="17">17</option>
-                                            <option value="18">18</option>
-                                            <option value="19">19</option>
-                                            <option value="20">20</option>
-                                            <option value="21">21</option>
-                                            <option value="22">22</option>
-                                            <option value="23">23</option>
-                                            <option value="24">24</option>
-                                            <option value="25">25</option>
-                                            <option value="26">26</option>
-                                            <option value="27">27</option>
-                                            <option value="28">28</option>
-                                            <option value="29">29</option>
-                                            <option value="30">30</option>
-                                            <option value="31">31</option>
-                                        </select>
+                                    <td align="center">학번</td>
+                                    <td colspan=3>
+                                        <input type="text" name="studentNum" id="name" value="" />
                                     </td>
                                 </tr>
+								<tr>
+                                    <td align="center">이메일</td>
+                                    <td colspan=3>
+                                        <input type="text" name="email" id="name" value="" />
+                                    </td>
+                                </tr>
+								<tr>
+                                    <td align="center">연락처</td>
+                                    <td colspan=3>
+                                        <input type="text" name="phone" id="name" value="" />
+                                    </td>
+                                </tr>
+
                             </table>
-                            <button class="md-close">완료</button>
+                            <input type="submit" />
+                            <!-- <button type="submit" class="md-close">완료</button> -->
+                            <button><a href="../Community/freeboard/list.jsp">취소</a></button>
+                            </form>
                         </div>
                     </div>
                 </div>
