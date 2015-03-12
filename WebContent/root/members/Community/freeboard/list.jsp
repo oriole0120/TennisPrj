@@ -8,7 +8,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%
-	int npage=1;
+	int npage = 1;
 	String field = "TITLE";
 	String query = "";
 	
