@@ -63,10 +63,16 @@ public class JdbcPhotoDao implements PhotoDao {
 		int start	=  1+(page-1)*20;	
 		int end 	= 20+(page-1)*20;
 		
-		String sql = "SELECT N.* FROM ( "
+/*		String sql = "SELECT N.* FROM ( "
 				+" SELECT ( ROW_NUMBER() OVER (ORDER BY REGDATE DESC) ) NUM, PHOTOBOARDS.* "
 				+" FROM PHOTOBOARDS WHERE "+ field +" LIKE ? ) N "
-				+" WHERE N.NUM BETWEEN ? AND ?";
+				+" WHERE N.NUM BETWEEN ? AND ?";*/
+		
+		String sql = "SELECT PH.* FROM ("
+				+ "		SELECT(ROW_NUMBER() OVER ( ORDER BY REGDATE DESC)) NUM, PHOTOBOARDS.* "
+				+ "			FROM PHOTOBOARDS WHERE " + field + " LIKE ?) PH "
+				+ "			WHERE PH.NUM BETWEEN ? AND ?"; 
+		
 		String url = "jdbc:sqlserver://win.newlecture.com:1433;databaseName=tennisdb";
 		
 		try {
