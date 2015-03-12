@@ -24,7 +24,7 @@
             <main id="main">
                 <h2 id="main-title-write">   글 작성 </h2>
 
-                <form id="text-area" action="regProc.jsp" method="post" enctype="multipart/form-data">
+                 <form id="text-area" action="regProc.jsp" method="post" enctype="multipart/form-data">
                     	<fieldset>
 	                    	<legend class="hidden">본문입력필드</legend>
 	                    	
@@ -34,7 +34,7 @@
 		                        
 		                        <dt class="hidden">내용</dt>
 		                        <dd class="content newrow">
-		                        	<textarea name="ir1" id="ir1" rows="10" cols="100" style="width: 690px; height: 400px; display: none;">
+		                        	<textarea name="content" id="content" rows="10" cols="100" style="width: 690px; height: 400px; display: none;">
 		                        		본문입력됨?
 		                        	</textarea>
 		                        	
@@ -42,7 +42,7 @@
 							                    var oEditors = [];
 							                    nhn.husky.EZCreator.createInIFrame({
 							                        oAppRef: oEditors,
-							                        elPlaceHolder: "ir1",
+							                        elPlaceHolder: "content",
 							                        sSkinURI: "../../../editor/SmartEditor2Skin.html",
 							                        htParams : {
 							                    		bUseToolbar : true,				// 툴바 사용 여부 (true:사용/ false:사용하지 않음)
@@ -75,27 +75,20 @@
 							                    	alert(sHTML);
 							                    } */
 							                    	
-							                     function submitContents(elClickedObj) {
-							                    	oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []); 	// 에디터의 내용이 textarea에 적용됩니다.
+							                    function submitContents(elClickedObj) {
+							                    	oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);	// 에디터의 내용이 textarea에 적용됩니다.
 							                    	
 							                    	// 에디터의 내용에 대한 값 검증은 이곳에서 document.getElementById("ir1").value를 이용해서 처리하면 됩니다.
 							                    	
-							                     	try {
+							                    	try {
 							                    		elClickedObj.form.submit();
 							                    	} catch(e) {}
-							                    } 
-							                    
- 							                    /* $("#btn-reg").click(function(){
-
-		                                             oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []);
-		                                             $("#text-area").submit();
-		                                             
-		                                       }); */ 
+							                    }
 
 							                    function setDefaultFont() {
 							                    	var sDefaultFont = '맑은고딕';
 							                    	var nFontSize = 20;
-							                    	oEditors.getById["ir1"].setDefaultFont(sDefaultFont, nFontSize);
+							                    	oEditors.getById["content"].setDefaultFont(sDefaultFont, nFontSize);
 							                    }
 							                    
 						                	</script>
@@ -105,7 +98,7 @@
                     	</fieldset>
                     
 	                    <p id="button-container" class="space-top text-center">
-	                    	<input type = "submit" value="등록" />
+	                    	<input id="btnreg" type = "submit" value="등록" />
 	                    	<a href="list.jsp">취소</a>
 	                    </p>
           
