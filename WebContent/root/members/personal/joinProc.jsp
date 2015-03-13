@@ -1,14 +1,15 @@
-﻿<%@page import="com.htmtennis.prj.model.Join"%>
+﻿<%@page import="com.htmtennis.prj.model.Member"%>
+<%@page import="com.htmtennis.prj.dao.jdbc.JdbcMemberDao"%>
+<%@page import="com.htmtennis.prj.dao.MemberDao"%>
 <%@page import="java.util.List"%>
-<%@page import="com.htmtennis.prj.dao.jdbc.JdbcJoinDao"%>
-<%@page import="com.htmtennis.prj.dao.JoinDao"%>
 
 <%@page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+
 <%
+
 
 String mid = request.getParameter("mid");
 String pwd = request.getParameter("pwd");
@@ -25,25 +26,22 @@ String authority = request.getParameter("authority");
 else islunar = "false"; */
 
 
-Join join = new Join();
+Member member = new Member();
 
-join.setMid(mid);
-join.setPwd(pwd);
-//join.setPwd2(pwd2);
-join.setName(name);
-join.setGender(gender);
-join.setEmail(email);
-join.setPhone(phone);
-//int _studentNum;
-join.setStudentNum(studentNum);
-join.setAuthority(authority);
-
+member.setMid(mid);
+member.setPwd(pwd);
+member.setName(name);
+member.setGender(gender);
+member.setEmail(email);
+member.setPhone(phone);
+member.setStudentNum(studentNum);
+member.setAuthority(authority);
 
 
 //System.out.println(join.getMid());
 
-JoinDao joinDao = new JdbcJoinDao();
-joinDao.insert(join);
+MemberDao memberDao = new JdbcMemberDao();
+memberDao.insert(member);
 
 /* if( join.getPwd()!=""&&join.getPwd()!=null
 && join.getName()!=""&&join.getName()!=null

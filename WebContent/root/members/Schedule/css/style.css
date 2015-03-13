@@ -1,6 +1,6 @@
-ï»¿#main-title
+/* #main-title
 {
-    font-family: ë§‘ì€ê³ ë”•, ê³ ë”•, sans-serif;
+    font-family: ¸¼Àº°íµñ, °íµñ, sans-serif;
     font-size: 21px;
     font-weight: bold;
     color: #000000;
@@ -28,7 +28,7 @@
     color: #000000;
     margin-left:38px;
     margin-top:25px;
-    /*padding: 50px 0px 0px 300px;*/
+    padding: 50px 0px 0px 300px;
 }
 
 #full-path
@@ -70,11 +70,11 @@ table
     margin-left: 50px;
 }
 
-/*.board-list-item   - ë¦¬ìŠ¤íŠ¸í…Œì´ë¸” 
+.board-list-item   - ¸®½ºÆ®Å×ÀÌºí 
 {
     padding: 15px 5px 15px 5px; 
     border: 1px solid #000000;
-}*/
+}
 
 table
 {
@@ -101,10 +101,10 @@ th.free-board-cell
     background:#f5f5f5;
 }
 
-/*th.free-board-cell:first-child
+th.free-board-cell:first-child
 {
     background:#f5f5f5;
-}*/
+}
 
 .free-board-row
 {
@@ -147,7 +147,7 @@ th.title
     width:60px;
 }
 
-.recommend   /*ì¶”ì²œ*/
+.recommend   ÃßÃµ
 {
     width:60px;
 }
@@ -202,7 +202,7 @@ a.page:first-child
 {
     height:20px;
     width:542px;
-    /*margin-left:200px;*/
+    margin-left:200px;
 }
 
 .text-center
@@ -214,9 +214,9 @@ a.page:first-child
 {   
     height:400px;
     width:600px;
-    /*margin-left:100px;*/
+    margin-left:100px;
     margin-top:3px;
-    /*background:red;*/
+    background:red;
 }
 
 .regis-btn
@@ -225,7 +225,7 @@ a.page:first-child
     margin-top:20px;
 }
 
-/*=======================ë””í…Œì¼ í™”ë©´ë³´ê¸°=============*/
+=======================µğÅ×ÀÏ È­¸éº¸±â=============
 
 .detail
 {
@@ -278,4 +278,4 @@ a.page:first-child
 {
     float:left;
     padding-left:5px;
-}
+}  */

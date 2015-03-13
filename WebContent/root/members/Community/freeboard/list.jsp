@@ -4,11 +4,11 @@
 <%@page import="com.htmtennis.prj.dao.jdbc.JdbcFreeDao"%>
 <%@page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@taglib prefix="ui" tagdir="/WEB-INF/tags" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%
-	int npage=1;
+	int npage = 1;
 	String field = "TITLE";
 	String query = "";
 	
@@ -135,23 +135,23 @@
                         </table>
                     </div>
 
-                    <div>
-                        <!--<h3>현재페이지위치</h3>-->
-                        <p id="page-list">1/5 page</p>
-                    </div>
+                    		<div> 
+                         <!--<h3>현재페이지위치</h3>--> 
+                         <p id="page-list">1/5 page</p> 
+                     </div> 
+ 
+ 
+                     <div> 
+                         <!--<h3>페이지선택목록</h3>--> 
+                         <p><a class="page" href="list.jsp">이전</a></p> 
+                          
+                         <ul class="page"> 
+                          
+                          
+                         <ui:pager total="${total}"/> 
+                         <p><a href="list.jsp">다음</a></p> 
+                     </div> 
 
-                    <div>
-                        <!--<h3>페이지선택목록</h3>-->
-                        <p><a class="page" href="list.html">이전</a></p>
-                        <ul>
-                            <li class="page">1</li>
-                            <li class="page">2</li>
-                            <li class="page">3</li>
-                            <li class="page">4</li>
-                            <li class="page">5</li>
-                        </ul>
-                        <p><a href="list.html">다음</a></p>
-                    </div>
 
                     <div id="main-search-form">
                         <!--<h3>영상게시물 검색폼</h3>-->

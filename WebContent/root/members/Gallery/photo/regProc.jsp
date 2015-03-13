@@ -13,7 +13,11 @@
 	pageEncoding="UTF-8"%>
 	
 <%
-	ServletContext ctx = request.getServletContext();
+
+	/* out.println("ir1 : "+request.getParameter("ir1"));
+	out.println("\ncontent!!!!!"); */
+
+ 	ServletContext ctx = request.getServletContext();
 	String path = ctx.getRealPath("/root/members/Gallery/photo/upload");
 	out.print(path + "<br />");
 
@@ -21,22 +25,24 @@
 
 	String title = req.getParameter("title");
 	String filename = req.getFilesystemName("file");
-	String contents = req.getParameter("contents");
-
+	String content = req.getParameter("ir1");
+	
+	
+	out.print(content);	
+	
 	Photo photo = new Photo();
 	photo.setTitle(title);
 	photo.setWriter("admin");
-	if(contents==null) {
-		response.sendRedirect("write.jsp");	
-	}else {
-		photo.setContents(contents);
-	}
+	photo.setContents(content);
+
+	
 	
 	//if(filename != null)
 	//	photo.setFileName(filename);
 	/* SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
 	PhotoDao photoDao = sqlSession.getMapper(PhotoDao.class); */
-	PhotoDao photoDao = new JdbcPhotoDao();
+	
+	 PhotoDao photoDao = new JdbcPhotoDao();
 	photoDao.insert(photo);
 
 	if (req.getFile("file") != null) {
@@ -51,6 +57,6 @@
 		fileDao.insert(photoFile);
 	}
 	//목록페이지로 이동
-	response.sendRedirect("list.jsp");
+	response.sendRedirect("list.jsp"); 
 %>	
 	

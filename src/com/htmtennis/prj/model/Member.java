@@ -1,6 +1,6 @@
 package com.htmtennis.prj.model;
 
-public class Join {
+public class Member {
 private String mid;
 private String pwd;
 private String name;
