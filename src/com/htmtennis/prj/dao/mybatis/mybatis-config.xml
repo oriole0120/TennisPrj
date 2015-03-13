@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 <configuration>
 	<!-- Type alias -->
 	<typeAliases>
-		<typeAlias alias="Photo" type="com.newlecture.jspprj.model.Photo" />
+		<typeAlias alias="Photo" type="com.htmtennis.prj.model.Photo" />
 	</typeAliases>
 
 	<environments default="development">

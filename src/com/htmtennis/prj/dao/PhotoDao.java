@@ -32,8 +32,8 @@ public interface PhotoDao {
 			+ "		) N "
 			+ "		WHERE N.NUM BETWEEN 1+(#{page}-1)*20 AND 20+(#{page}-1)*20")
 	public List<Photo> getPhotos(@Param("page")int page, @Param("query")String query, @Param("field")String field);
-	public List<Photo> getPhotos(int page, String query);
-	public List<Photo> getPhotos(int page);
+	/*public List<Photo> getPhotos(int page, String query);
+	public List<Photo> getPhotos(int page);*/
 
 	
 	@SelectKey( before = true, 
@@ -53,7 +53,7 @@ public interface PhotoDao {
 	
 	@Select("SELECT COUNT(*) CNT FROM PHOTOBOARDS WHERE #{field} LIKE '%${query}%' ")
 	public int getSize(@Param("query") String query, @Param("field") String field);
-	public int getSize(String query);
+	/*public int getSize(String query);*/
 	
 	@Select("SELECT ISNULL(MAX(CAST(CODE AS INT)), 0) Code  FROM PHOTOBOARDS")
 	public String lastCode();

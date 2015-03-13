@@ -1,7 +1,6 @@
-﻿<%@page import="org.apache.ibatis.session.SqlSession"%>
-<%-- <%@page import="com.htmtennis.prj.dao.mybatis.MyBPhotoDao"%>
-<%@page import="com.htmtennis.prj.dao.mybatis.MyBatisMain"%> --%>
-<%@page import="com.htmtennis.prj.dao.jdbc.JdbcPhotoDao"%>
+﻿
+<%@page import="org.apache.ibatis.session.SqlSession"%>
+<%@page import="com.htmtennis.prj.dao.mybatis.MyBatisMain"%>
 <%@page import="com.htmtennis.prj.dao.PhotoDao"%>
 <%@page import="com.htmtennis.prj.model.Photo"%>
 <%@page import="java.util.List"%>
@@ -30,10 +29,10 @@
 	if(_field!= null && !_field.equals(""))
 		nfield = _field;
 	
- 	PhotoDao photoDao = new JdbcPhotoDao();
+ 	/* PhotoDao photoDao = new JdbcPhotoDao(); */
  	
-	/* SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
-	PhotoDao photoDao = sqlSession.getMapper(PhotoDao.class);  */
+	SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
+	PhotoDao photoDao = sqlSession.getMapper(PhotoDao.class);
  	
 	List<Photo> list = photoDao.getPhotos(npage, nquery, nfield);
 	
