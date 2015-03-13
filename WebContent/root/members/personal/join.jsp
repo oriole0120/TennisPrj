@@ -1,7 +1,7 @@
-﻿<%@page import="com.htmtennis.prj.model.Join"%>
+﻿<%@page import="com.htmtennis.prj.model.Member"%>
 <%@page import="java.util.List"%>
-<%@page import="com.htmtennis.prj.dao.jdbc.JdbcJoinDao"%>
-<%@page import="com.htmtennis.prj.dao.JoinDao"%>
+<%@page import="com.htmtennis.prj.dao.jdbc.JdbcMemberDao"%>
+<%@page import="com.htmtennis.prj.dao.MemberDao"%>
 
 <%@page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -9,7 +9,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%
-	JoinDao joinDao = new JdbcJoinDao();
+	MemberDao joinDao = new JdbcMemberDao();
 
 	/* int npage=1;
 	String Mid = request.getParameter("mid"); */
@@ -29,10 +29,10 @@
 		
 	if(_query != null && !_query.equals(""))
 		query =_query; */
-		/* JoinDao joinDao = new JdbcJoinDao();		
-		joinDao.insert(Join); */
-	/* JoinDao joinDao = new JdbcJoinDao();
-	List<Join> list = joinDao.getJoins(npage, query, field);
+		/* MemberDao joinDao = new JdbcMemberDao();		
+		joinDao.insert(Member); */
+	/* MemberDao joinDao = new JdbcMemberDao();
+	List<Member> list = joinDao.getMembers(npage, query, field);
 	
 	pageContext.setAttribute("list", list);
 	pageContext.setAttribute("total", joinDao.getSize(""));  */

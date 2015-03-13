@@ -51,9 +51,7 @@
 		                        
 		                        <dt class="hidden">내용</dt>
 		                        <dd class="content newrow">
-		                        	<textarea name="ir1" id="ir1" rows="10" cols="100" style="width: 690px; height: 400px; display: none;">
-		                        		
-		                        	</textarea>
+		                        	<textarea name="ir1" id="ir1" rows="10" cols="100" style="width: 690px; height: 400px; display: none;"></textarea>
 		                        	
 				                        	<script type="text/javascript">
 							                    var oEditors = [];
@@ -67,6 +65,7 @@
 							                    		bUseModeChanger : false,		
 							                    		fOnBeforeUnload : function(){
 							                    			//alert("작성 완료!");
+							                    			alert(getById["ir1"].value);
 							                    		}
 							                    	},
 							                    	fOnAppLoad : function(){
@@ -77,12 +76,7 @@
 							                        fCreator: "createSEditor2"
 							                    });
 							                    
-							                    // 추가 글꼴 목록
-							                    //var aAdditionalFontSet = [["MS UI Gothic", "MS UI Gothic"], ["Comic Sans MS", "Comic Sans MS"],["TEST","TEST"]];
-
-							                    
 							                     function submitContents(elClickedObj) {
-							                    	
 							                    	 oEditors.getByID("ir1").exec("UPDATE_CONTENTS_FIELD", []);	
 							                       		
 							                    	try {
@@ -98,7 +92,8 @@
 							                    
 							                  <!-- onclick="write()" -->
 							                  $("#btn-reg").click(function(){
-							                		var contentArea = oEditors.getById["ir1"];
+							                		var contentArea = oEditors.getByID("ir1");
+							                		
 							                		if(!contentArea)
 								                		alert("내용을 작성해주세요");
 							                		else {
@@ -106,6 +101,8 @@
 							                			$("#text-area").submit();
 							                		}
 							                        
+							                		
+							                		
 							                  });
 
 							             
@@ -116,7 +113,8 @@
                     	</fieldset>
                     
 	                    <p id="button-container" class="space-top text-center">
-	                    	<input id="btn-reg" type = "submit" value="등록"  />
+	                    
+	                    	<input id="btn-reg" type = "submit" value="등록"   />
 	                    	<a href="list.jsp">취소</a>
 	                    </p>
           

@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>j calendar</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="../script/fullcalendar/fullcalendar.css" rel="stylesheet" />
+<link href="../script/fullcalendar/fullcalendar.print.css" rel="stylesheet" media="print" />
+<script src="../script/fullcalendar/lib/moment.min.js"></script>
+<script src="../script/fullcalendar/lib/jquery.min.js"></script>
+<script src="../script/fullcalendar/fullcalendar.min.js"></script>
+<script src="../script/fullcalendar/lang-all.js"></script>
+<script src="../script/jalert/jquery.alerts.js"></script>
+<script>
+
+$(document).ready(function() {
+	$("#calendar").fullCalendar({
+		header: {
+			left: "prev,next today",
+			center: "title",
+			right: "month,agendaWeek,agendaDay"
+		},
+
+		lang: "ko",
+		events: [
+		         {
+		        	title: 'My Event',
+		            start: '2014-11-14'
+		         }
+		         ],
+		editable: true,		
+		eventClick: function(calEvent, jsEvent, view) {
+			alert("test");
+		},
+		selectable: true,
+		selectHelper: true,
+		select: function(start, end) {
+			jDetail("", "", "새 이벤트 만들기", function(r) {
+				var title = r;
+				var eventData;
+				if (title) {
+					eventData = {
+						title: title,
+						start: start,
+						end: end
+					};
+					$('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
+				}
+				$('#calendar').fullCalendar('unselect');
+				
+			});
+		}
+	});
+});
+
+</script>
+    
+</head>
+<body>
+<div id='calendar'></div>
+</body>
+</html>
