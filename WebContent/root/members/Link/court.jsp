@@ -48,7 +48,7 @@
 <body>
 
 <!-- header -->
-    <jsp:include page="../../inc/header.jsp"></jsp:include>
+    <jsp:include page="../../inc/header1.jsp"></jsp:include>
 
     <div id="body">
         <div class="content-wrapper clearfix">

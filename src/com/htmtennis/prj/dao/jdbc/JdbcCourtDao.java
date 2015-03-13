@@ -39,7 +39,8 @@ public class JdbcCourtDao implements CourtDao{
 				c.setAddress(rs.getString("address"));
 				c.setPhoneNumber(rs.getString("phoneNumber"));
 			    c.setSite(rs.getString("site"));
-			  	
+			    c.setPositionX(rs.getInt("positionX"));
+			    c.setPositionY(rs.getInt("positionY"));
 				
 			  	rs.close();
 				st.close();
@@ -97,6 +98,8 @@ public class JdbcCourtDao implements CourtDao{
 					c.setAddress(rs.getString("address"));
 					c.setPhoneNumber(rs.getString("phoneNumber"));
 				    c.setSite(rs.getString("site"));
+				    c.setPositionX(rs.getInt("positionX"));
+				    c.setPositionY(rs.getInt("positionY"));
 					
 				  	list.add(c);
 			    }
@@ -132,8 +135,9 @@ public class JdbcCourtDao implements CourtDao{
 
 	@Override
 	public int insert(Court court) {
-		String sqlCode = "SELECT NVL(TO_NUMBER(MAX(CODE)), 0)+1 CODE FROM LinkCourts";	/*코드를생성하기위해*/
-        String sql = "INSERT INTO LinkCourts(CODE, name, address, phoneNumber, site) VALUES(?,?,?,?,?)";
+		String sqlCode = "SELECT isnull(MAX(CAST(CODE as int)),0)+1 CODE FROM LinkCourts";
+		
+        String sql = "INSERT INTO LinkCourts(code, name, address, phoneNumber, site, positionX, positionY) VALUES(?,?,?,?,?,?,?)";
 
         //String url = "jdbc:oracle:thin:@win.newlecture.com:1521:orcl";
         String url = "jdbc:sqlserver://win.newlecture.com:1433;datebaseName=newlecdb";
@@ -145,7 +149,7 @@ public class JdbcCourtDao implements CourtDao{
            Statement stCode=con.createStatement();
            ResultSet rs=stCode.executeQuery(sqlCode);
            rs.next();
-           String code=rs.getString("CODE");
+           String code=rs.getString("code");
            
            rs.close();
            stCode.close();
@@ -155,6 +159,10 @@ public class JdbcCourtDao implements CourtDao{
            st.setString(2, court.getName());
            st.setString(3, court.getAddress());
            st.setString(4, court.getPhoneNumber());
+           st.setString(5, court.getSite());
+           st.setInt(6, court.getPositionX());
+           st.setInt(7, court.getPositionY());
+           
 
            int result = st.executeUpdate();
 

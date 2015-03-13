@@ -3,7 +3,8 @@
  
  <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
  <c:set var="ctxName" value="${pageContext.request.servletContext.contextPath}" />
-
+ 
+	
 
     <header id="header">
         <!--  header part  -->
@@ -20,8 +21,9 @@
                     <h3 class="hidden">회원메뉴</h3>
                     <ul class="clearfix">
                         <li class="member-menu-item"><a class="member-menu-text" href="">홈</a></li>
-                        <li class="member-menu-item"><a class="member-menu-text" href="">로그인</a></li>
+                        <li class="member-menu-item" ><a class="member-menu-text" href="">로그인</a></li>
                         <li class="member-menu-item"><a class="member-menu-text" href="">가입</a></li>
+
                     </ul>
                 </nav>
 
@@ -42,4 +44,5 @@
             </div>
         </div>
     </header>
+   
     
