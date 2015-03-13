@@ -1,55 +1,36 @@
-﻿<%@page import="com.htmtennis.prj.model.Join"%>
-<%@page import="java.util.List"%>
-<%@page import="com.htmtennis.prj.dao.jdbc.JdbcJoinDao"%>
-<%@page import="com.htmtennis.prj.dao.JoinDao"%>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+ 
+ <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
+ <c:set var="ctxName" value="${pageContext.request.servletContext.contextPath}" />
+ 
+<link href="/component.css" rel="stylesheet" type="text/css" />
+<link href="/default.css" rel="stylesheet" type="text/css" />	
+<script type="text/javascript" src="../../js/modernizr.js"></script>
+<script src="/modernizr.custom.js"></script>
 
-<%@page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    <header id="header">
+        <!--  header part  -->
+        <div class="content-wrapper">
+            <h1 class="hidden">Header</h1>
+            <div class="logo">
+                <a href=""><img src="${ctxName}/root/images/logo_s.png" alt="동아리로고"></a>
+                <p>Hansung Tennis Membership</p>
+            </div>
 
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+            <section class="header-item-container">
+                <h2 class="hidden">머릿말</h2>
+                <nav id="member-menu">
+                    <h3 class="hidden">회원메뉴</h3>
+                    <ul class="clearfix">
+                        <li class="member-menu-item md-trigger" data-modal="modal-12"><a class="member-menu-text" href="">홈</a></li>
+                        <li class="member-menu-item" ><a class="member-menu-text" href="">로그인</a></li>
+                        <li class="member-menu-item"><a class="member-menu-text" href="">가입</a></li>
 
-<%
-	JoinDao joinDao = new JdbcJoinDao();
-%>
-
-
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title></title>
-    <link href="css/bind.css" rel="stylesheet" type="text/css" />
-    <link href="css/component.css" rel="stylesheet" type="text/css" />
-    <link href="css/default.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="../../js/modernizr.js"></script>
-    
-    <script src="../../js/modernizr.custom.js"></script>
-
-
-</head>
-
-<body>
-    <!-- header -->
-    <jsp:include page="../../inc/header.jsp"></jsp:include>
-
-    <div id="body">
-        <div class="content-wrapper clearfix">
-        
-           <!-- aside -->
-            <jsp:include page="../../inc/aside.jsp"></jsp:include>
-
-            <div class="container">
-                <div class="main clearfix">
-                    <div class="column">
-
-                        <button class="md-trigger" data-modal="modal-12">회원가입</button>
-
-                    </div>
-
-                </div><!-- /container -->
-             </div>  
-            
-            <div class="md-modal md-effect-12 " id="modal-12">
+                    </ul>
+                </nav>
+                
+                <div class="md-modal md-effect-12 " id="modal-12">
                 <div class="md-content">
                     <h3>회원가입</h3>
                     <div id="aa">
@@ -134,18 +115,33 @@
             <div class="md-overlay"></div>
             </div>
         </div>
-    
-            <!-- footer -->
-			<jsp:include page="../../inc/footer.jsp"></jsp:include>
-
-            <!--자바스크립트 팝업-->
-            <script src="../../js/classie.js"></script>
-            <script src="../../js/modalEffects.js"></script>
-            <script>
+        
+        <!--자바스크립트 팝업-->
+            <script src="/classie.js"></script>
+            <script src="/modalEffects.js"></script>
+            <!-- <script>
                 // this is important for IEs
                 var polyfilter_scriptpath = '/js/';
-            </script>
+            </script> -->
            <!--  <script src="../../js/cssParser.js"></script>
             <script src="../../js/css-filters-polyfill.js"></script> -->
-</body>
-</html>
+
+                <nav id="search-form">
+                    <h3 class="hidden">게시글검색폼</h3>
+                    <form>
+                        <fieldset>
+                            <input id="search-input" type="text" />
+                            <input id="search-button" type="submit" value="검색" />
+                        </fieldset>
+                    </form>
+                </nav>
+            </section>
+
+            <div class="header-slide-img">
+                <!--  image slide part  -->
+                <img id="slide-img" src="${ctxName}/root/images/slide-img01.png" />
+            </div>
+        </div>
+    </header>
+   
+    

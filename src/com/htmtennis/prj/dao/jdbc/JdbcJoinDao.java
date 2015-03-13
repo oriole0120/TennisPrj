@@ -161,7 +161,6 @@ public class JdbcJoinDao implements JoinDao{
            st.setString(1, mid);
            st.setString(2, join.getPwd());
            st.setString(3, join.getName());
-
            st.setString(4, join.getGender());
            st.setInt(5, join.getStudentNum());
            st.setString(6, join.getEmail());
