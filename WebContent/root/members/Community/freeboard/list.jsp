@@ -145,7 +145,9 @@
                          <!--<h3>페이지선택목록</h3>--> 
                          <p><a class="page" href="list.jsp">이전</a></p> 
                           
-                         <ul class="page"> 
+                         <ul class="page" >
+                         
+                          
                           
                           
                          <ui:pager total="${total}"/> 
