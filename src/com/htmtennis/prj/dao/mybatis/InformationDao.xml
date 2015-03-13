@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.htmtennis.prj.dao.Information">
+	
+	
+	
+	<!-- <insert id="insert" parameterType="com.newlecture.jspprj.model.Notice">
+		<selectKey keyColumn="code" resultType="String" order="BEFORE">
+			SELECT ISNULL(MAX(CAST(CODE AS INT)),0)+1 Code FROM Notices	
+		</selectKey>		
+		
+		INSERT INTO NOTICES(CODE, TITLE, WRITER, CONTENT, REGDATE, HIT) 
+		VALUES(#{code},#{title},#{writer},#{content},GETDATE(),0)		
+	</insert>
+	<update id="update" parameterType="com.newlecture.jspprj.model.Notice">
+		UPDATE NOTICES SET TITLE=#{title}, CONTENT=#{content} WHERE CODE=#{code}
+	</update>
+	<delete id="delete" parameterType="String">
+		DELETE NOTICES WHERE CODE=#{code}
+	</delete>
+	<select id="getSize" resultType="int">		
+		SELECT COUNT(*) CNT FROM NOTICES WHERE ${param2} LIKE #{param1}
+	</select>
+	<select id="getSize">
+	</select>
+	<select id="lastCode" resultType="com.newlecture.jspprj.model.Notice">
+		SELECT ISNULL(MAX(CAST(CODE AS INT)),0) Code FROM Notices
+	</select> -->
+	
+	
+	
+	
+</mapper>

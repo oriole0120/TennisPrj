@@ -7,6 +7,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<!-- Type alias -->
 	<typeAliases>
 		<typeAlias alias="Photo" type="com.htmtennis.prj.model.Photo" />
+		<typeAlias alias="Free" type="com.htmtennis.prj.model.Free" />
+		<typeAlias alias="Information" type="com.htmtennis.prj.model.Information" />
 	</typeAliases>
 
 	<environments default="development">
@@ -25,5 +27,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<mappers>
 		<!-- <mapper resource="com/newlecture/jspprj/dao/mybatis/NoticeDao.xml" /> -->
 		<mapper class="com.htmtennis.prj.dao.PhotoDao"/>
+		<mapper class="com.htmtennis.prj.dao.FreeDao"/>
+		<mapper class="com.htmtennis.prj.dao.InformationDao"/>
 	</mappers>
 </configuration>  

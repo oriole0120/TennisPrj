@@ -119,7 +119,7 @@ public class JdbcFreeDao implements FreeDao {
 		return null;
 	}
 
-	@Override
+	/*@Override
 	public List<Free> getFrees(int page, String query) {
 		
 		return getFrees(page, query, "Title");
@@ -129,7 +129,7 @@ public class JdbcFreeDao implements FreeDao {
 	public List<Free> getFrees(int page) {
 		
 		return getFrees(page, "");
-	}
+	}*/
 
 	@Override
 	public int insert(Free free) {
@@ -274,12 +274,12 @@ public class JdbcFreeDao implements FreeDao {
 		return 0;
 	}
 
-	@Override
+/*	@Override
 	public int getSize(String query) {
 		
 		return getSize(query, "TITLE");
 	}
-
+*/
 	@Override
 	public String lastCode() {
 		String sql = "SELECT ISNULL(MAX(CAST(CODE AS INT)), 0) Code  FROM FREEBOARDS";
