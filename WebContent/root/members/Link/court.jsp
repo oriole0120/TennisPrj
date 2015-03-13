@@ -1,9 +1,10 @@
 ﻿
+
 <%@page import="com.htmtennis.prj.model.Court"%>
 <%@page import="java.util.List"%>
-<%@page import="com.htmtennis.prj.dao.jdbc.JdbcCourtDao"%>
 <%@page import="com.htmtennis.prj.dao.CourtDao"%>
-
+<%@page import="com.htmtennis.prj.dao.mybatis.MyBatisMain"%>
+<%@page import="org.apache.ibatis.session.SqlSession"%>
 <%@page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -26,13 +27,23 @@
 		
 	if(_query != null && !_query.equals(""))
 		query =_query;
-					
-			
-	CourtDao courtDao = new JdbcCourtDao();
+	
+	SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
+	CourtDao courtDao = sqlSession.getMapper(CourtDao.class);
+ 	
 	List<Court> list = courtDao.getCourts(npage, query, field);
 	
 	pageContext.setAttribute("list", list);
-	pageContext.setAttribute("total", courtDao.getSize("")); 
+	pageContext.setAttribute("total", courtDao.getSize("", "TITLE"));
+
+
+					
+			
+/* 	CourtDao courtDao = new JdbcCourtDao();
+	List<Court> list = courtDao.getCourts(npage, query, field);
+	
+	pageContext.setAttribute("list", list);
+	pageContext.setAttribute("total", courtDao.getSize(""));  */
 %>
 
 

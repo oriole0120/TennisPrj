@@ -121,7 +121,7 @@ public class JdbcCourtDao implements CourtDao{
 		
 	}
 
-	@Override
+	/*@Override
 	public List<Court> getCourts(int page, String query) {
 		return getCourts(page, query, "name");
 		
@@ -132,12 +132,11 @@ public class JdbcCourtDao implements CourtDao{
 		return getCourts(page, "");
 		
 	}
-
+*/
 	@Override
 	public int insert(Court court) {
 		String sqlCode = "SELECT isnull(MAX(CAST(CODE as int)),0)+1 CODE FROM LinkCourts";
-		
-        String sql = "INSERT INTO LinkCourts(code, name, address, phoneNumber, site, positionX, positionY) VALUES(?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO LinkCourts(code, name, address, phoneNumber, site, positionX, positionY) VALUES(?,?,?,?,?,?,?)";
 
         //String url = "jdbc:oracle:thin:@win.newlecture.com:1521:orcl";
         String url = "jdbc:sqlserver://win.newlecture.com:1433;datebaseName=newlecdb";
@@ -285,10 +284,10 @@ public class JdbcCourtDao implements CourtDao{
 		return 0;
 	}
 
-	@Override
+	/*@Override
 	public int getSize(String query) {
 		return getSize(query, "name");
 		
-	}
+	}*/
 
 }
