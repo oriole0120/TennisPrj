@@ -13,11 +13,12 @@
                         <c:if test="${empty param.page}"> --%>
                         
                         
-                        <c:if test="${empty param.page}" />
-						<c:set var="page" value="1"></c:set>
-						   <c:if test="${not empty param.page}">
-						      <c:set var="page" value="${param.page}"></c:set>
-						   </c:if>
+                        <c:if test="${empty param.p}">
+                        	<c:set var="page" value="1"></c:set>
+                        </c:if>
+						<c:if test="${not empty param.p}">
+						     <c:set var="page" value="${param.p}"></c:set>
+						</c:if>
 						
 							<c:set var="startNum" value="${page-(page-1)%5}" ></c:set>
 						
@@ -27,10 +28,7 @@
 							<c:if test="${page == i}">
 						         <li class="page"><a class="text-highlight" 
 						            href="list.jsp?page=${i}">${i}</a></li>      
-						      	
-						      		
-						      
-						            
+
 						      	</c:if>
 			
 						      	<c:if test="${page != i}" >

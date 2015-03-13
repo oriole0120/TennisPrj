@@ -1,4 +1,6 @@
-﻿<%@page import="com.htmtennis.prj.model.Information"%>
+﻿<%@page import="com.htmtennis.prj.dao.mybatis.MyBatisMain"%>
+<%@page import="org.apache.ibatis.session.SqlSession"%>
+<%@page import="com.htmtennis.prj.model.Information"%>
 <%@page import="java.util.List"%>
 <%@page import="com.htmtennis.prj.dao.jdbc.JdbcInformationDao"%>
 <%@page import="com.htmtennis.prj.dao.InformationDao"%>
@@ -25,13 +27,16 @@
 		
 	if(_query != null && !_query.equals(""))
 		query =_query;
+	
+	SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
+	InformationDao infoDao = sqlSession.getMapper(InformationDao.class);
 					
 			
-	InformationDao infoDao = new JdbcInformationDao();
+	/* InformationDao infoDao = new JdbcInformationDao(); */
 	List<Information> list = infoDao.getInformations(npage, query, field);
 	
 	pageContext.setAttribute("list", list);
-	pageContext.setAttribute("total", infoDao.getSize(""));
+	pageContext.setAttribute("total", infoDao.getSize("", "TITLE"));
 %>
 
 
