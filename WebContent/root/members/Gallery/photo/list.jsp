@@ -1,5 +1,4 @@
-﻿
-<%@page import="org.apache.ibatis.session.SqlSession"%>
+﻿<%@page import="org.apache.ibatis.session.SqlSession"%>
 <%@page import="com.htmtennis.prj.dao.mybatis.MyBatisMain"%>
 <%@page import="com.htmtennis.prj.dao.PhotoDao"%>
 <%@page import="com.htmtennis.prj.model.Photo"%>
@@ -29,8 +28,6 @@
 	if(_field!= null && !_field.equals(""))
 		nfield = _field;
 	
- 	/* PhotoDao photoDao = new JdbcPhotoDao(); */
- 	
 	SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
 	PhotoDao photoDao = sqlSession.getMapper(PhotoDao.class);
  	

@@ -41,7 +41,7 @@
 	                </div>
         
                     
-                    <form id="text-area" action="" method="post" enctype="multipart/form-data">
+                    <form id="text-area" action="regProc.jsp" method="post" enctype="multipart/form-data">
                     	<fieldset>
 	                    	<legend class="hidden">본문입력필드</legend>
 	                    	
@@ -51,62 +51,61 @@
 		                        
 		                        <dt class="hidden">내용</dt>
 		                        <dd class="content newrow">
-		                        	<textarea name="content" id="content" rows="10" cols="100" style="width: 690px; height: 400px; display: none;">
-		                        		본문
-		                        	</textarea>
+		                        	<textarea name="ir1" id="ir1" rows="10" cols="100" style="width: 690px; height: 400px; display: none;"></textarea>
 		                        	
 				                        	<script type="text/javascript">
 							                    var oEditors = [];
 							                    nhn.husky.EZCreator.createInIFrame({
 							                        oAppRef: oEditors,
-							                        elPlaceHolder: "content",
+							                        elPlaceHolder: "ir1",
 							                        sSkinURI: "../../../editor/SmartEditor2Skin.html",
 							                        htParams : {
-							                    		bUseToolbar : true,				// 툴바 사용 여부 (true:사용/ false:사용하지 않음)
-							                    		bUseVerticalResizer : false,		// 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
-							                    		bUseModeChanger : false,			// 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
+							                    		bUseToolbar : true,				
+							                    		bUseVerticalResizer : false,		
+							                    		bUseModeChanger : false,		
 							                    		fOnBeforeUnload : function(){
-							                    			alert("완료!");
+							                    			//alert("작성 완료!");
+							                    			alert(getById["ir1"].value);
 							                    		}
 							                    	},
 							                    	fOnAppLoad : function(){
-							                    		//예제 코드
-							                    		//oEditors.getById["content"].exec("PASTE_HTML", ["로딩이 완료된 후에 본문에 삽입되는 text입니다."]);
+							                    		getById["ir1"].value
+							                    		//기존글 수정시 사용
+							                    		//oEditors.getById["ir1"].exec("PASTE_HTML", ["로딩이 완료된 후에 본문에 삽입되는 text입니다."]);
 							                    	},
 							                        fCreator: "createSEditor2"
 							                    });
 							                    
-							                    // 추가 글꼴 목록
-							                    //var aAdditionalFontSet = [["MS UI Gothic", "MS UI Gothic"], ["Comic Sans MS", "Comic Sans MS"],["TEST","TEST"]];
-
-							                    	
-
-							                    function pasteHTML() {
-							                    	var sHTML = "<span style='color:#FF0000;'>이미지도 같은 방식으로 삽입합니다.<\/span>";
-							                    	oEditors.getById["content"].exec("PASTE_HTML", [sHTML]);
-							                    }
-
-							                    function showHTML() {
-							                    	var sHTML = oEditors.getById["content"].getIR();
-							                    	alert(sHTML);
-							                    }
-							                    	
-							                    function submitContents(elClickedObj) {
-							                    	oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);	// 에디터의 내용이 textarea에 적용됩니다.
-							                    	
-							                    	// 에디터의 내용에 대한 값 검증은 이곳에서 document.getElementById("ir1").value를 이용해서 처리하면 됩니다.
-							                    	
+							                     function submitContents(elClickedObj) {
+							                    	 oEditors.getByID("ir1").exec("UPDATE_CONTENTS_FIELD", []);	
+							                       		
 							                    	try {
 							                    		elClickedObj.form.submit();
 							                    	} catch(e) {}
 							                    }
-
+							                    
 							                    function setDefaultFont() {
 							                    	var sDefaultFont = '맑은고딕';
 							                    	var nFontSize = 20;
-							                    	oEditors.getById["content"].setDefaultFont(sDefaultFont, nFontSize);
+							                    	oEditors.getByID("ir1").setDefaultFont(sDefaultFont, nFontSize);
 							                    }
 							                    
+							                  <!-- onclick="write()" -->
+							                  $("#btn-reg").click(function(){
+							                		var contentArea = oEditors.getByID("ir1");
+							                		
+							                		if(!contentArea)
+								                		alert("내용을 작성해주세요");
+							                		else {
+							                			contentArea.exec("UPDATE_CONTENTS_FIELD", []);
+							                			$("#text-area").submit();
+							                		}
+							                        
+							                		
+							                		
+							                  });
+
+							             
 						                	</script>
 				                	
 		                        </dd>
@@ -114,7 +113,8 @@
                     	</fieldset>
                     
 	                    <p id="button-container" class="space-top text-center">
-	                    	<input type = "submit" value="등록" />
+	                    
+	                    	<input id="btn-reg" type = "submit" value="등록"   />
 	                    	<a href="list.jsp">취소</a>
 	                    </p>
           

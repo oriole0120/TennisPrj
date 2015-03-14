@@ -1,9 +1,7 @@
-﻿<%@page import="org.apache.ibatis.session.SqlSession"%>
-<%-- <%@page import="com.htmtennis.prj.dao.mybatis.MyBPhotoDao"%>
-<%@page import="com.htmtennis.prj.dao.mybatis.MyBatisMain"%> --%>
-<%@page import="com.htmtennis.prj.dao.jdbc.JdbcPhotoDao"%>
-<%@page import="com.htmtennis.prj.dao.PhotoDao"%>
-<%@page import="com.htmtennis.prj.model.Photo"%>
+﻿<%@page import="com.htmtennis.prj.dao.mybatis.MyBatisMain"%>
+<%@page import="org.apache.ibatis.session.SqlSession"%>
+<%@page import="com.htmtennis.prj.dao.VideoDao"%>
+<%@page import="com.htmtennis.prj.model.Video"%>
 <%@page import="java.util.List"%>
 
 <%@page language="java" contentType="text/html; charset=UTF-8"
@@ -30,15 +28,13 @@
 	if(_field!= null && !_field.equals(""))
 		nfield = _field;
 	
- 	PhotoDao photoDao = new JdbcPhotoDao();
+	SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
+	VideoDao videoDao = sqlSession.getMapper(VideoDao.class);
  	
-	/* SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
-	PhotoDao photoDao = sqlSession.getMapper(PhotoDao.class);  */
- 	
-	List<Photo> list = photoDao.getPhotos(npage, nquery, nfield);
+	List<Video> list = videoDao.getVideos(npage, nquery, nfield);
 	
 	pageContext.setAttribute("list", list);
-	pageContext.setAttribute("total", photoDao.getSize("", "TITLE"));
+	pageContext.setAttribute("total", videoDao.getSize("", "TITLE"));
 	
 %>
 
@@ -66,42 +62,49 @@
             <main id="main">
                 <!--  main content part  -->
                 <div id="main-title-bar">
-                    <p> >>Photo </p>
+                    <p> >>Video </p>
                 </div>
 
                 <div id="table-margin-left">
                     
                 </div>
-
+                
+                
+   
                 <div id="table">
                     <table>
                         <tbody>
+                        
+                        	<c:forEach begin="0" end="3" var="i" >
                             <tr class="table-list-row">
                             
                             	<!-- 글개수만큼 리스트를 갱신 -->
-	                            <c:forEach var="ph"  items="${list}">
+                            	
+	                            <c:forEach begin="0" end="3" var="j" >
+	                           
 	                            	<td class="table-cell">
 	                                    <table>
 	                                        <tbody>
 	                                            <tr>
 	                                                <td>
-	                                                    <a href="view.jsp?c=${ph.code}"><img class="cell-img" src="../images/delpo_1.jpg" /></a>
+	                                                    <a href="view.jsp?c=${list[4*i+j].code}"><img class="cell-img" src="../images/delpo_1.jpg" /></a>
 	                                                </td>
 	                                            </tr>
 	                                            <tr class="cell-margin"></tr>
 	                                            <tr>
-	                                                <td><a class="cell-title" href="view.jsp?c=${ph.code}">${ph.title}</a></td>
+	                                                <td><a class="cell-title" href="view.jsp?c=${list[4*i+j].code}">${list[4*i+j].title}</a></td>
 	                                            </tr>
 	                                        </tbody>
-	                                    </table>
+	                                    </table>	
 	                                </td>
 	                            </c:forEach>
-
                             </tr>
+                            </c:forEach>                            
                         </tbody>
                     </table>
                 </div>
                 
+                <div>
                 <form action="list.jsp" method="get">
                   <fieldset>
 
@@ -117,7 +120,7 @@
                            <input class="btn btn-search" type="submit" value="검색" />
                   </fieldset>
                </form>
-               
+               </div>
                
              </main>
         </div>

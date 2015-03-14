@@ -1,18 +1,21 @@
-﻿
+﻿<%@page import="com.htmtennis.prj.dao.mybatis.MyBatisMain"%>
+<%@page import="org.apache.ibatis.session.SqlSession"%>
+<%@page import="com.htmtennis.prj.dao.VideoDao"%>
+<%@page import="com.htmtennis.prj.model.Video"%>
 
-<%@page import="com.htmtennis.prj.dao.jdbc.JdbcPhotoDao"%>
-<%@page import="com.htmtennis.prj.dao.PhotoDao"%>
-<%@page import="com.htmtennis.prj.model.Photo"%>
 <%@page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	
 <% 
    String code = request.getParameter("c");
    
-   Photo ph = new Photo();
+   Video v = new Video();
    
-   PhotoDao photoDao = new JdbcPhotoDao();
-   photoDao.delete(code);
+//   VideoDao videoDao = new JdbcVideoDao();
+	SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
+	VideoDao videoDao = sqlSession.getMapper(VideoDao.class);
+	
+	videoDao.delete(code);
    
    response.sendRedirect("list.jsp");
 %>

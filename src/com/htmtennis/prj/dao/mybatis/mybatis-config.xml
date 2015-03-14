@@ -7,6 +7,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<!-- Type alias -->
 	<typeAliases>
 		<typeAlias alias="Photo" type="com.htmtennis.prj.model.Photo" />
+		<typeAlias alias="Video" type="com.htmtennis.prj.model.Video" />
 
 		<typeAlias alias="Court" type="com.htmtennis.prj.model.Court" />
 
@@ -31,6 +32,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<mappers>
 		<!-- <mapper resource="com/newlecture/jspprj/dao/mybatis/NoticeDao.xml" /> -->
 		<mapper class="com.htmtennis.prj.dao.PhotoDao"/>
+		<mapper class="com.htmtennis.prj.dao.VideoDao"/>
 
 		<mapper class="com.htmtennis.prj.dao.CourtDao"/>
 

@@ -44,7 +44,6 @@ public interface PhotoDao {
 			+ "VALUES(#{code}, #{writer}, GETDATE(), #{title}, #{contents}, 0, 0, 'B')"	)
 	public int insert(Photo photo);
 	
-	
 	@Update("UPDATE PHOTOBOARDS SET TITLE=#{title}, CONTENTS=#{contents} WHERE CODE=#{code}")
 	public int update(Photo photo);
 	

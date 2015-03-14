@@ -1,5 +1,5 @@
-﻿<%-- <%@page import="org.apache.ibatis.session.SqlSession"%> --%>
-<%@page import="com.htmtennis.prj.dao.jdbc.JdbcPhotoDao"%>
+﻿<%@page import="com.htmtennis.prj.dao.mybatis.MyBatisMain"%>
+<%@page import="org.apache.ibatis.session.SqlSession"%>
 <%@page import="com.htmtennis.prj.dao.PhotoDao"%>
 <%@page import="com.htmtennis.prj.model.Photo"%>
 
@@ -9,10 +9,11 @@
 <%	
  	String _code = request.getParameter("c");
 
-//	SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
-//	PhotoDao photoDao = sqlSession.getMapper(PhotoDao.class);
+	SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
+	PhotoDao photoDao = sqlSession.getMapper(PhotoDao.class);
 
-	PhotoDao photoDao = new JdbcPhotoDao();
+//	PhotoDao photoDao = new JdbcPhotoDao();
+	
 	Photo ph = photoDao.getPhoto(_code);
 	pageContext.setAttribute("ph", ph);
 	
