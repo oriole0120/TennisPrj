@@ -4,10 +4,10 @@
 <%@page import="java.util.List"%>
 <%@page import="com.htmtennis.prj.dao.jdbc.JdbcInformationDao"%>
 <%@page import="com.htmtennis.prj.dao.InformationDao"%>
-
 <%@page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+<%@taglib prefix="ui" tagdir="/WEB-INF/tags" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%
@@ -140,47 +140,24 @@
                         </table>
                     </div>
 
-                    <div>
-                        <!--<h3>현재페이지위치</h3>-->
-                        <p id="page-list">1/5 page</p>
-                    </div>
-
                     <div> 
+                         <!--<h3>현재페이지위치</h3>--> 
+                         <p id="page-list">1/5 page</p> 
+                     </div> 
+ 
+ 
+                     <div> 
                          <!--<h3>페이지선택목록</h3>--> 
                          <p><a class="page" href="list.jsp">이전</a></p> 
-                         <!-- <ul> 
-                             <li class="page">1</li> 
-                             <li class="page">2</li> 
-                             <li class="page">3</li> 
-                             <li class="page">4</li> 
-                             <li class="page">5</li> 
-                         </ul> --> 
                           
-                         <ul class="page"> 
- 
- 
- 						<c:if test="${empty param.page}"> 
-       					<c:set var="page" value="1"></c:set> 
- 						   </c:if> 
- 						   <c:if test="${not empty param.page}"> 
- 						      <c:set var="page" value="${param.page}"></c:set> 
- 						   </c:if> 
- 						 
- 						   <c:set var="startNum" value="${page-((page-1)%5)}"></c:set> 
- 						 
- 						   <c:forEach begin="${startNum}" end="${startNum+4}" var="i"> 
- 						      <c:if test="${page == i}"> 
- 						         <li class="page"><a class="text-highlight" 
- 						            href="notice.jsp?page=${i}">${i}</a></li> 
- 						      </c:if> 
- 						      <c:if test="${page != i}"> 
- 						         <li class="page"><a href="list.jsp?page=${i}">${i}</a></li> 
- 						      </c:if> 
- 						   </c:forEach> 
+                         <ul class="page" >
+                         
+                          
+                          
                           
                          <ui:pager total="${total}"/> 
                          <p><a href="list.jsp">다음</a></p> 
-                     </div> 
+                     </div>
 
                     <div id="main-search-form">
                         <!--<h3>영상게시물 검색폼</h3>-->

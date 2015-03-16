@@ -92,5 +92,331 @@
 
 }
 
+/* --------------search, history------------------ */
 
+#main-title
+{
+    font-family: 맑은고딕, 고딕, sans-serif;
+    font-size: 21px;
+    font-weight: bold;
+    color: #000000;
+    padding-left: 25px;
+}
+
+.subject
+{
+    margin-top: 10px;
+}
+
+#main-title
+{
+    font-size: 30px;
+    font-weight: 800;
+    color: #000000;
+    margin-top:10px;
+    padding: 50px 0px 0px 300px;
+ }
+
+#main-title-write
+{
+    font-size: 30px;
+    font-weight: 800;
+    color: #000000;
+    margin-left:38px;
+    margin-top:25px;
+    /*padding: 50px 0px 0px 300px;*/
+}
+
+#full-path
+{
+    float:left;
+    margin-top:50px;
+    padding-left: 15px;
+    font-weight: 700;
+}
+
+.path
+{
+    float:left;
+    margin-left: 10px;
+    padding-left:20px;
+    list-style: none;
+    display:block;
+}
+
+
+
+#main-search-form
+{
+    padding-left: 250px;
+    padding-top: 30px;
+}
+
+
+table > td
+{
+    margin-left: 180px;
+    margin-top: 80px;
+}
+
+
+table
+{
+    margin-top: 10px;
+    margin-left: 50px;
+}
+
+/*.board-list-item   - 리스트테이블 
+{
+    padding: 15px 5px 15px 5px; 
+    border: 1px solid #000000;
+}*/
+
+table
+{
+    border-top:2px solid #8cba35;
+    margin-left:auto;
+    margin-right:auto;
+    /*margin-top:120px;*/
+}
+
+#free-board-table
+{
+    table-layout:fixed;
+    width:70%
+}
+
+.free-board-cell
+{
+    text-align:center;
+    border-bottom:1px solid #e9e9e9;
+}
+
+th.free-board-cell
+{
+    background:#f5f5f5;
+}
+
+/*th.free-board-cell:first-child
+{
+    background:#f5f5f5;
+}*/
+
+.free-board-row
+{
+    height:30px;
+    line-height:30px;
+}
+
+.num
+{
+    width:40px;
+}
+
+.title
+{
+    width:300px;
+    text-align:left;
+    text-indent:10px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+th.title
+{
+    text-align:center;
+}
+
+.writer
+{
+    width:100px;
+}
+
+.date
+{
+    width:100px;
+}
+
+.hit
+{
+    width:60px;
+}
+
+.recommend   /*추천*/
+{
+    width:60px;
+}
+
+#quick
+{
+    padding-left: 20px;
+}
+
+#quick-title
+{
+    font-size: 17px;
+    font-weight:700;
+
+    padding-top : 100px ;
+    padding-left: 5px;
+}
+.page
+{
+    float: left;
+    padding-right: 5px;
+}
+
+a.page:first-child
+{
+     margin-left: 320px;
+} 
+
+#page-list
+{
+	padding-down:30px;
+    padding-left: 660px;
+}
+
+.hidden
+{
+    display:none;
+}
+
+#edit
+{
+    margin-left:100px;
+}
+
+#edit-title
+{
+    font-size: 17px;
+    letter-spacing:10px;
+}
+
+#edit-title-content
+{
+    height:20px;
+    width:542px;
+    /*margin-left:200px;*/
+}
+
+.text-center
+{
+    text-align:center;
+}
+
+#edit-content
+{   
+    height:400px;
+    width:600px;
+    /*margin-left:100px;*/
+    margin-top:3px;
+    /*background:red;*/
+}
+
+.regis
+{
+    margin-left:350px;
+    margin-top:20px;
+}
+.regis-btn
+{
+    float:left;
+    margin-left:20px;
+}
+
+#write
+{
+    margin-top:110px;
+    margin-left:700px;
+}
+
+/*=======================디테일 화면보기=============*/
+#detail-view
+{
+    margin-left:63px;
+}
+.detail
+{
+    border-top:2px solid #8cba35;
+    margin-top:80px;
+}
+
+.detail-cell
+{
+    float:left;
+    height:33px;
+    line-height:33px;
+    width:565px;
+    text-indent:15px;
+
+    border-right:1px solid #080a78;
+    border-bottom:1px solid #080a78;
+    
+}
+.detail-cell-half
+{
+    width:204px;
+}
+
+.detail-cell-title
+{
+    text-align:center;
+    text-indent:0px;
+    width:155px;
+    background:#f5f5f5;
+}
+
+.detail-cell-break
+{
+    clear:left;
+}
+
+.detail-cell-content
+{
+    width:701px;
+    padding:10px;
+    border-bottom:1px solid #080a78;
+    border-right:1px solid #080a78;
+    line-height:1.5;
+}
+
+#space-top
+{
+    /* margin-left:50px; */
+
+}
+
+#space-top-two
+{
+	margin-left:615px;
+}
+
+.space-top
+{
+
+    float:left;
+    margin-top:10px;
+    padding-left:10px;
+}
+
+.space-top-two
+{
+
+    float:left;
+    margin-top:10px;
+    padding-left:10px;
+}
+
+.text-highlight
+{
+    font-weight:bold;
+    color:#ff6a00;
+}
+
+#delete-btn
+{
+	padding-left:715px;
+}
 

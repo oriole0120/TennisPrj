@@ -139,7 +139,7 @@
                         </table>
                     </div>
 
-                    		<div> 
+                    <div> 
                          <!--<h3>현재페이지위치</h3>--> 
                          <p id="page-list">1/5 page</p> 
                      </div> 
