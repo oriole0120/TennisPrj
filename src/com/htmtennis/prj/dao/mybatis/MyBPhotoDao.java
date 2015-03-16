@@ -10,10 +10,20 @@ import com.htmtennis.prj.model.Photo;
 
 public class MyBPhotoDao implements PhotoDao {
 
+	private SqlSessionFactory factory;
+	private SqlSession sqlSession;
+	private PhotoDao photoDao;
+	
+	private void settingSession() {
+		factory = MyBatisMain.getSqlSessionFactory();
+		sqlSession = factory.openSession(true);
+		photoDao = sqlSession.getMapper(PhotoDao.class);
+	}
+	
 	@Override
 	public Photo getPhoto(String code) {
-		// TODO Auto-generated method stub
-		return null;
+		settingSession();
+		return photoDao.getPhoto(code);
 	}
 
 	@Override
@@ -30,10 +40,7 @@ public class MyBPhotoDao implements PhotoDao {
 
 	@Override
 	public List<Photo> getPhotos(int page, String query, String field) {
-		SqlSessionFactory factory = MyBatisMain.getSqlSessionFactory();
-		SqlSession sqlSession = factory.openSession(true);
-		PhotoDao photoDao = sqlSession.getMapper(PhotoDao.class);
-		
+		settingSession();		
 		return photoDao.getPhotos(page, query, field);
 	}
 
@@ -63,7 +70,9 @@ public class MyBPhotoDao implements PhotoDao {
 
 	@Override
 	public int delete(String code) {
-		// TODO Auto-generated method stub
+		settingSession();
+		photoDao.delete(code);
+		
 		return 0;
 	}
 
