@@ -1,3 +1,4 @@
+<%@page import="com.htmtennis.prj.dao.mybatis.MyBPhotoDao"%>
 <%@page import="com.htmtennis.prj.dao.jdbc.JdbcPhotoFileDao"%>
 <%@page import="com.htmtennis.prj.dao.mybatis.MyBatisMain"%>
 <%@page import="org.apache.ibatis.session.SqlSession"%>
@@ -21,31 +22,27 @@
 	String path = ctx.getRealPath("/root/members/Gallery/photo/upload");
 	out.print(path + "<br />");
 
-	MultipartRequest req = new MultipartRequest(request, path, 1024 * 1024 * 10, "UTF-8", new DefaultFileRenamePolicy());
+	MultipartRequest req = new MultipartRequest(request
+									, path
+									, 1024 * 1024 * 10
+									, "UTF-8"
+									, new DefaultFileRenamePolicy());
 
 	String title = req.getParameter("title");
 	String filename = req.getFilesystemName("file");
 	String content = req.getParameter("ir1");
-	
-	
-	out.print(content);	
+			out.print(content);	
 	
 	Photo photo = new Photo();
 	photo.setTitle(title);
 	photo.setWriter("admin");
 	photo.setContents(content);
-
+//	photo.setFileName(filename);
 	
-	
-	//if(filename != null)
-	//	photo.setFileName(filename);
-	SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
-	PhotoDao photoDao = sqlSession.getMapper(PhotoDao.class);
 //	PhotoFileDao fileDao = sqlSession.getMapper(PhotoFileDao.class);
-	
-//	PhotoDao photoDao = new JdbcPhotoDao();
 	PhotoFileDao fileDao = new JdbcPhotoFileDao();
 	
+	PhotoDao photoDao = new MyBPhotoDao();
 	photoDao.insert(photo);
 
 	if (req.getFile("file") != null) {
@@ -56,6 +53,7 @@
 		photoFile.setPhotoName(filename);
 		photoFile.setPhotoCode(photoCode);
 
+		
 		fileDao.insert(photoFile);
 	}
 	//목록페이지로 이동

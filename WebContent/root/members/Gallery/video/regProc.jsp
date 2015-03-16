@@ -1,3 +1,4 @@
+<%@page import="com.htmtennis.prj.dao.mybatis.MyBVideoDao"%>
 <%@page import="com.htmtennis.prj.dao.jdbc.JdbcVideoFileDao"%>
 <%@page import="com.htmtennis.prj.dao.mybatis.MyBatisMain"%>
 <%@page import="org.apache.ibatis.session.SqlSession"%>
@@ -21,31 +22,27 @@
 	String path = ctx.getRealPath("/root/members/Gallery/video/upload");
 	out.print(path + "<br />");
 
-	MultipartRequest req = new MultipartRequest(request, path, 1024 * 1024 * 10, "UTF-8", new DefaultFileRenamePolicy());
+	MultipartRequest req = new MultipartRequest(request
+									, path
+									, 1024 * 1024 * 10
+									, "UTF-8"
+									, new DefaultFileRenamePolicy());
 
 	String title = req.getParameter("title");
 	String filename = req.getFilesystemName("file");
 	String content = req.getParameter("ir1");
-	
-	
-	out.print(content);	
+			out.print(content);	
 	
 	Video video = new Video();
 	video.setTitle(title);
 	video.setWriter("admin");
 	video.setContents(content);
+//	video.setFileName(filename);
 
-	
-	
-	//if(filename != null)
-	//	video.setFileName(filename);
-	SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
-	VideoDao videoDao = sqlSession.getMapper(VideoDao.class);
 //	VideoFileDao fileDao = sqlSession.getMapper(VideoFileDao.class);
-	
-//	VideoDao videoDao = new JdbcVideoDao();
 	VideoFileDao fileDao = new JdbcVideoFileDao();
-	
+
+	VideoDao videoDao = new MyBVideoDao();
 	videoDao.insert(video);
 
 	if (req.getFile("file") != null) {

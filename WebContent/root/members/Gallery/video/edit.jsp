@@ -1,4 +1,5 @@
-﻿<%@page import="com.htmtennis.prj.dao.mybatis.MyBatisMain"%>
+﻿<%@page import="com.htmtennis.prj.dao.mybatis.MyBVideoDao"%>
+<%@page import="com.htmtennis.prj.dao.mybatis.MyBatisMain"%>
 <%@page import="org.apache.ibatis.session.SqlSession"%>
 <%@page import="com.htmtennis.prj.model.Video"%>
 <%@page import="com.htmtennis.prj.dao.VideoDao"%>
@@ -8,10 +9,8 @@
 	
 <%
 	String _code = request.getParameter("c");
-	//VideoDao videoDao = new JdbcVideoDao();
 	
-	SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
-	VideoDao videoDao = sqlSession.getMapper(VideoDao.class);
+	VideoDao videoDao = new MyBVideoDao();
 	
 	Video v = videoDao.getVideo(_code);
 	pageContext.setAttribute("v", v);

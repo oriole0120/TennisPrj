@@ -10,10 +10,20 @@ import com.htmtennis.prj.model.Video;
 
 public class MyBVideoDao implements VideoDao{
 
+	private SqlSessionFactory factory;
+	private SqlSession sqlSession;
+	private VideoDao videoDao;
+	
+	private void settingSession() {
+		factory = MyBatisMain.getSqlSessionFactory();
+		sqlSession = factory.openSession(true);
+		videoDao = sqlSession.getMapper(VideoDao.class);
+	}
+	
 	@Override
 	public Video getVideo(String code) {
-		// TODO Auto-generated method stub
-		return null;
+		settingSession();		
+		return videoDao.getVideo(code);
 	}
 
 	@Override
@@ -30,10 +40,7 @@ public class MyBVideoDao implements VideoDao{
 
 	@Override
 	public List<Video> getVideos(int page, String query, String field) {
-		SqlSessionFactory factory = MyBatisMain.getSqlSessionFactory();
-		SqlSession sqlSession = factory.openSession(true);
-		VideoDao videoDao = sqlSession.getMapper(VideoDao.class);
-		
+		settingSession();		
 		return videoDao.getVideos(page, query, field);
 	}
 
@@ -63,7 +70,8 @@ public class MyBVideoDao implements VideoDao{
 
 	@Override
 	public int delete(String code) {
-		// TODO Auto-generated method stub
+		settingSession();
+		videoDao.delete(code);
 		return 0;
 	}
 
