@@ -9,3 +9,5 @@ select * from LinkCourts;
 SHOW VARIABLES LIKE 'c%';
 
 select [name] collection korean_Wansung_ci_as from [linkcourts];
+
+select*from schedules;
