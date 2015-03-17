@@ -1,3 +1,4 @@
+<%@page import="com.htmtennis.prj.dao.mybatis.MyBFreeDao"%>
 <%@page import="com.htmtennis.prj.dao.jdbc.JdbcFreeDao"%>
 <%@page import="com.htmtennis.prj.dao.jdbc.JdbcFreeFileDao"%>
 <%@page import="com.htmtennis.prj.dao.FreeFileDao"%>
@@ -43,6 +44,8 @@
 	/* SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true); */
 		
 	FreeDao freeDao = new JdbcFreeDao();
+	
+	/* freeDao.insert(free); */
 	freeDao.insert(fr);
 
 	 if (req.getFile("file") != null) {

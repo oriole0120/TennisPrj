@@ -1,4 +1,5 @@
-﻿<%@page import="com.htmtennis.prj.dao.mybatis.MyBatisMain"%>
+﻿<%@page import="com.htmtennis.prj.dao.mybatis.MyBFreeDao"%>
+<%@page import="com.htmtennis.prj.dao.mybatis.MyBatisMain"%>
 <%@page import="org.apache.ibatis.session.SqlSession"%>
 <%@page import="com.htmtennis.prj.model.Free"%>
 <%@page import="java.util.List"%>
@@ -29,7 +30,6 @@
 					
 	SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
 	FreeDao freeDao = sqlSession.getMapper(FreeDao.class);
-	
 	/* FreeDao freeDao = new JdbcFreeDao(); */
 	List<Free> list = freeDao.getFrees(npage, query, field);
 	
