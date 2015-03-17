@@ -21,3 +21,10 @@ SELECT F.* FROM (SELECT(ROW_NUMBER() OVER ( ORDER BY REGDATE DESC)) NUM, FREEBOA
 
 INSERT INTO PHOTOBOARDS(CODE, WRITER, REGDATE, TITLE, CONTENTS, HIT, THUMB, AUTHORITY) 
 	VALUES(#{code}, #{writer}, GETDATE(), #{title}, #{contents}, 0, 0, 'B')
+	
+	select code, eventdate, contents from schedules where code = '2'
+	
+	SELECT N.* 
+			FROM(SELECT (ROW_NUMBER() OVER(ORDER BY regdate DESC))NUM, SCHEDULES.* 
+					FROM SCHEDULES WHERE 'title' LIKE '3%') N
+							WHERE N.NUM BETWEEN 1 AND 20

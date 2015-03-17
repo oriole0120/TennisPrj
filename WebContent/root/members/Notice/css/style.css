@@ -362,7 +362,7 @@ a.page:first-child
 #main-search-form
 {
     padding-left: 250px;
-    padding-top: 10px;
+    padding-top: 30px;
 }
 
 
@@ -476,7 +476,6 @@ th.title
 }
 .page
 {
-   
     float: left;
     padding-right: 5px;
 }
@@ -488,6 +487,7 @@ a.page:first-child
 
 #page-list
 {
+	padding-down:30px;
     padding-left: 660px;
 }
 
@@ -627,4 +627,3 @@ a.page:first-child
     font-weight:bold;
     color:#ff6a00;
 }
-
