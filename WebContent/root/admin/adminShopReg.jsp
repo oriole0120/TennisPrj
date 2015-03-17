@@ -8,29 +8,8 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%
-	int npage=1;
-	String field = "name";
-	String query = "";
-	
-	String _page = request.getParameter("p");
-	String _field = request.getParameter("f");
-	String _query = request.getParameter("q");
-	
-	if(_page != null && !_page.equals(""))
-		npage=Integer.parseInt(_page);
-	
-	if(_field != null && !_field.equals(""))
-		field =_field;
-		
-	if(_query != null && !_query.equals(""))
-		query =_query;
 
-	ShopDao shopDao = new JdbcShopDao();
-	List<Shop> list = shopDao.getShops(npage, query, field);
-	
-	pageContext.setAttribute("list", list);
-	pageContext.setAttribute("total", shopDao.getSize(""));
-	
+ShopDao shopDao = new JdbcShopDao();
 	
 %>
 
@@ -60,27 +39,29 @@
 
             <main id="main">
                 <h2 id="main-title">Shop</h2>
+                
+                <form action="adminShopRegProc.jsp" method="post">
                 <table>
                     <tr>
                         <td>코트이름</td>
-                        <td><input type="text" name="Shop_name" /></td>
+                        <td><input type="text" name="name" id="name" value="" /></td>
                     </tr>
                     <tr>
                         <td>주소</td>
-                        <td><input type="text" name="Shop_address" /></td>
+                        <td><input type="text" name="address" id="name" value="" /></td>
                     </tr>
                     <tr>
                         <td>전화번호</td>
-                        <td><input type="password" name="Shop_ph" /></td>
+                        <td><input type="text" name="phoneNumber" id="name" value="" /></td>
                     </tr>
                     <tr>
                         <td>사이트</td>
-                        <td><input type="text" name="Shop_site" /></td>
+                        <td><input type="text" name="site" id="name" value="" /></td>
                     </tr>
                     <tr>
                         <td>좌표</td>
-                     	<td>X <input type="text" name="Shop_positionX" /></td>
-                     	<td>Y <input type="text" name="Shop_positionY" /></td>
+                     	<td>X <input type="text" name="positionX" id="name" value="" /></td>
+                     	<td>Y <input type="text" name="positionY" id="name" value="" /></td>
                     </tr>
                    
                     
@@ -92,6 +73,7 @@
                         </td>
                     </tr>
                 </table>
+                </form>
 			</main>
 	</div>
 </div>

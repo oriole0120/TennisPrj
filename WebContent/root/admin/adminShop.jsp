@@ -1,4 +1,6 @@
-﻿<%@page import="com.htmtennis.prj.model.Shop"%>
+﻿<%@page import="com.htmtennis.prj.dao.mybatis.MyBatisMain"%>
+<%@page import="org.apache.ibatis.session.SqlSession"%>
+<%@page import="com.htmtennis.prj.model.Shop"%>
 <%@page import="java.util.List"%>
 <%@page import="com.htmtennis.prj.dao.ShopDao"%>
 <%@page import="com.htmtennis.prj.dao.jdbc.JdbcShopDao"%>
@@ -25,13 +27,15 @@
 	if (_query != null && !_query.equals(""))
 		query = _query;
 
-	ShopDao shopDao = new JdbcShopDao();
+	SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
+	ShopDao shopDao = sqlSession.getMapper(ShopDao.class);
+ 	
 	List<Shop> list = shopDao.getShops(npage, query, field);
-
+	
 	pageContext.setAttribute("list", list);
-	pageContext.setAttribute("total", shopDao.getSize(""));
-%>
+	pageContext.setAttribute("total", shopDao.getSize("", "name"));
 
+%>
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -67,7 +71,7 @@
                     </ul>
                 </div>-->
                 <div class="text-center main-item">
-                    <a href=""><img src="../../images/link-map.jpg" width="500" height="250" alt="맵"></a>
+                    <a href=""><img src="../images/link-map.jpg" width="500" height="250" alt="맵"></a>
                 </div>
 
                 <div class="text-center main-item">
@@ -84,7 +88,7 @@
 									<option ${param.f=='name' ? 'selected' : ""} value="name">이름</option>
 									<option ${param.f=='address' ? 'selected' : ""} value="address">주소</option>
 								</select> 
-                                <input class="input-normal" type="text" name="q" value=${param.q}/>
+                                <input class="input-normal" type="text" name="q" value=${param.q }></input>
                                 <input class="btn btn-search" type="submit" value="검색" />
                             </fieldset>
                         </form>
@@ -106,7 +110,7 @@
                         <c:forEach var="sh" items="${list}">
                         <tr class="board-row">
                                 <th class="board-cell board-cell-width-60  text-center">${sh.code}</th>
-                                <th class="board-cell board-cell-width-160  text-center"><a href="shopDetail.jsp?c=${sh.code}">${sh.name}</a></th>
+                                <th class="board-cell board-cell-width-160  text-center"><a href="adminShopDetail.jsp?c=${sh.code}">${sh.name}</a></th>
                                 <th class="board-cell board-cell-width-300  text-center">${sh.address}</th>
                                 <th class="board-cell board-cell-width-100  text-center">${sh.phoneNumber}</th>
                                 <th class="board-cell-th board-cell-width-100  text-center">${sh.site}</th>

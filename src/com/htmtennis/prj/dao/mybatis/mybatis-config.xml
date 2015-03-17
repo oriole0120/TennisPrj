@@ -35,6 +35,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper class="com.htmtennis.prj.dao.VideoDao"/>
 
 		<mapper class="com.htmtennis.prj.dao.CourtDao"/>
+		<mapper class="com.htmtennis.prj.dao.ShopDao"/>
 
 		<mapper class="com.htmtennis.prj.dao.FreeDao"/>
 		<mapper class="com.htmtennis.prj.dao.InformationDao"/>

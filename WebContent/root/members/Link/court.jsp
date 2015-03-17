@@ -34,7 +34,7 @@
 	List<Court> list = courtDao.getCourts(npage, query, field);
 	
 	pageContext.setAttribute("list", list);
-	pageContext.setAttribute("total", courtDao.getSize("", "TITLE"));
+	pageContext.setAttribute("total", courtDao.getSize("", "name"));
 
 
 					

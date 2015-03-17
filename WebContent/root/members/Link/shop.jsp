@@ -1,4 +1,6 @@
-﻿<%@page import="com.htmtennis.prj.model.Shop"%>
+﻿<%@page import="com.htmtennis.prj.dao.mybatis.MyBatisMain"%>
+<%@page import="org.apache.ibatis.session.SqlSession"%>
+<%@page import="com.htmtennis.prj.model.Shop"%>
 <%@page import="java.util.List"%>
 <%@page import="com.htmtennis.prj.dao.ShopDao"%>
 <%@page import="com.htmtennis.prj.dao.jdbc.JdbcShopDao"%>
@@ -25,11 +27,13 @@
 	if(_query != null && !_query.equals(""))
 		query =_query;
 
-	ShopDao shopDao = new JdbcShopDao();
+	SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
+	ShopDao shopDao = sqlSession.getMapper(ShopDao.class);
+ 	
 	List<Shop> list = shopDao.getShops(npage, query, field);
 	
 	pageContext.setAttribute("list", list);
-	pageContext.setAttribute("total", shopDao.getSize(""));
+	pageContext.setAttribute("total", shopDao.getSize("", "name"));
 	
 	
 %>
