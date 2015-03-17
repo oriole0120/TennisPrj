@@ -8,8 +8,7 @@
 <%@page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
-
+ <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <%
 	int npage = 1;
 	String field = "TITLE";
@@ -28,12 +27,12 @@
 		query = _query;
 
 	ScheduleDao scheduleDao = new JdbcScheduleDao();
-	List<Schedule> list = scheduleDao.getSchedules(npage, query, field);
+	List<Schedule> list = scheduleDao.getSchedule(npage, query, field);
 
 	pageContext.setAttribute("list", list);
-	pageContext.setAttribute("total", scheduleDao.getSize("", "TITLE"));
-%> 
- 
+	pageContext.setAttribute("total", scheduleDao.getSize(""));
+%>
+
 
 
 <!DOCTYPE html>
@@ -171,29 +170,28 @@
                     <!--///////-->
                     <div class="board">
                     <table id="day" width="400" height="100" style="table-layout:fixed">
-                       <thead>
                         <tr class="board-row">
                             <th class ="board-cell-th board-cell-width-60  text-center">순서</th>
                             <th class ="board-cell-th board-cell-width-140  text-center">일정</th>
                             <th class ="board-cell-th board-cell-width-200  text-center">일자</th>
                         </tr>
-                       </thead>
+                       
                        
                        
                         <tbody>
                         
-                        <c:forEach var="sch" items="${list}"> 
+                       
+                       
+                        
+                         <c:forEach var="s" items="${list}">
                         <tr>
                         
-                        <td> ${sch.code}</td>
-                        <td> ${sch.contents}</td>
-                        <td> ${sch.regdate}</td>
+                            <td class ="board-cell-th board-cell-width-60  text-center">${s.code}</td>
+                            <td class ="board-cell-th board-cell-width-140  text-center">${s.title}</td>
+                            <td class ="board-cell-th board-cell-width-200  text-center">${s.eventdate}</td>
+                        </tr>	
+						</c:forEach>
                         
-                        
-                        </tr>
-                    </c:forEach> 
-                        
-                      
                        
                        
                         
@@ -206,68 +204,38 @@
 
 
 
-               <%-- <div> 
-                         <!--<h3>현재페이지위치</h3>--> 
-                         <p id="page-list">1/5 page</p> 
-                     </div> 
- 
- 
-                     <div> 
-                         <!--<h3>페이지선택목록</h3>--> 
-                         <p><a class="page" href="list.jsp">이전</a></p> 
-                          
-                         <ul class="page" >
-                         
-                          
-                          
-                          
-                         <ui:pager total="${total}"/> 
-                         <p><a href="list.jsp">다음</a></p> 
-                     </div>  --%>
-
-
-                    <div id="main-search-form">
-                        <!--<h3>영상게시물 검색폼</h3>-->
-                        <form>
-                            <!-- <fieldset>
-                                <legend>영상검색필드</legend>
-                                <select>
-                                    <option>작성자</option>
-                                    <option>제목</option>
-                                    <option>본문</option>
-                                </select>
-
-                                <input class="search" type="text" name="query" />
-                                <input class="search" type="submit" value="검색" />
-
-                            </fieldset> -->
-                            
-                            <fieldset>
-                                                            
-                                <legend class="hidden">링크 검색 필드</legend>
-							<label for="field" class="hidden">검색분류</label> 
-								<select
-									class="search-field" name="f">
-									<option ${param.f=='writer' ? 'selected' : ""} value="writer">작성자</option>
-									<option ${param.f=='title' ? 'selected' : ""} value="title">제목</option>
-									<option ${param.f=='contents' ? 'selected' : ""} value="contents">본문</option>
-								</select> 
-                                    <input class="search" type="text" name="q" value=${param.q }></input>
-                                	<input class="search" type="submit" value="검색" />
-                            </fieldset>
-                        </form>
+                    <div>
+                        <!--<h3>현재페이지</h3>
+        <p>1/2 page</p>
+        <h3>페이지</h3>-->
+                        <p class="page-before-item"><a class="page-before-text" href="">이전</a></p>
+                        <ul>
+                            <li class="page-number"><a class="page-number-text" href="">1</a></li>
+                            <li class="page-number"><a class="page-number-text" href="">2</a></li>
+                            <li class="page-number"><a class="page-number-text" href="">3</a></li>
+                            <li class="page-number"><a class="page-number-text" href="">4</a></li>
+                            <li class="page-number"><a class="page-number-text" href="">5</a></li>
+                        </ul>
+                        <p class="page-after-item"><a class="page-after-text" href="">다음</a></p>
                     </div>
 
 
 
-                       <div>
+                    <div>
                         <form class="write-btn-item">
                             <fieldset>
                                 <!--<legend>글쓰기</legend>-->
-                                <input type="button" value="일정등록" onclick="location.href = ' write.jsp'">
+                                <input type="button" value="일정등록" onclick="location.href = ' edit.html'">
                             </fieldset>
                         </form>
                     </div>
+
+                   
+
+
+
+
+
 
 
 
