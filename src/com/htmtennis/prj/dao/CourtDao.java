@@ -15,18 +15,6 @@ import com.htmtennis.prj.model.Court;
 
 public interface CourtDao {
 
-		/*public Court getCourt(String code);
-		public List<Court> getCourts(int page, String query, String field);
-		public List<Court> getCourts(int page, String query);
-		public List<Court> getCourts(int page);
-		public int insert(Court court);
-		public int update(Court court);
-		public int delete(String code);
-		public int getSize(String query, String field);
-		public int getSize(String query);*/
-/*}*/
-
-
 @Select("SELECT * FROM LinkCourts WHERE CODE = #{code}")
 public Court getCourt(String code);
 
@@ -43,7 +31,7 @@ public Court nextPhoto(String curCode);*/
 
 @Select("SELECT N.* FROM( "
 		+ "SELECT ("
-		+ "			ROW_NUMBER() OVER (ORDER BY site DESC) "
+		+ "			ROW_NUMBER() OVER (ORDER BY code DESC) "
 		+ ") NUM, LinkCourts.* FROM LinkCourts WHERE ${field} LIKE '%${query}%' "
 		+ ") N "
 		+ "WHERE N.NUM BETWEEN 1+(#{page}-1)*20 AND 20+(#{page}-1)*20")
