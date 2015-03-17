@@ -30,7 +30,7 @@
 					
 	SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
 	FreeDao freeDao = sqlSession.getMapper(FreeDao.class);
-	/* FreeDao freeDao = new JdbcFreeDao(); */
+	
 	List<Free> list = freeDao.getFrees(npage, query, field);
 	
 	pageContext.setAttribute("list", list);

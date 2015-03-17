@@ -313,7 +313,7 @@ public class JdbcFreeDao implements FreeDao {
 	@Override
 	public Free prevFree(String curCode) {
 		String sql = "SELECT TOP 1 * FROM FREEBOARDS"
-				+ " WHERE REGDATE > (SELECT REGDATE FROM FREEBOARDS WHERE CODE = ?) "
+				+ " WHERE REGDATE &lt; (SELECT REGDATE FROM FREEBOARDS WHERE CODE = ?) "
 				+ " ORDER BY REGDATE ASC";
 	String url = "jdbc:sqlserver://win.newlecture.com:1433;databaseName=tennisdb";
 	
@@ -341,6 +341,7 @@ public class JdbcFreeDao implements FreeDao {
 		st.close();
 		con.close();
 		
+		return fr;
 		
 	} catch (ClassNotFoundException e) {
 		// TODO Auto-generated catch block
@@ -387,6 +388,7 @@ public class JdbcFreeDao implements FreeDao {
 		st.close();
 		con.close();
 		
+		return fr;
 		
 	} catch (ClassNotFoundException e) {
 		// TODO Auto-generated catch block

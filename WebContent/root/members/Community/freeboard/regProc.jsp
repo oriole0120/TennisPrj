@@ -17,15 +17,15 @@
 	String path = ctx.getRealPath("/root/members/Community/freeboard/upload");
 	out.print(path + "<br />");
 
-	MultipartRequest req = new MultipartRequest(request
+	/* MultipartRequest req = new MultipartRequest(request
 							, path
 							, 1024 * 1024 * 10
 							, "UTF-8"
-							, new DefaultFileRenamePolicy());
+							, new DefaultFileRenamePolicy()); */
 
-	String title = req.getParameter("title");
-	String filename = req.getFilesystemName("file");
-	String content = req.getParameter("content");
+	String title = request.getParameter("title");
+//	String filename = request.getFilesystemName("file");
+	String content = request.getParameter("content");
 	
 	/* out.print(path + "<br />");
 	out.print(path + "<br />");
@@ -34,7 +34,6 @@
 	Free fr = new Free();
 	
 	fr.setTitle(title);
-
 	fr.setWriter("admin");
 	fr.setContents(content);
 	
@@ -43,19 +42,20 @@
 
 	/* SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true); */
 		
-	FreeDao freeDao = new JdbcFreeDao();
+	//FreeDao freeDao = new JdbcFreeDao();
+	FreeDao freeDao = new MyBFreeDao();
 	
 	/* freeDao.insert(free); */
 	freeDao.insert(fr);
 
-	 if (req.getFile("file") != null) {
+	 /* if (req.getFile("file") != null) {
 
 		String freeCode = freeDao.lastCode();
 
 		FreeFile freeFile = new FreeFile();
 		
-		/* freeFile.setFilename(filename);
-		freeFile.setFreecode(freeCode); */
+		freeFile.setFilename(filename);
+		freeFile.setFreecode(freeCode);
 		
 		freeFile.setFilename(filename);
 		freeFile.setFilesrc("");
@@ -63,7 +63,7 @@
 
 		FreeFileDao fileDao = new JdbcFreeFileDao();
 		fileDao.insert(freeFile);
-	}
+	} */
 	//목록페이지로 이동
 	response.sendRedirect("list.jsp");
 %>	

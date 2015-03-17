@@ -16,13 +16,14 @@ public interface FreeDao {
 	public Free getFree(String code);
 	
 	@Select("SELECT TOP 1 * FROM FREEBOARDS "
-			+ "WHERE REGDATE &gt; (SELECT REGDATE FROM FREEBOARDS WHERE CODE = #{code}) "
+			+ "WHERE REGDATE > (SELECT REGDATE FROM FREEBOARDS WHERE CODE = #{curCode}) "
 			+ "ORDER BY REGDATE ASC")
 	public Free prevFree(String curCode);
 	
 	@Select("SELECT TOP 1 * FROM FREEBOARDS "
-			+ "WHERE REGDATE &lt; (SELECT REGDATE FROM FREEBOARDS WHERE CODE = #{code}) "
+			+ "WHERE REGDATE < (SELECT REGDATE FROM FREEBOARDS WHERE CODE = #{curCode}) "
 			+ "ORDER BY REGDATE DESC")
+	
 	public Free nextFree(String curCode);
 	
 	@Select("SELECT N.* FROM ( "

@@ -34,13 +34,21 @@ public class MyBFreeDao implements FreeDao{
 
 	@Override
 	public Free prevFree(String curCode) {
-		return null;
+		SqlSessionFactory factory = MyBatisMain.getSqlSessionFactory();
+		SqlSession sqlSession = factory.openSession(true);
+		FreeDao freeDao = sqlSession.getMapper(FreeDao.class);
+		
+		return freeDao.prevFree(curCode);
 		
 	}
 
 	@Override
 	public Free nextFree(String curCode) {
-		return null;
+		SqlSessionFactory factory = MyBatisMain.getSqlSessionFactory();
+		SqlSession sqlSession = factory.openSession(true);
+		FreeDao freeDao = sqlSession.getMapper(FreeDao.class);
+		
+		return freeDao.nextFree(curCode);
 		
 	}
 
@@ -69,6 +77,11 @@ public class MyBFreeDao implements FreeDao{
 
 	@Override
 	public int insert(Free free) {
+		SqlSessionFactory factory = MyBatisMain.getSqlSessionFactory();
+		SqlSession sqlSession = factory.openSession(true);
+		FreeDao freeDao = sqlSession.getMapper(FreeDao.class);
+		freeDao.insert(free);
+		
 		return 0;
 		
 	}
