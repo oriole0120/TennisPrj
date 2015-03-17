@@ -137,7 +137,7 @@ public class JdbcMemberDao implements MemberDao{
 	@Override
 	public int insert(Member member) {
 
-		String sqlMid = "SELECT NVL(TO_NUMBER('MAX(Mid)'), 0)+1 Mid FROM Members";	/*코드를생성하기위해*/
+		String sqlMid =  "SELECT isnull(MAX(CAST(StudentNum as int)),0)+1 StudentNum FROM Members";	/*코드를생성하기위해*/
         String sql = "INSERT INTO Members(mid, pwd, name, gender, studentNum, email, phone, authority) "
         		+ "		VALUES(?, ?, ?, ?, ?, ?, ?, 'Associate')";
 
@@ -151,18 +151,17 @@ public class JdbcMemberDao implements MemberDao{
            ResultSet rs=stCode.executeQuery(sqlMid);
            
            rs.next();
-           String mid=rs.getString("mid");
+           String sn=rs.getString("studentNum");
            
            rs.close();
            stCode.close();
            
            PreparedStatement st = con.prepareStatement(sql);
-           st.setString(1, mid);
+           st.setString(1, member.getMid());
            st.setString(2, member.getPwd());
            st.setString(3, member.getName());
-
            st.setString(4, member.getGender());
-           st.setInt(5, member.getStudentNum());
+           st.setString(5, sn);
            st.setString(6, member.getEmail());
            st.setString(7, member.getPhone());
            

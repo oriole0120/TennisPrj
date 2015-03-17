@@ -36,7 +36,7 @@ function init(){
 </script>
 <body> <!-- onload="initialize()" -->
    <!-- header -->
-    <jsp:include page="../inc/header.jsp"></jsp:include>
+    <jsp:include page="../inc/header1.jsp"></jsp:include>
 
     <div id="body">
         <div class="content-wrapper clearfix">
@@ -101,40 +101,9 @@ function init(){
 
 
 
-    <footer id="footer">
-        <!--  footer part  -->
-        <div class="content-wrapper clearfix">
+     <!-- footer -->
+			<jsp:include page="../inc/footer.jsp"></jsp:include>
 
-            <div id="logo-footer-container">
-                <h2><img src="../../images/logo_m.png" alt="동아리정보" /></h2>
-            </div>
-
-            <div id="company-info-container">
-                <div id="company-info">
-                    <h3 class="hidden">동아리정보</h3>
-                    <dl class="clearfix">
-                        <dt class="company-info-item item-title item-newline"> 주소</dt>
-                        <dd class="company-info-item item-data">서울특별시 성북구 삼선교로 16길 116</dd>
-                        <dt class="company-info-item item-title">연락처</dt>
-                        <dd class="company-info-item item-data">02-760-5528</dd>
-
-                        <dt class="company-info-item item-title item-newline">관리자메일</dt>
-                        <dd class="company-info-item item-data">oriole0120@naver.com</dd>
-                        <dt class="company-info-item item-title">회장</dt>
-                        <dd class="company-info-item item-data">###</dd>
-                        <dt class="company-info-item item-title">HTM</dt>
-                        <dd class="company-info-item item-data">[Hansung Tennis Membership]</dd>
-                    </dl>
-                </div>
-
-                <div id="copyright">
-                    <h3 class="hidden">저작권정보</h3>
-                    <p>Copyright@chanCompany 2015</p>
-                </div>
-            </div>
-        </div>
-
-    </footer>
 
 </body>
 </html>

@@ -1,13 +1,13 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  
- <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
+ <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ <link href="component.css" rel="stylesheet" type="text/css" />
+    <link href="default.css" rel="stylesheet" type="text/css" />	
+    <script src="js/modernizr.custom.js"></script>
  <c:set var="ctxName" value="${pageContext.request.servletContext.contextPath}" />
  
-<link href="/component.css" rel="stylesheet" type="text/css" />
-<link href="/default.css" rel="stylesheet" type="text/css" />	
-<script type="text/javascript" src="../../js/modernizr.js"></script>
-<script src="/modernizr.custom.js"></script>
+	
 
     <header id="header">
         <!--  header part  -->
@@ -20,17 +20,28 @@
 
             <section class="header-item-container">
                 <h2 class="hidden">머릿말</h2>
-                <nav id="member-menu">
+               <ul class="column clearfix">
+                    
+                     
+                        <button class="md-trigger" data-modal="modal-12"><li class="member-menu-item"><a class="member-menu-text" href="">홈</a></li></button>
+                        <button class="md-trigger" data-modal="modal-12"><li class="member-menu-item" ><a class="member-menu-text" href="">로그인</a></li></button>
+                        <li class="member-menu-item"><a class="member-menu-text" href="">가입</a></li>
+
+                   
+                    <!-- <button class="md-trigger" data-modal="modal-12">가입</button> -->
+                   
+           		 </ul>
+                <!-- <nav id="member-menu">
                     <h3 class="hidden">회원메뉴</h3>
+                     
                     <ul class="clearfix">
                         <li class="member-menu-item md-trigger" data-modal="modal-12"><a class="member-menu-text" href="">홈</a></li>
                         <li class="member-menu-item" ><a class="member-menu-text" href="">로그인</a></li>
                         <li class="member-menu-item"><a class="member-menu-text" href="">가입</a></li>
 
                     </ul>
-                </nav>
-                
-                <div class="md-modal md-effect-12 " id="modal-12">
+                </nav> -->
+			<div class="md-modal md-effect-12 " id="modal-12">
                 <div class="md-content">
                     <h3>회원가입</h3>
                     <div id="aa">
@@ -113,19 +124,10 @@
                 </div>
             </div>
             <div class="md-overlay"></div>
-            </div>
-        </div>
-        
-        <!--자바스크립트 팝업-->
-            <script src="/classie.js"></script>
-            <script src="/modalEffects.js"></script>
-            <!-- <script>
-                // this is important for IEs
-                var polyfilter_scriptpath = '/js/';
-            </script> -->
-           <!--  <script src="../../js/cssParser.js"></script>
-            <script src="../../js/css-filters-polyfill.js"></script> -->
-
+            
+            
+            
+            
                 <nav id="search-form">
                     <h3 class="hidden">게시글검색폼</h3>
                     <form>
@@ -142,6 +144,12 @@
                 <img id="slide-img" src="${ctxName}/root/images/slide-img01.png" />
             </div>
         </div>
+        <script src="classie.js"></script>
+            <script src="modalEffects.js"></script>
+            <script>
+                // this is important for IEs
+                var polyfilter_scriptpath = '/js/';
+            </script>
     </header>
    
-    
+     

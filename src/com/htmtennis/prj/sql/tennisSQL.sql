@@ -9,3 +9,7 @@ select * from LinkCourts;
 SHOW VARIABLES LIKE 'c%';
 
 select * from LinkCourts;
+
+select * from schedules;
+
+select * from members;

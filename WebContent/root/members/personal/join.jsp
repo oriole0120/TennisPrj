@@ -12,7 +12,7 @@
 
 	MemberDao memberDao = new JdbcMemberDao();
 
-	MemberDao MemberDao = new JdbcMemberDao();
+	/* MemberDao MemberDao = new JdbcMemberDao(); */
 
 	/* int npage=1;
 	String Mid = request.getParameter("mid"); */
@@ -61,7 +61,7 @@
 
 <body>
     <!-- header -->
-    <jsp:include page="../../inc/header.jsp"></jsp:include>
+    <jsp:include page="../../inc/header1.jsp"></jsp:include>
 
     <div id="body">
         <div class="content-wrapper clearfix">
