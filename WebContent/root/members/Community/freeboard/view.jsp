@@ -1,4 +1,8 @@
 ﻿
+<%@page import="org.apache.ibatis.session.SqlSession"%>
+<%@page import="com.htmtennis.prj.dao.mybatis.MyBatisMain"%>
+<%@page import="com.htmtennis.prj.dao.mybatis.MyBFreeDao"%>
+<%@page import="com.htmtennis.prj.dao.FreeDao"%>
 <%@page import="com.htmtennis.prj.dao.jdbc.JdbcFreeDao"%>
 <%@page import="com.htmtennis.prj.model.Free"%>
 <%@page language="java" contentType="text/html; charset=UTF-8"
@@ -6,7 +10,15 @@
 
 <%	
 	String _code = request.getParameter("c");
-	Free fr = new JdbcFreeDao().getFree(_code);
+
+	/* Free fr = new JdbcFreeDao().getFree(_code); */
+	
+	/* SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
+	FreeDao freeDao = sqlSession.getMapper(FreeDao.class); */
+	
+	FreeDao freeDao = new MyBFreeDao();
+	Free fr = freeDao.getFree(_code);
+
 	pageContext.setAttribute("fr", fr);
 		
 %>
@@ -104,7 +116,11 @@
                                 </p>
                                 
                                 <p class="space-top-two text-center">
+<<<<<<< HEAD
                                 	<a href="noticeEdit.jsp?c=${n.code}">수정</a>
+=======
+                                	<a href="edit.jsp?c=${fr.code}">수정</a>
+>>>>>>> refs/remotes/origin/master
                                 </p>
 									
                                 <%-- <p class="space-top-two text-center">    

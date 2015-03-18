@@ -1,4 +1,42 @@
-﻿<!DOCTYPE html>
+﻿
+
+<%@page import="com.htmtennis.prj.model.Schedule"%>
+<%@page import="java.util.List"%>
+<%@page import="com.htmtennis.prj.dao.ScheduleDao"%>
+<%@page import="com.htmtennis.prj.dao.jdbc.JdbcScheduleDao"%>
+
+<%@page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+
+<%
+	int npage = 1;
+	String field = "TITLE";
+	String query = "";
+
+	String _page = request.getParameter("p");
+	String _field = request.getParameter("f");
+	String _query = request.getParameter("q");
+
+	if (_page != null && !_page.equals(""))
+		npage = Integer.parseInt(_page);
+	if (_field != null && !_field.equals(""))
+		field = _field;
+
+	if (_query != null && !_query.equals(""))
+		query = _query;
+
+	ScheduleDao scheduleDao = new JdbcScheduleDao();
+	List<Schedule> list = scheduleDao.getSchedules(npage, query, field);
+
+	pageContext.setAttribute("list", list);
+	pageContext.setAttribute("total", scheduleDao.getSize("", "TITLE"));
+%> 
+ 
+
+
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -17,85 +55,18 @@
 </head>
 
 <body>
-    <header id="header">
-        <!--  header part  -->
-        <div class="content-wrapper">
-             <h1 class="hidden">Header</h1>
-             <div class="logo">
-                <a href=""><img src="../../images/logo_s.png" alt="동아리로고"></a>
-                <p>Hansung Tennis Membership</p>
-            </div>
-
-            <section class="header-item-container">
-                <h2 class="hidden">머릿말</h2>
-                <nav id="member-menu">
-                    <h3 class="hidden">회원메뉴</h3>
-                    <ul class="clearfix">
-                        <li class="member-menu-item"><a class="member-menu-text" href="">홈</a></li>
-                        <li class="member-menu-item"><a class="member-menu-text" href="">로그인</a></li>
-                        <li class="member-menu-item"><a class="member-menu-text" href="">가입</a></li>
-                    </ul>
-                </nav>
-
-                <nav id="search-form">
-                    <h3 class="hidden">게시글검색폼</h3>
-                    <form>
-                        <fieldset>
-                            <input id="search-input" type="text" />
-                            <input id="search-button" type="submit" value="검색" />
-                        </fieldset>
-                    </form>
-                </nav>
-            </section>
 
 
-            <div class="header-slide-img">
-                <!--  image slide part  -->
-                <img id="slide-img" src="../../images/slide-img01.png" />
-            </div>
-
-
-
-
-        </div>
-
-    </header>
-
-
+<!-- header -->
+    <jsp:include page="../../inc/header.jsp"></jsp:include>
 
     <div id="body">
         <div class="content-wrapper clearfix">
-
-            <aside id="side">
-                <!--  aside menu part  -->
-                <!--<h2 class="hidden">Menu</h2>-->
-                <nav id="side-menu">
-                    <ul class="clearfix">
-                        <li class="side-menu-item"><a class="side-menu-text" href="">Notice</a></li>
-                        <li class="side-menu-item"><a class="side-menu-text" href="">Tennis</a></li>
-                       
-                         <li class="side-menu-item">
-                            <a class="side-menu-text" href="">Community</a>
-                            <ul>
-                                <li class="side-menu-detail"><a class="side-menu-text" href="">Free</a>
-                                <li class="side-menu-detail"><a class="side-menu-text" href="">Info</a>
-                            </ul>
-                        </li>
-
-                        <li class="side-menu-item">
-                            <a class="side-menu-text" href="">Gallery</a>
-                            <ul>
-                                <li class="side-menu-detail"><a class="side-menu-text" href="">Photo</a>
-                                <li class="side-menu-detail"><a class="side-menu-text" href="">Video</a>
-                            </ul>
-                        </li>
-
-                        <li class="side-menu-item"><a class="side-menu-text" href="">Schedule</a></li>
-                        <li class="side-menu-item"><a class="side-menu-text" href="">Link</a></li>
-                    </ul>
-                </nav>
-
-            </aside>
+        
+        	<!-- aside -->
+            <jsp:include page="../../inc/aside.jsp"></jsp:include>
+   
+   
 
 
             <main id="main">
@@ -198,79 +169,105 @@
 
 
                     <!--///////-->
+                    <div class="board">
                     <table id="day" width="400" height="100" style="table-layout:fixed">
-                        <tr>
-                            <th>순서</th>
-                            <th>일정</th>
-                            <th>일자</th>
+                       <thead>
+                        <tr class="board-row">
+                            <th class ="board-cell-th board-cell-width-60  text-center">순서</th>
+                            <th class ="board-cell-th board-cell-width-140  text-center">일정</th>
+                            <th class ="board-cell-th board-cell-width-200  text-center">일자</th>
                         </tr>
+                       </thead>
+                       
+                       
+                        <tbody>
+                        
+                        <c:forEach var="sch" items="${list}"> 
                         <tr>
-                            <td>1</td>
-                            <td>신정</td>
-                            <td>1월 1일</td>
+                        
+                        <td> ${sch.code}</td>
+                        <td><a class="board-list-item-text" href="view.jsp?c=${sch.code}"> ${sch.contents}</a></td>
+                        <td> ${sch.eventdate}</td>
+                        
+                        
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>정기연습</td>
-                            <td>1월 10일</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>정기연습</td>
-                            <td>1월 24일</td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>설날</td>
-                            <td>2월 19일</td>
-
-
-                        </tr>
-
-                        <tr>
-                            <td>5</td>
-                            <td>삼일절</td>
-                            <td>3월 1일</td>
-
-
-                        </tr>
-
+                    </c:forEach> 
+                        
+                      
+                       
+                       
+                        
+                        </tbody>
+                        
 
                     </table>
-
-
-                    <div>
-                        <!--<h3>현재페이지</h3>
-        <p>1/2 page</p>
-        <h3>페이지</h3>-->
-                        <p class="page-before-item"><a class="page-before-text" href="">이전</a></p>
-                        <ul>
-                            <li class="page-number"><a class="page-number-text" href="">1</a></li>
-                            <li class="page-number"><a class="page-number-text" href="">2</a></li>
-                            <li class="page-number"><a class="page-number-text" href="">3</a></li>
-                            <li class="page-number"><a class="page-number-text" href="">4</a></li>
-                            <li class="page-number"><a class="page-number-text" href="">5</a></li>
-                        </ul>
-                        <p class="page-after-item"><a class="page-after-text" href="">다음</a></p>
-                    </div>
+                 </div>
 
 
 
-                    <div>
-                        <form class="write-btn-item">
+
+               <%-- <div> 
+                         <!--<h3>현재페이지위치</h3>--> 
+                         <p id="page-list">1/5 page</p> 
+                     </div> 
+ 
+ 
+                     <div> 
+                         <!--<h3>페이지선택목록</h3>--> 
+                         <p><a class="page" href="list.jsp">이전</a></p> 
+                          
+                         <ul class="page" >
+                         
+                          
+                          
+                          
+                         <ui:pager total="${total}"/> 
+                         <p><a href="list.jsp">다음</a></p> 
+                     </div>  --%>
+
+
+                    <div id="main-search-form">
+                        <!--<h3>영상게시물 검색폼</h3>-->
+                        <form>
+                            <!-- <fieldset>
+                                <legend>영상검색필드</legend>
+                                <select>
+                                    <option>작성자</option>
+                                    <option>제목</option>
+                                    <option>본문</option>
+                                </select>
+
+                                <input class="search" type="text" name="query" />
+                                <input class="search" type="submit" value="검색" />
+
+                            </fieldset> -->
+                            
                             <fieldset>
-                                <!--<legend>글쓰기</legend>-->
-                                <input type="button" value="일정등록" onclick="location.href = ' edit.html'">
+                                                            
+                                <legend class="hidden">링크 검색 필드</legend>
+							<label for="field" class="hidden">검색분류</label> 
+								<select
+									class="search-field" name="f">
+									<option ${param.f=='writer' ? 'selected' : ""} value="writer">작성자</option>
+									<option ${param.f=='title' ? 'selected' : ""} value="title">제목</option>
+									<option ${param.f=='contents' ? 'selected' : ""} value="contents">본문</option>
+								</select> 
+                                    <input class="search" type="text" name="q" value=${param.q }></input>
+                                	<input class="search" type="submit" value="검색" />
                             </fieldset>
                         </form>
                     </div>
 
-                   
 
 
-
-
-
+                       <div>
+                        <form class="write-btn-item">
+                            <fieldset>
+                                <!--<legend>글쓰기</legend>-->
+                                <input type="button" value="일정등록" onclick="location.href = ' write.jsp'">
+                            </fieldset>
+                        </form>
+                    </div>
 
 
 
@@ -293,42 +290,10 @@
         </div>
     </div>
 
+    <!-- footer -->
+		<jsp:include page="../../inc/footer.jsp"></jsp:include>
 
 
-    <footer id="footer">
-        <!--  footer part  -->
-        <div class="content-wrapper clearfix">
-
-            <div id="logo-footer-container">
-                <h2><img src="../../images/logo_m.png" alt="동아리정보" /></h2>
-            </div>
-
-            <div id="company-info-container">
-                <div id="company-info">
-                    <h3 class="hidden">동아리정보</h3>
-                    <dl class="clearfix">
-                        <dt class="company-info-item item-title item-newline"> 주소</dt>
-                        <dd class="company-info-item item-data">서울특별시 성북구 삼선교로 16길 116</dd>
-                        <dt class="company-info-item item-title">연락처</dt>
-                        <dd class="company-info-item item-data">02-760-5528</dd>
-
-                        <dt class="company-info-item item-title item-newline">관리자메일</dt>
-                        <dd class="company-info-item item-data">oriole0120@naver.com</dd>
-                        <dt class="company-info-item item-title">회장</dt>
-                        <dd class="company-info-item item-data">###</dd>
-                        <dt class="company-info-item item-title">HTM</dt>
-                        <dd class="company-info-item item-data">[Hansung Tennis Membership]</dd>
-                    </dl>
-                </div>
-
-                <div id="copyright">
-                    <h3 class="hidden">저작권정보</h3>
-                    <p>Copyright@chanCompany 2015</p>
-                </div>
-            </div>
-        </div>
-
-    </footer>
-
+    
 </body>
 </html>

@@ -1,4 +1,7 @@
-﻿<%@page import="com.htmtennis.prj.model.Free"%>
+﻿<%@page import="com.htmtennis.prj.dao.mybatis.MyBFreeDao"%>
+<%@page import="com.htmtennis.prj.dao.mybatis.MyBatisMain"%>
+<%@page import="org.apache.ibatis.session.SqlSession"%>
+<%@page import="com.htmtennis.prj.model.Free"%>
 <%@page import="java.util.List"%>
 <%@page import="com.htmtennis.prj.dao.FreeDao"%>
 <%@page import="com.htmtennis.prj.dao.jdbc.JdbcFreeDao"%>
@@ -25,12 +28,13 @@
 	if(_query != null && !_query.equals(""))
 		query =_query;
 					
-			
-	FreeDao freeDao = new JdbcFreeDao();
+	SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
+	FreeDao freeDao = sqlSession.getMapper(FreeDao.class);
+	/* FreeDao freeDao = new JdbcFreeDao(); */
 	List<Free> list = freeDao.getFrees(npage, query, field);
 	
 	pageContext.setAttribute("list", list);
-	pageContext.setAttribute("total", freeDao.getSize(""));
+	pageContext.setAttribute("total", freeDao.getSize("", "TITLE"));
 %>
 
 
@@ -135,7 +139,7 @@
                         </table>
                     </div>
 
-                    		<div> 
+                    <div> 
                          <!--<h3>현재페이지위치</h3>--> 
                          <p id="page-list">1/5 page</p> 
                      </div> 
@@ -145,12 +149,14 @@
                          <!--<h3>페이지선택목록</h3>--> 
                          <p><a class="page" href="list.jsp">이전</a></p> 
                           
-                         <ul class="page"> 
+                         <ul class="page" >
+                         
+                          
                           
                           
                          <ui:pager total="${total}"/> 
                          <p><a href="list.jsp">다음</a></p> 
-                     </div> 
+                         </div> 
 
 
                     <div id="main-search-form">

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration  
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<!-- Type alias -->
+	<typeAliases>
+		<typeAlias alias="Photo" type="com.htmtennis.prj.model.Photo" />
+		<typeAlias alias="Video" type="com.htmtennis.prj.model.Video" />
+
+		<typeAlias alias="Court" type="com.htmtennis.prj.model.Court" />
+
+		<typeAlias alias="Free" type="com.htmtennis.prj.model.Free" />
+		<typeAlias alias="Information" type="com.htmtennis.prj.model.Information" />
+
+	</typeAliases>
+
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+				<property name="url" value="jdbc:sqlserver://win.newlecture.com:1433;databaseName=tennisdb" />
+				<property name="username" value="tennis" />
+				<property name="password" value="tennis89" />
+			</dataSource>
+		</environment>
+	</environments>
+
+	<!-- UserMap.xml 등록 -->
+	<mappers>
+		<!-- <mapper resource="com/newlecture/jspprj/dao/mybatis/NoticeDao.xml" /> -->
+		<mapper class="com.htmtennis.prj.dao.PhotoDao"/>
+		<mapper class="com.htmtennis.prj.dao.VideoDao"/>
+
+		<mapper class="com.htmtennis.prj.dao.CourtDao"/>
+		<mapper class="com.htmtennis.prj.dao.ShopDao"/>
+
+		<mapper class="com.htmtennis.prj.dao.FreeDao"/>
+		<mapper class="com.htmtennis.prj.dao.InformationDao"/>
+
+	</mappers>
+</configuration>  

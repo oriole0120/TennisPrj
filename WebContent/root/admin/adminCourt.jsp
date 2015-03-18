@@ -1,4 +1,6 @@
 ﻿
+<%@page import="com.htmtennis.prj.dao.mybatis.MyBatisMain"%>
+<%@page import="org.apache.ibatis.session.SqlSession"%>
 <%@page import="com.htmtennis.prj.model.Court"%>
 <%@page import="java.util.List"%>
 <%@page import="com.htmtennis.prj.dao.jdbc.JdbcCourtDao"%>
@@ -27,11 +29,13 @@
 	if (_query != null && !_query.equals(""))
 		query = _query;
 
-	CourtDao courtDao = new JdbcCourtDao();
+	SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
+	CourtDao courtDao = sqlSession.getMapper(CourtDao.class);
+ 	
 	List<Court> list = courtDao.getCourts(npage, query, field);
-
+	
 	pageContext.setAttribute("list", list);
-	pageContext.setAttribute("total", courtDao.getSize(""));
+	pageContext.setAttribute("total", courtDao.getSize("", "name"));
 %>
 
 
@@ -108,7 +112,7 @@
 							<tr class="board-row">
 								<th class="board-cell board-cell-width-60  text-center">${ct.code }</th>
 								<th class="board-cell board-cell-width-140  text-center"><a
-									href="courtDetail.jsp?c=${ct.code}">${ct.name}</a></th>
+									href="adminCourtDetail.jsp?c=${ct.code}">${ct.name}</a></th>
 								<th class="board-cell board-cell-width-270  text-center">${ct.address}</th>
 								<th class="board-cell board-cell-width-100  text-center">${ct.phoneNumber}</th>
 								<th class="board-cell-th board-cell-width-100 text-center">${ct.site}</th>

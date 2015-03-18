@@ -1,21 +1,20 @@
-﻿<%@page import="com.htmtennis.prj.dao.PhotoDao"%>
+﻿<%@page import="com.htmtennis.prj.dao.mybatis.MyBVideoDao"%>
+<%@page import="com.htmtennis.prj.dao.mybatis.MyBatisMain"%>
 <%@page import="org.apache.ibatis.session.SqlSession"%>
-<%-- <%@page import="com.htmtennis.prj.dao.mybatis.MyBatisMain"%> --%>
-
-<%@page import="com.htmtennis.prj.dao.jdbc.JdbcPhotoDao"%>
-
-<%@page import="com.htmtennis.prj.model.Photo"%>
+<%@page import="com.htmtennis.prj.dao.VideoDao"%>
+<%@page import="com.htmtennis.prj.model.Video"%>
 
 <%@page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	
 <%	
-/* 	String _code = request.getParameter("c");
-	SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
-	PhotoDao photoDao = sqlSession.getMapper(PhotoDao.class);
-	Photo ph = photoDao.getPhoto(_code);
+ 	String _code = request.getParameter("c");
+
+	VideoDao videoDao = new MyBVideoDao();
 	
-	pageContext.setAttribute("ph", ph); */
+	Video v = videoDao.getVideo(_code);
+	pageContext.setAttribute("v", v);
+	
 %>
 
 <!DOCTYPE html>
@@ -29,15 +28,12 @@
     <script>
     	function init(){
     		var btnDel=document.getElementById("btn-del");
-    		btnDelPop.onclick=btnDelPopClick;
+    		btnDel.onclick=btnDelClick;
     	}
     	function btnDelClick(){
-    		if(confirm( '삭제 하시겠습니까?' )){
-    			
+    		if(!confirm( '삭제 하시겠습니까?' )){
+    			return false;
     		}
-    		else{
-    			
-    		}	
     	}
     	window.onload=init;
     </script>
@@ -57,59 +53,59 @@
             <main id="main">
                <!--  main content part  -->
                 <div id="main-title-bar">
-                    <p> >>Photo </p>
+                    <p> >>Video </p>
                 </div>
 
                 <div>
                     <article class="space-top-l">
 
-                        <div class="photo-pic-box">
-                            <div class="photo-prev-btn">
+                        <div class="video-pic-box">
+                            <div class="video-prev-btn">
                                 <img class="btn-slide-prev" src="../images/btn-prev.png" />
                             </div>
-                            <div class="photo-pic-clipper">
+                            <div class="video-pic-clipper">
 
-                                <ul class="photo-pic-list">
-                                    <li class="photo-pic-item">
+                                <ul class="video-pic-list">
+                                    <li class="video-pic-item">
                                         <a href="">
-                                            <img class="photo-pic" src="../images/pho1.jpg" />
+                                            <img class="video-pic" src="../images/pho1.jpg" />
                                         </a>
                                     </li>
-                                    <li class="photo-pic-item">
+                                    <li class="video-pic-item">
                                         <a href="">
-                                            <img class="photo-pic" src="../images/pho2.jpg" />
+                                            <img class="video-pic" src="../images/pho2.jpg" />
                                         </a>
                                     </li>
-                                    <li class="photo-pic-item">
+                                    <li class="video-pic-item">
                                         <a href="">
-                                            <img class="photo-pic" src="../images/pho3.jpg" />
+                                            <img class="video-pic" src="../images/pho3.jpg" />
                                         </a>
                                     </li>
-                                    <li class="photo-pic-item">
+                                    <li class="video-pic-item">
                                         <a href="">
-                                            <img class="photo-pic" src="../images/pho1.jpg" />
+                                            <img class="video-pic" src="../images/pho1.jpg" />
                                         </a>
                                     </li>
-                                    <li class="photo-pic-item">
+                                    <li class="video-pic-item">
                                         <a href="">
-                                            <img class="photo-pic" src="../images/pho2.jpg" />
+                                            <img class="video-pic" src="../images/pho2.jpg" />
                                         </a>
                                     </li>
-                                    <li class="photo-pic-item">
+                                    <li class="video-pic-item">
                                         <a href="">
-                                            <img class="photo-pic" src="../images/pho3.jpg" />
+                                            <img class="video-pic" src="../images/pho3.jpg" />
                                         </a>
                                     </li>
-                                    <li class="photo-pic-item">
+                                    <li class="video-pic-item">
                                         <a href="">
-                                            <img class="photo-pic" src="../images/pho1.jpg" />
+                                            <img class="video-pic" src="../images/pho1.jpg" />
                                         </a>
                                     </li>
                                 </ul>
 
                             </div>
 
-                            <div class="photo-next-btn">
+                            <div class="video-next-btn">
                                 <img class="btn-slide-next" src="../images/btn-next.png" />
                             </div>
                         </div>
@@ -117,23 +113,23 @@
                         <article class="detail">
                             <dl>
                             	<dt class="detail-cell title newrow">제목</dt>
-		                        <dd class="detail-cell text-highlight">${ph.title}</dd>
+		                        <dd class="detail-cell text-highlight">${v.title}</dd>
 		                        <dt class="detail-cell title newrow">작성일</dt>
-		                        <dd class="detail-cell">${ph.regdate}</dd>
+		                        <dd class="detail-cell">${v.regdate}</dd>
 		                        <dt class="detail-cell title newrow">작성자</dt>
-		                        <dd class="detail-cell half-cell">${ph.writer}</dd>
+		                        <dd class="detail-cell half-cell">${v.writer}</dd>
 		                        <dt class="detail-cell title">조회수</dt>
-		                        <dd class="detail-cell half-cell">${ph.hit}</dd>
+		                        <dd class="detail-cell half-cell">${v.hit}</dd>
 		                        <dt class="detail-cell title newrow">첨부파일</dt>
 		                        <dd class="detail-cell"></dd>
 		                        <dt class="hidden">내용</dt>
-		                        <dd class="content newrow">${ph.contents}</dd>
+		                        <dd class="content newrow">${v.contents}</dd>
                             </dl>
 
                             <p class="space-top text-center "> <!-- btn btn-list -->
                                 <a id="btn-list" href="list.jsp">목록</a>
-                                <a id="btn-edit" href="edit.jsp?c=${ph.code}">수정</a>
-                                <a id="btn-del" href="delProc.jsp?c=${ph.code}">삭제</a>
+                                <a id="btn-edit" href="edit.jsp?c=${v.code}">수정</a>
+                                <a id="btn-del" href="delProc.jsp?c=${v.code}">삭제</a>
                             </p>
 
                         </div>

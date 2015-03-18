@@ -1,6 +1,5 @@
 package com.htmtennis.prj.model;
 
-
 import java.util.Date;
 
 public class Photo {
@@ -13,7 +12,6 @@ public class Photo {
 	private int hit;
 	private int thumb;
 	private String authority;
-
 	
 	
 	public String getCode() {

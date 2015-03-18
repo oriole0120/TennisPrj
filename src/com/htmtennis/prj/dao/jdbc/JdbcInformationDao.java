@@ -118,7 +118,7 @@ public class JdbcInformationDao implements InformationDao {
 		return null;
 	}
 
-	@Override
+/*	@Override
 	public List<Information> getInformations(int page, String query) {
 
 		return getInformations(page, query, "Title");
@@ -129,7 +129,7 @@ public class JdbcInformationDao implements InformationDao {
 
 		return getInformations(page, "");
 	}
-
+*/
 	@Override
 	public int insert(Information information) {
 		String sql1 = "SELECT ISNULL(MAX(CAST(CODE AS INT)), 0)+1 CODE FROM INFORMATIONBOARDS";
@@ -273,11 +273,11 @@ public class JdbcInformationDao implements InformationDao {
 		return 0;
 	}
 
-	@Override
+/*	@Override
 	public int getSize(String query) {
 
 		return getSize(query, "TITLE");
-	}
+	}*/
 
 	@Override
 	public String lastCode() {

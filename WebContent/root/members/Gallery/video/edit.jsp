@@ -1,20 +1,19 @@
-﻿<%@page import="com.htmtennis.prj.dao.jdbc.JdbcPhotoDao"%>
-<%@page import="com.htmtennis.prj.model.Photo"%>
-<%@page import="com.htmtennis.prj.dao.PhotoDao"%>
-<%-- <%@page import="org.apache.ibatis.session.SqlSession"%>
-<%@page import="com.htmtennis.prj.dao.mybatis.MyBatisMain"%> --%>
-
+﻿<%@page import="com.htmtennis.prj.dao.mybatis.MyBVideoDao"%>
+<%@page import="com.htmtennis.prj.dao.mybatis.MyBatisMain"%>
+<%@page import="org.apache.ibatis.session.SqlSession"%>
+<%@page import="com.htmtennis.prj.model.Video"%>
+<%@page import="com.htmtennis.prj.dao.VideoDao"%>
 
 <%@page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	
 <%
-	/* SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
-	PhotoDao photoDao = sqlSession.getMapper(PhotoDao.class); */
-	
 	String _code = request.getParameter("c");
-	Photo ph = new JdbcPhotoDao().getPhoto(_code);
-	pageContext.setAttribute("ph", ph);
+	
+	VideoDao videoDao = new MyBVideoDao();
+	
+	Video v = videoDao.getVideo(_code);
+	pageContext.setAttribute("v", v);
 %>
 
 	
@@ -50,11 +49,11 @@
                     <h1 class="hidden">본문 작성</h1>
                     
                     <div id="main-title-bar">
-    	                <p> >>Photo </p>
+    	                <p> >>Video </p>
 	                </div>
         
                     
-                    <form id="text-area" action="photoRegProc.jsp" method="post" enctype="multipart/form-data">
+                    <form id="text-area" action="videoRegProc.jsp" method="post" enctype="multipart/form-data">
                     	<fieldset>
 	                    	<legend class="hidden">본문입력필드</legend>
 	                    	

@@ -7,35 +7,40 @@
 <%-- ${urlTokens[0]} --%>
 
     	<ul class="pager-list">
+    	 
+               <%--     <new:for var="i" count="5">
+                        <c:forEach var="i" begin="1" end="5">
+                        <c:if test="${empty param.page}"> --%>
                         
-                        <%-- <new:for var="i" count="5"> --%>
-                        <%-- <c:forEach var="i" begin="1" end="5"> --%>
-                        <%-- <c:if test="${empty param.page}"> --%>
-						<c:set var="page" value="1"></c:set>
-						   <c:if test="${not empty param.page}">
-						      <c:set var="page" value="${param.page}"></c:set>
-						   </c:if>
+                        
+                        <c:if test="${empty param.p}">
+                        	<c:set var="page" value="1"></c:set>
+                        </c:if>
+						<c:if test="${not empty param.p}">
+						     <c:set var="page" value="${param.p}"></c:set>
+						</c:if>
 						
-							<c:set var="startNum" value="${page-(page-1)%5}"></c:set>
+							<c:set var="startNum" value="${page-(page-1)%5}" ></c:set>
 						
-						   <c:forEach begin="${startNum}" end="${startNum+4}" var="i">
-						   
-						   
-						      <c:if test="${page == i}">
-						         <li class="pager-item"><a class="text-highlight"
-						            href="list.jsp?page=${i}">${i}</a></li>
+						   <c:forEach begin="${startNum}" end="${startNum+4}" var="i" >
+
+						<c:if test="${i <= f:lastNum(total) }">
+							<c:if test="${page == i}">
+						         <li class="page"><a class="text-highlight" 
+						            href="list.jsp?page=${i}">${i}</a></li>      
+
+						      	</c:if>
+			
+						      	<c:if test="${page != i}" >
+						        	 <li class="page"><a  href="list.jsp?p=${i}&q=${param.q}&f=${param.f}">${i}</a></li>
+						      		</c:if>
 						      </c:if>
-						      <c:if test="${page != i}">
-						         <li class="pager-item"><a href="list.jsp?p=${i}&q=${param.q}&f=${param.f}">${i}</a></li>
-						      </c:if>
-						      
 						      <c:if test="${i>f:lastNum(total)}">
 						      	<c:if test="${page != i}">
-						         <li class="pager-item">${i}</li>
+						         <li class="page" >${i}</li>
+						         
 						      	</c:if>
 						      </c:if>
 						     
 						   </c:forEach>
 						</ul>
-                     	
-                     	

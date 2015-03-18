@@ -30,7 +30,7 @@
 	                    	
 	                    	<dl>
 		                        <dt class="detail-cell-commu title-free newrow">제목</dt>
-		                        <dd class="detail-cell-commu text-highlight"><input type="text" name="title" /></dd>
+		                        <dd class="detail-cell-commu text-highlight"><input type="text" name="title" /></dd> 
 		                        
 		                        <dt class="hidden">내용</dt>
 		                        <dd class="content newrow">

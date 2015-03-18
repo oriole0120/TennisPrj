@@ -16,7 +16,7 @@
                             <a class="side-menu-text" href="">Community</a>
                             <ul>
                                 <li class="side-menu-detail"><a class="side-menu-text" href="${ctxName}/root/members/Community/freeboard/list.jsp">Free</a>
-                                <li class="side-menu-detail"><a class="side-menu-text" href="${ctxName}/root/members/Community/infomation/list.jsp">Info</a>
+                                <li class="side-menu-detail"><a class="side-menu-text" href="${ctxName}/root/members/Community/information/list.jsp">Info</a>
                             </ul>
                         </li>
 

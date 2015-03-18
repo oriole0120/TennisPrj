@@ -1,7 +1,6 @@
-﻿<%@page import="org.apache.ibatis.session.SqlSession"%>
-<%-- <%@page import="com.htmtennis.prj.dao.mybatis.MyBPhotoDao"%>
-<%@page import="com.htmtennis.prj.dao.mybatis.MyBatisMain"%> --%>
-<%@page import="com.htmtennis.prj.dao.jdbc.JdbcPhotoDao"%>
+﻿<%@page import="com.htmtennis.prj.dao.mybatis.MyBPhotoDao"%>
+<%@page import="com.htmtennis.prj.dao.mybatis.MyBatisMain"%>
+<%@page import="org.apache.ibatis.session.SqlSession"%>
 <%@page import="com.htmtennis.prj.dao.PhotoDao"%>
 <%@page import="com.htmtennis.prj.model.Photo"%>
 <%@page import="java.util.List"%>
@@ -30,11 +29,7 @@
 	if(_field!= null && !_field.equals(""))
 		nfield = _field;
 	
- 	PhotoDao photoDao = new JdbcPhotoDao();
- 	
-	/* SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
-	PhotoDao photoDao = sqlSession.getMapper(PhotoDao.class);  */
- 	
+	PhotoDao photoDao = new MyBPhotoDao();
 	List<Photo> list = photoDao.getPhotos(npage, nquery, nfield);
 	
 	pageContext.setAttribute("list", list);
@@ -42,28 +37,7 @@
 	
 %>
 
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title></title>
-
-    <link href="../css/bind.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="../js/modernizr.js"></script>
-</head>
-
-<body>
-    <!-- header -->
-    <jsp:include page="../../../inc/header.jsp"></jsp:include>
-
-    <div id="body">
-        <div class="content-wrapper clearfix">
-        
-        	<!-- aside -->
-            <jsp:include page="../../../inc/aside.jsp"></jsp:include>
-
-
-            <main id="main">
+<main id="main">
                 <!--  main content part  -->
                 <div id="main-title-bar">
                     <p> >>Photo </p>
@@ -78,33 +52,37 @@
                 <div id="table">
                     <table>
                         <tbody>
+                        
+                        	<c:forEach begin="0" end="3" var="i" >
                             <tr class="table-list-row">
                             
                             	<!-- 글개수만큼 리스트를 갱신 -->
-	                            <c:forEach var="ph"  items="${list}">
-	                           <%--  <c:forEach begin=0> --%>
+                            	
+	                            <c:forEach begin="0" end="3" var="j" >
+	                           
 	                            	<td class="table-cell">
 	                                    <table>
 	                                        <tbody>
 	                                            <tr>
 	                                                <td>
-	                                                    <a href="view.jsp?c=${ph.code}"><img class="cell-img" src="../images/delpo_1.jpg" /></a>
+	                                                    <a href="view.jsp?c=${list[4*i+j].code}"><img class="cell-img" src="../images/delpo_1.jpg" /></a>
 	                                                </td>
 	                                            </tr>
 	                                            <tr class="cell-margin"></tr>
 	                                            <tr>
-	                                                <td><a class="cell-title" href="view.jsp?c=${ph.code}">${ph.title}</a></td>
+	                                                <td><a class="cell-title" href="view.jsp?c=${list[4*i+j].code}">${list[4*i+j].title}</a></td>
 	                                            </tr>
 	                                        </tbody>
-	                                    </table>
+	                                    </table>	
 	                                </td>
 	                            </c:forEach>
-
                             </tr>
+                            </c:forEach>                            
                         </tbody>
                     </table>
                 </div>
                 
+                <div>
                 <form action="list.jsp" method="get">
                   <fieldset>
 
@@ -120,15 +98,6 @@
                            <input class="btn btn-search" type="submit" value="검색" />
                   </fieldset>
                </form>
-               
+               </div>
                
              </main>
-        </div>
-    </div>
-
-
-		<!-- footer -->
-		<jsp:include page="../../../inc/footer.jsp"></jsp:include>
-
-	</body>
-</html>

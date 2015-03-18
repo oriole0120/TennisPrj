@@ -9,7 +9,10 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%
-	MemberDao joinDao = new JdbcMemberDao();
+
+	MemberDao memberDao = new JdbcMemberDao();
+
+	MemberDao MemberDao = new JdbcMemberDao();
 
 	/* int npage=1;
 	String Mid = request.getParameter("mid"); */
@@ -37,6 +40,7 @@
 	pageContext.setAttribute("list", list);
 	pageContext.setAttribute("total", joinDao.getSize(""));  */
 	/* response.sendRedirect("join.jsp"); */
+
 %>
 
 
@@ -148,9 +152,11 @@
                                 </tr>
 
                             </table>
-                            <input type="submit" />
-                            <!-- <button type="submit" class="md-close">완료</button> -->
-                            <button><a href="../Community/freeboard/list.jsp">취소</a></button>
+                           
+                            <div class="md-close">
+                            	<button type="submit" >완료</button>
+                            	<a href="../Community/freeboard/list.jsp"><button>취소</button></a>
+                            </div>
                             </form>
                         </div>
                     </div>
@@ -170,7 +176,7 @@
                 // this is important for IEs
                 var polyfilter_scriptpath = '/js/';
             </script>
-            <script src="../../js/cssParser.js"></script>
-            <script src="../../js/css-filters-polyfill.js"></script>-->
+           <!--  <script src="../../js/cssParser.js"></script>
+            <script src="../../js/css-filters-polyfill.js"></script> -->
 </body>
 </html>
