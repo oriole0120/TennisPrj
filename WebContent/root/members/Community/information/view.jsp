@@ -15,6 +15,8 @@
 	Information inf = informationDao.getInformation(_code);
 	
 	pageContext.setAttribute("inf", inf);
+	pageContext.setAttribute("prev", informationDao.prevInformation(_code));
+	pageContext.setAttribute("next", informationDao.nextInformation(_code));
 		
 %>
 <!DOCTYPE html>
@@ -92,11 +94,11 @@
                             </dl>
                             <div id="space-top">
                                 <p class="space-top text-center">
-                                    <a class="btn btn-list" href="view.jsp">이전글</a>
+                                    <a class="btn btn-list" href="view.jsp?c=${prev.code}">이전글</a>
                                 </p>
 
                                 <p class="space-top text-center">
-                                    <a class="btn btn-list" href="view.jsp">다음글</a>                                                  			    
+                                    <a class="btn btn-list" href="view.jsp?c=${next.code}">다음글</a>                                                  			    
                                 </p>	
                             </div>
                             

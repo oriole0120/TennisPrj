@@ -33,13 +33,21 @@ public class MyBInformationDao implements InformationDao {
 
 	@Override
 	public Information prevInformation(String curCode) {
-		return null;
+		SqlSessionFactory factory = MyBatisMain.getSqlSessionFactory();
+		SqlSession sqlSession = factory.openSession(true);
+		InformationDao informationDao = sqlSession.getMapper(InformationDao.class);
+		
+		return informationDao.prevInformation(curCode);
 		
 	}
 
 	@Override
 	public Information nextInformation(String curCode) {
-		return null;
+		SqlSessionFactory factory = MyBatisMain.getSqlSessionFactory();
+		SqlSession sqlSession = factory.openSession(true);
+		InformationDao informationDao = sqlSession.getMapper(InformationDao.class);
+		
+		return informationDao.nextInformation(curCode);
 		
 	}
 
@@ -65,6 +73,12 @@ public class MyBInformationDao implements InformationDao {
 
 	@Override
 	public int insert(Information information) {
+		SqlSessionFactory factory = MyBatisMain.getSqlSessionFactory();
+		SqlSession sqlSession = factory.openSession(true);
+		InformationDao informationDao = sqlSession.getMapper(InformationDao.class);
+		
+		informationDao.insert(information);
+		
 		return 0;
 		
 	}

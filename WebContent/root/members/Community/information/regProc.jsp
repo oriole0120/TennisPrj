@@ -1,4 +1,5 @@
 
+<%@page import="com.htmtennis.prj.dao.mybatis.MyBInformationDao"%>
 <%@page import="com.htmtennis.prj.dao.jdbc.JdbcInformationFileDao"%>
 <%@page import="com.htmtennis.prj.dao.InformationFileDao"%>
 <%@page import="com.htmtennis.prj.model.InformationFile"%>
@@ -17,15 +18,15 @@
 	String path = ctx.getRealPath("/root/members/Community/information/upload");
 	out.print(path + "<br />");
 
-	MultipartRequest req = new MultipartRequest(request
+	/* MultipartRequest req = new MultipartRequest(request
 							, path
 							, 1024 * 1024 * 10
 							, "UTF-8"
-							, new DefaultFileRenamePolicy());
+							, new DefaultFileRenamePolicy()); */
 
-	String title = req.getParameter("title");
-	String filename = req.getFilesystemName("file");
-	String content = req.getParameter("content");
+	String title = request.getParameter("title");
+	/* String filename = request.getFilesystemName("file"); */
+	String content = request.getParameter("content");
 	
 	/* out.print(path + "<br />");
 	out.print(path + "<br />");
@@ -42,17 +43,18 @@
 
 	/* SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true); */
 		
-	InformationDao informationDao = new JdbcInformationDao();
+	/* InformationDao informationDao = new JdbcInformationDao(); */
+	InformationDao informationDao = new MyBInformationDao();
 	informationDao.insert(inf);
 
-	 if (req.getFile("file") != null) {
+	 /* if (request.getFile("file") != null) {
 
 		String informationCode = informationDao.lastCode();
 
 		InformationFile informationFile = new InformationFile();
 		
-		/* informationFile.setFilename(filename);
-		informationFile.setInformationcode(informationCode); */
+		informationFile.setFilename(filename);
+		informationFile.setInformationcode(informationCode);
 		
 		informationFile.setFilename(filename);
 		informationFile.setFilesrc("");
@@ -60,7 +62,7 @@
 
 		InformationFileDao fileDao = new JdbcInformationFileDao();
 		fileDao.insert(informationFile);
-	}
+	} */
 	//목록페이지로 이동
 	response.sendRedirect("list.jsp");
 %>	

@@ -16,12 +16,12 @@ public interface InformationDao {
 	public Information getInformation(String code);
 	
 	@Select("SELECT TOP 1 * FROM INFORMATIONBOARDS "
-			+ "WHERE REGDATE &gt; (SELECT REGDATE FROM INFORMATIONBOARDS WHERE CODE = #{code}) "
+			+ "WHERE REGDATE > (SELECT REGDATE FROM INFORMATIONBOARDS WHERE CODE = #{curCode}) "
 			+ "ORDER BY REGDATE ASC")
 	public Information prevInformation(String curCode);
 	
 	@Select("SELECT TOP 1 * FROM INFORMATIONBOARDS "
-			+ "WHERE REGDATE &lt; (SELECT REGDATE FROM INFORMATIONBOARDS WHERE CODE = #{code}) "
+			+ "WHERE REGDATE < (SELECT REGDATE FROM INFORMATIONBOARDS WHERE CODE = #{curCode}) "
 			+ "ORDER BY REGDATE DESC")
 	public Information nextInformation(String curCode);
 	
