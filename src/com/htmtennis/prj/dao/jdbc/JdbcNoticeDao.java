@@ -279,7 +279,7 @@ public class JdbcNoticeDao implements NoticeDao {
 	
 	
 	
-	@Override
+/*	@Override
 	public List<Notice> getNotices(int page, String query) {
 		
 		return getNotices(page, query, "Title");
@@ -290,7 +290,7 @@ public class JdbcNoticeDao implements NoticeDao {
 		
 		return getNotices(page, "");
 	}
-
+*/
 	
 	
 	
@@ -466,13 +466,13 @@ public class JdbcNoticeDao implements NoticeDao {
 		return 0;
 	}
 
-	@Override
+	/*@Override
 	public int getSize(String query) {
 		
 		return getSize(query, "TITLE");
 	}
 	
-	
+	*/
 	
 	
 	@Override
