@@ -1,4 +1,5 @@
-﻿<%@page import="com.htmtennis.prj.dao.mybatis.MyBatisMain"%>
+﻿<%@page import="com.htmtennis.prj.dao.mybatis.MyBInformationDao"%>
+<%@page import="com.htmtennis.prj.dao.mybatis.MyBatisMain"%>
 <%@page import="org.apache.ibatis.session.SqlSession"%>
 <%@page import="com.htmtennis.prj.model.Information"%>
 <%@page import="java.util.List"%>
@@ -30,8 +31,7 @@
 	
 	SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
 	InformationDao infoDao = sqlSession.getMapper(InformationDao.class);
-					
-			
+
 	/* InformationDao infoDao = new JdbcInformationDao(); */
 	List<Information> list = infoDao.getInformations(npage, query, field);
 	

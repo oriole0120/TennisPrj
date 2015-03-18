@@ -11,9 +11,23 @@ import com.htmtennis.prj.model.Information;
 
 public class MyBInformationDao implements InformationDao {
 
+	/*private SqlSessionFactory factory;
+	private SqlSession sqlSession;
+	private InformationDao informationDao;
+	
+	private void settingSession() {
+		SqlSessionFactory factory = MyBatisMain.getSqlSessionFactory();
+		SqlSession sqlSession = factory.openSession(true);
+		InformationDao informationDao = sqlSession.getMapper(InformationDao.class);
+	}*/
+	
 	@Override
 	public Information getInformation(String code) {
-		return null;
+		SqlSessionFactory factory = MyBatisMain.getSqlSessionFactory();
+		SqlSession sqlSession = factory.openSession(true);
+		InformationDao informationDao = sqlSession.getMapper(InformationDao.class);
+		
+		return informationDao.getInformation(code);
 		
 	}
 
@@ -33,11 +47,7 @@ public class MyBInformationDao implements InformationDao {
 	public List<Information> getInformations(int page, String query,
 			String field) {
 		
-		SqlSessionFactory factory = MyBatisMain.getSqlSessionFactory();
-		SqlSession sqlSession = factory.openSession(true);
-		InformationDao informationDao = sqlSession.getMapper(InformationDao.class);
-		
-		return informationDao.getInformations(page, query, field);
+		return null;
 		
 	}
 
@@ -67,6 +77,12 @@ public class MyBInformationDao implements InformationDao {
 
 	@Override
 	public int delete(String code) {
+		SqlSessionFactory factory = MyBatisMain.getSqlSessionFactory();
+		SqlSession sqlSession = factory.openSession(true);
+		InformationDao informationDao = sqlSession.getMapper(InformationDao.class);
+		
+		informationDao.delete(code);
+		
 		return 0;
 		
 	}

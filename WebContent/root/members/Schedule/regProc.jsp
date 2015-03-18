@@ -1,14 +1,15 @@
 
-<%@page import="com.htmtennis.prj.dao.jdbc.jdbcNoticeFileDao"%>
-<%@page import="com.htmtennis.prj.dao.NoticeFileDao"%>
-<%@page import="com.htmtennis.prj.model.NoticeFile"%>
-<%@page import="com.htmtennis.prj.dao.NoticeDao"%>
-<%@page import="com.htmtennis.prj.dao.jdbc.JdbcNoticeDao"%>
-<%@page import="com.htmtennis.prj.model.Notice"%>
-<%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
-<%@page import="com.oreilly.servlet.MultipartRequest"%>
+
 
 <%-- <%@page import="com.htmtennis.prj.dao.mybatis.MyBatisMain"%> --%>
+<%@page import="com.htmtennis.prj.dao.jdbc.JdbcScheduleFileDao"%>
+<%@page import="com.htmtennis.prj.dao.ScheduleFileDao"%>
+<%@page import="com.htmtennis.prj.model.ScheduleFile"%>
+<%@page import="com.htmtennis.prj.dao.jdbc.JdbcScheduleDao"%>
+<%@page import="com.htmtennis.prj.dao.ScheduleDao"%>
+<%@page import="com.htmtennis.prj.model.Schedule"%>
+<%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
+<%@page import="com.oreilly.servlet.MultipartRequest"%>
 <%@page import="org.apache.ibatis.session.SqlSession"%>
 
 <%@page language="java" contentType="text/html; charset=UTF-8"
@@ -16,7 +17,7 @@
 	
 <%
 	ServletContext ctx = request.getServletContext();
-	String path = ctx.getRealPath("/root/members/Notice/upload");
+	String path = ctx.getRealPath("/root/members/Schedule/upload");
 	out.print(path + "<br />");
 
 	MultipartRequest req = new MultipartRequest(request
@@ -26,18 +27,20 @@
 							, new DefaultFileRenamePolicy());
 
 	String title = req.getParameter("title");
-	String noticename = req.getFilesystemName("file");
+	String schedulename = req.getFilesystemName("file");
 	String content = req.getParameter("content");
+	String eventdate = req.getParameter("eventdate");
 	
 	/* out.print(path + "<br />");
 	out.print(path + "<br />");
 	out.print(path + "<br />"); */
 
-	Notice n = new Notice();
+	Schedule s = new Schedule();
 	
-	n.setTitle(title);
-	n.setWriter("admin");
-	n.setContents(content);
+	s.setTitle(title);
+	s.setWriter("admin");
+	s.setContents(content);
+	s.setEventdate(eventdate);
 	
 	/* if(filename)
 		free.setFileName();  */
@@ -45,23 +48,24 @@
 	/* SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true); */
 		
 	
-	NoticeDao noticeDao = new JdbcNoticeDao();
-	noticeDao.insert(n);
+	ScheduleDao scheduleDao = new JdbcScheduleDao();
+	scheduleDao.insert(s);
 
 	 if (req.getFile("file") != null) {
 
-		 String noticecode = noticeDao.lastCode();
+		 String Schedulecode = scheduleDao.lastCode();
 		 
-		 NoticeFile noticeFile = new NoticeFile();
+		 ScheduleFile scheduleFile = new ScheduleFile();
 		 
-		    noticeFile.setNoticename(noticename);
-			noticeFile.setNoticecode(noticecode);
+		 scheduleFile.setSchedulename(schedulename);
+		 scheduleFile.setSchedulecode(Schedulecode);
+		 //scheduleFile.setSchedulevent(schedulevent);
 			
-			NoticeFileDao fileDao = new jdbcNoticeFileDao();
-			fileDao.insert(noticeFile);	
+		 ScheduleFileDao fileDao = new JdbcScheduleFileDao();
+			fileDao.insert(scheduleFile);
 		 
 	}
-	
+	 
 	
 	
 

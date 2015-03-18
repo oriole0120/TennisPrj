@@ -186,8 +186,8 @@
                         <tr>
                         
                         <td> ${sch.code}</td>
-                        <td> ${sch.contents}</td>
-                        <td> ${sch.regdate}</td>
+                        <td><a class="board-list-item-text" href="view.jsp?c=${sch.code}"> ${sch.contents}</a></td>
+                        <td> ${sch.eventdate}</td>
                         
                         
                         </tr>

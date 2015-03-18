@@ -210,7 +210,7 @@ public class JdbcScheduleDao implements ScheduleDao {
 
 			st.setString(1, code);
 			st.setString(2, "admin");
-			st.setString(3, "2015-03-01");
+			st.setString(3, schedule.getEventdate());
 			st.setString(4, schedule.getTitle());
 			st.setString(5, schedule.getContents());
 

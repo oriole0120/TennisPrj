@@ -6,49 +6,48 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.htmtennis.prj.dao.CourtDao;
-import com.htmtennis.prj.dao.PhotoDao;
-import com.htmtennis.prj.model.Court;
-import com.htmtennis.prj.model.Photo;
+import com.htmtennis.prj.dao.ShopDao;
+import com.htmtennis.prj.model.Shop;
 
-public class MyBCourtDao implements CourtDao {
+public class MyBShopDao implements ShopDao {
 
 	@Override
-	public Court getCourt(String code) {
+	public Shop getShop(String code) {
 		return null;
 		
 	}
 
 	@Override
-	public List<Court> getCourts(int page, String query, String field) {
+	public List<Shop> getShops(int page, String query, String field) {
 		
 			SqlSessionFactory factory = MyBatisMain.getSqlSessionFactory();
 			SqlSession sqlSession = factory.openSession(true);
-			CourtDao courtDao = sqlSession.getMapper(CourtDao.class);
+			ShopDao shopDao = sqlSession.getMapper(ShopDao.class);
 			
-			return courtDao.getCourts(page, query, field);
+			return shopDao.getShops(page, query, field);
 		
 	}
 
 	/*@Override
-	public List<Court> getCourts(int page, String query) {
+	public List<Shop> getShops(int page, String query) {
 		return null;
 		
 	}
 
 	@Override
-	public List<Court> getCourts(int page) {
+	public List<Shop> getShops(int page) {
 		return null;
 		
 	}*/
 
 	@Override
-	public int insert(Court court) {
+	public int insert(Shop shop) {
 		return 0;
 		
 	}
 
 	@Override
-	public int update(Court court) {
+	public int update(Shop shop) {
 		return 0;
 		
 	}
@@ -57,9 +56,8 @@ public class MyBCourtDao implements CourtDao {
 	public int delete(String code) {
 		SqlSessionFactory factory = MyBatisMain.getSqlSessionFactory();
 		SqlSession sqlSession = factory.openSession(true);
-		CourtDao courtDao = sqlSession.getMapper(CourtDao.class);
+		ShopDao shopDao = sqlSession.getMapper(ShopDao.class);
 		
-		/*courtDao.delete(code);*/
 		
 		return 0;
 		

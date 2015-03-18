@@ -22,17 +22,18 @@
 
 
             <main id="main">
-                <h2 id="main-title-write">   글 작성 </h2>
+                <h2 id="main-title-write">   Schedule 작성 </h2>
 
                 <form id="text-area" action="regProc.jsp" method="post" enctype="multipart/form-data">
                     	<fieldset>
 	                    	<legend class="hidden">본문입력필드</legend>
 	                    	
 	                    	<dl>
-		                        <dt class="detail-cell-commu title-free newrow">제목</dt>
+		                        <dt class="detail-cell-commu title-free newrow">일자</dt>
 		                        <dd class="detail-cell-commu text-highlight"><input type="text" name="title" /></dd>
 		                        
-		                        <dt class="hidden">내용</dt>
+		                        <!-- class="hidden" -->
+		                        <dt class="detail-cell-commu title-free newrow">일정</dt>
 		                        <dd class="content newrow">
 		                        	<textarea name="content" id="content" rows="10" cols="100" style="width: 690px; height: 400px; display:none;">
 		                        		☆입력☆
