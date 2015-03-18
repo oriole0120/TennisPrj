@@ -116,7 +116,11 @@
                                 </p>
                                 
                                 <p class="space-top-two text-center">
+<<<<<<< HEAD
                                 	<a href="noticeEdit.jsp?c=${n.code}">수정</a>
+=======
+                                	<a href="edit.jsp?c=${fr.code}">수정</a>
+>>>>>>> refs/remotes/origin/master
                                 </p>
 									
                                 <%-- <p class="space-top-two text-center">    
