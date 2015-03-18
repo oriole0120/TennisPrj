@@ -1,6 +1,5 @@
 package com.htmtennis.prj.dao;
 
-import java.util.List;
 
 import com.htmtennis.prj.model.Member;
 
