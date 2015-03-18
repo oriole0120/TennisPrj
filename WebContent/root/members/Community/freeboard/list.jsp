@@ -156,7 +156,7 @@
                           
                          <ui:pager total="${total}"/> 
                          <p><a href="list.jsp">다음</a></p> 
-                     </div> 
+                         </div> 
 
 
                     <div id="main-search-form">

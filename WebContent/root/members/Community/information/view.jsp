@@ -108,7 +108,7 @@
                                 </p>
                                 
                                 <p class="space-top-two text-center">
-                                	<a href="noticeEdit.jsp?c=${inf.code}">수정</a>
+                                	<a href="edit.jsp?c=${inf.code}">수정</a>
                                 </p>
                                 
                                 <p class="space-top-two text-center">    
